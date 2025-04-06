@@ -54,6 +54,23 @@ module.exports = {
         // тут написали каким loader будут обрабатываться файлы описанные выше
         use: ['ts-loader'],
       },
+      /** из 2.5 .  */
+      {
+        test: /\.less$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                mode: 'local',
+                // название селектора
+                localIdentName: '[name]__[local]--[hash:base64:5]',
+              },
+            },
+          },
+        ],
+      },
     ],
   },
   /* добавим поле devtool для формирования sourcemap - что бы в консоли показывало ошибку 

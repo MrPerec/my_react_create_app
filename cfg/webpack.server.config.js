@@ -41,6 +41,25 @@ module.exports = {
         // тут написали каким loader будут обрабатываться файлы описанные выше
         use: ['ts-loader'],
       },
+      /** из 2.5 .  */
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                mode: 'local',
+                localIdentName: '[name]__[local]--[hash:base64:5]',
+                exportOnlyLocals: true,
+              },
+              // что бы css-loader не давал доступ к файлам стилей на сервере (p.s. почему-то с ним у меня ошибка поэтому использовал exportOnlyLocals выше)
+              // onlyLocals: true,
+            },
+          },
+          'less-loader',
+        ],
+      },
     ],
   },
   // что бы не создавался файл .LICENSE.txt
