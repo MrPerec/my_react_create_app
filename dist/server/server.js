@@ -34,9 +34,9 @@ eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {
 /*!*******************************!*\
   !*** ./src/shared/Header.jsx ***!
   \*******************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Header = Header;\nconst react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\nfunction Header() {\n    return (react_1.default.createElement(\"header\", null,\n        react_1.default.createElement(\"h1\", null, \"Reddit for our own\"),\n        react_1.default.createElement(\"h2\", null, \"Added second header\")));\n}\n\n\n//# sourceURL=webpack://reddit_app/./src/shared/Header.jsx?");
+eval("/* module decorator */ module = __webpack_require__.nmd(module);\n\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Header = void 0;\n/*  module 2.3 */\nconst react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\nconst react_hot_loader_1 = __webpack_require__(/*! react-hot-loader */ \"react-hot-loader\");\nfunction HeaderComponent() {\n    return (react_1.default.createElement(\"header\", null,\n        react_1.default.createElement(\"h1\", null, \"Reddit for our own\"),\n        react_1.default.createElement(\"h2\", null, \"Added second header\"),\n        react_1.default.createElement(\"h3\", null, \"Header from 2.3 module2\")));\n}\nexports.Header = (0, react_hot_loader_1.hot)(module)(HeaderComponent);\n\n\n//# sourceURL=webpack://reddit_app/./src/shared/Header.jsx?");
 
 /***/ }),
 
@@ -68,6 +68,16 @@ module.exports = require("react");
 
 module.exports = require("react-dom/server");
 
+/***/ }),
+
+/***/ "react-hot-loader":
+/*!***********************************!*\
+  !*** external "react-hot-loader" ***!
+  \***********************************/
+/***/ ((module) => {
+
+module.exports = require("react-hot-loader");
+
 /***/ })
 
 /******/ 	});
@@ -84,17 +94,30 @@ module.exports = require("react-dom/server");
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
+/******/ 			id: moduleId,
+/******/ 			loaded: false,
 /******/ 			exports: {}
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+/******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/node module decorator */
+/******/ 	(() => {
+/******/ 		__webpack_require__.nmd = (module) => {
+/******/ 			module.paths = [];
+/******/ 			if (!module.children) module.children = [];
+/******/ 			return module;
+/******/ 		};
+/******/ 	})();
 /******/ 	
 /************************************************************************/
 /******/ 	
