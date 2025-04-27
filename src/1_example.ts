@@ -18,15 +18,15 @@ const bool = true; // typeof   bool   ->  'boolean'
 const fn = () => {}; // typeof   fn   ->  'function'
 
 /**TS позваляет создать переменную и объявить её тип
- * и задать ей какое-то згачение, значение должно соответвовать типу переменной
+ * и задать ей какое-то значение, значение должно соответвовать типу переменной
  */
-// let tsStr: string = 'abc'
+let tsStr: string = 'abc'
 /**можно писать и не указывая тип, TS поймет это и выдаст ошибку
  * если вдруг присвоим значение друго типа  */
-let tsStr = 'abc';
-tsStr = 1; // подчеркивает
+let tsStr1 = 'abc';
+tsStr1 = 1; // подчеркивает
 
-/**пример типизации JavaScript, это слишком громоздко и так не пишут*/
+/** пример типизации JavaScript, это слишком громоздко и так не пишут */
 function sumJS(arr) {
   if (arr instanceof Array) {
     return arr.reduce((a, v) => a + v);
@@ -35,11 +35,11 @@ function sumJS(arr) {
 }
 /** обычно пишут так , для метода reduce это еще нормально т.к.
  * он есть только у массива*/
-function sumJS(arr) {
+function sumJS1(arr) {
   return arr.reduce((a, v) => a + v);
 }
 /** но например concat уже есть и у массива и у строки */
-function sumJS(arr) {
+function sumJS2(arr) {
   return arr.concat([1]);
 }
 
@@ -47,7 +47,7 @@ function sumJS(arr) {
 function sumTS(arr:number[]) {
   return arr.reduce((a: number, v: number) => a + v);
 }
-/** и если передадим в ф-ю не правильный тип то TS это обощначит (подчеркивание) */
+/** и если передадим в ф-ю не правильный тип то TS это обозначит (подчеркивание) */
 sumTS(arr: '123');
 sumTS(arr: ['123']);
 

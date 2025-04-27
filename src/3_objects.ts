@@ -8,7 +8,7 @@ const myObj0 = { a: 1, b: '2' }; // можно не указывть тип и �
 type myObjType = { a: number; b: string };
 const myObj1: myObjType = { a: 1, b: '2' };
 
-// помимо описания через alias объекты лписывают еще и через interface
+// помимо описания через alias объекты описывают еще и через interface
 interface MyFirstInterface {
   a: number;
   b: string;
