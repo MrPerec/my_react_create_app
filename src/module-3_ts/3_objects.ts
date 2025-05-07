@@ -41,12 +41,12 @@ if (myObj2.f) {
 }
 
 /* работа со сложными данными, например от API пришел какой-то сложный объект у которо очено много ключей
-и я не хочу описывать все эти ключа. Для такой ситуации есть indes signature */
+и я не хочу описывать все эти ключа. Для такой ситуации есть index signature */
 const ApiAnswer = { key: 'asd', key1: 'asd' };
-// index signature. Мы как бы сказали
+// index signature. Мы как бы сказали что есть ключ объекта в виде строк "[n: string]" и тип значение этого ключа "string"
 // что нам всё равно к какому ключу обращаемся там есть строка и мы её хотим получить
 interface IndexInterface {
-  [n: string];
+  [n: string]: string;
 }
 // присвоим интерфей объекту
 const ApiAnswer2: IndexInterface = { key: 'asd', key1: 'asd' };
