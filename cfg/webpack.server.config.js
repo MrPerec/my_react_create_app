@@ -43,7 +43,7 @@ module.exports = {
       },
       /** из 2.5 .  */
       {
-        test: /\.less$/,
+        test: /\.css$/,
         use: [
           {
             loader: 'css-loader',
@@ -57,7 +57,6 @@ module.exports = {
               // onlyLocals: true,
             },
           },
-          'less-loader',
         ],
       },
     ],

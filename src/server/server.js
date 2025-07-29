@@ -1,9 +1,9 @@
 import express from 'express';
 // импортируем React
 import ReactDOM from 'react-dom/server';
+import { indexTemplate } from './indexTemplate';
 // ипортируем компонент
 import { Header } from '../shared/Header';
-import { indexTemplate } from './indexTemplate';
 
 // для инициализации приложения создаем instance
 const app = express();

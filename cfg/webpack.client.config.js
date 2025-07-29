@@ -56,7 +56,7 @@ module.exports = {
       },
       /** из 2.5 .  */
       {
-        test: /\.less$/,
+        test: /\.css$/,
         use: [
           'style-loader',
           {

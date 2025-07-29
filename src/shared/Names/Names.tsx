@@ -1,7 +1,6 @@
 import React from 'react';
 import { uniqueNamesGenerator, starWars, adjectives, Config } from 'unique-names-generator';
-// import * as styles from './names.less';
-// import * as styles from './names.css';
+import * as styles from './names.css';
 
 /** интерфейс описывает типы состояния компонента
  * на данный момент содержит 2 поля,
@@ -59,12 +58,14 @@ export class Names extends React.Component<{}, INamesState> {
   /** метод рендеринга. Выводит наш jsx в html теги на странице */
   public render() {
     return (
-      // <h1 className={styles.word}>
-      <h1>
-        <Adjective adjective={this.state.adjective} />
-        {'\u00A0'}
-        <StarWarsWord starWarsWord={this.state.starWarsWord} />
-      </h1>
+      <>
+        <h2>Module 4.1</h2>
+        <h3 className={styles.word}>
+          <Adjective adjective={this.state.adjective} />
+          {'\u00A0'}
+          <StarWarsWord starWarsWord={this.state.starWarsWord} />
+        </h3>
+      </>
     );
   }
 }
