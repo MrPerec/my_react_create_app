@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 import { uniqueNamesGenerator, starWars } from 'unique-names-generator';
 import * as styles from './starWarsNameClass.css';
 
@@ -56,7 +56,7 @@ export class StarWarsNameClass extends React.PureComponent<{}, IStarWarsNameClas
 
     return (
       <section className={styles.container}>
-        <h2>Module 4.2</h2>
+        <h2>Module 4.2 Class component</h2>
         <span className={styles.name}>{this.state.name}</span>
         <div className={styles.gap} />
         <button className={styles.button} onClick={this.handleClick}>

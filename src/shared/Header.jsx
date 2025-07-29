@@ -3,6 +3,7 @@ import React from 'react';
 import { hot } from 'react-hot-loader';
 import { Names } from './Names/Names';
 import { StarWarsNameClass } from './StateExamples/StarWarsNameClass/StarWarsNameClass';
+import { StarWarsNameFunction } from './StateExamples/StarWarsNameFunction/StarWarsNameFunction';
 
 import * as styles from './header.css';
 
@@ -18,6 +19,7 @@ function HeaderComponent() {
       </header>
       <Names />
       <StarWarsNameClass />
+      <StarWarsNameFunction />
     </>
   );
 }
