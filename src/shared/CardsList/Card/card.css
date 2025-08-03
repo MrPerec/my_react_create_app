@@ -1,0 +1,201 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  border-radius: 7px;
+  background: var(--white);
+}
+
+/* все дочерние элементы будут растягиваться на 100% что бы переносились удобно на разные строки */
+.card > * {
+  flex: 1 1 100%;
+}
+
+/* ... */
+
+.createdAt,
+.createdAt * {
+  color: var(--grey99);
+}
+.publishedLabel {
+  display: none;
+}
+
+.title {
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: normal;
+  margin: 0;
+  padding: 7px 0 0;
+}
+.postLink {
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+
+.preview {
+  max-height: 178px;
+}
+.previewImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.menu {
+  position: absolute;
+  top: 17px;
+  right: 15px;
+}
+.menuButton {
+  width: 31px;
+  height: 31px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(90deg);
+  border-radius: 31px;
+  background: transparent;
+  bottom: 0;
+}
+.menuButton:active,
+.menuButton:hover {
+  background-color: rgba(51, 51, 51, 0.1);
+}
+
+.controls {
+  padding: 10px 20px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.karmaCounter > * + * {
+  padding: 0 0 0 4px;
+}
+.karmaValue {
+  color: var(--greyC4);
+}
+
+.commentsButton {
+  display: flex;
+  align-items: normal;
+}
+.commentsButton * {
+  color: var(--greyC4);
+}
+.commentsNumber {
+  padding: 0 0 0 6px;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.shareButton {
+  width: 20px;
+  height: 20px;
+}
+.saveButton {
+  width: 20px;
+  height: 20px;
+}
+
+@media (min-width: 1024px) {
+  .publishedLabel {
+    display: inline;
+  }
+
+  .menuButton {
+    align-self: center;
+    transform: unset;
+  }
+
+  .controls {
+    order: 3;
+    flex: 0 0;
+    margin: 0 0 0 24px;
+    padding: 0;
+  }
+
+  .karmaCounter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+  }
+  .karmaCounter > * + * {
+    padding: 7px 0 0;
+  }
+  .karmaValue {
+    font-style: 14px;
+    line-height: 16px;
+    color: var(--black);
+  }
+
+  .commentsButton {
+    display: none;
+  }
+  .actions {
+    display: none;
+  }
+}
+
+@media (min-width: 1540px) {
+  .card {
+    padding: 0 60px;
+  }
+
+  .textContent {
+    flex-basis: 672px;
+  }
+
+  .card:hover,
+  card:focus-within {
+    outline: 1px solid var(--greyD9);
+  }
+
+  .userLink:hover a {
+    text-decoration: underline;
+  }
+
+  .userLink:hover a {
+    text-decoration: underline;
+  }
+
+  .menuButton:hover {
+    background-color: rgba(51, 51, 51, 0.1);
+  }
+
+  .karmaCounter > button.up:hover > svg > path {
+    fill: var(--green);
+  }
+  .karmaCounter > button.down:hover > svg > path {
+    fill: var(--orange);
+  }
+
+  /* .... */
+
+  .controls {
+    position: relative;
+  }
+
+  .postLink::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .username {
+    position: relative;
+    z-index: 1;
+  }
+
+  .card:hover h2 a,
+  .card:focus-within h2 a {
+    color: var(--orange);
+  }
+}
