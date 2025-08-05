@@ -1,5 +1,6 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
+import './normalize.css';
 import './main.global.css';
 
 import { Layout } from './shared/Layout';
