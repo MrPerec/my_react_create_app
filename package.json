@@ -5,24 +5,40 @@
   "scripts": {
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
     "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server",
+    "dev": "cross-env NODE_ENV=development node ./bin/dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@hot-loader/react-dom": "^16.13.0",
+    "@types/jest": "^29.5.14",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.5",
+    "clean-webpack-plugin": "^4.0.0",
     "cross-env": "^7.0.3",
+    "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.6.3",
+    "jest": "^29.7.0",
+    "react-hot-loader": "^4.13.1",
+    "style-loader": "^3.3.1",
     "terser-webpack-plugin": "^5.3.14",
+    "ts-jest": "^29.3.1",
     "ts-loader": "^9.5.2",
     "typescript": "^5.8.2",
     "webpack": "^5.98.0",
     "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.0"
+    "webpack-dev-middleware": "^7.4.2",
+    "webpack-dev-server": "^5.2.0",
+    "webpack-hot-middleware": "^2.26.1",
+    "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "unique-names-generator": "^4.7.1"
   }
 }
