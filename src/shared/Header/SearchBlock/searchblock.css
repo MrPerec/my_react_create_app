@@ -11,6 +11,7 @@
   background-color: var(--white);
 }
 
+/* userLink */
 .userLink {
   display: flex;
   align-items: center;
@@ -18,16 +19,18 @@
   flex-flow: row nowrap;
   gap: 13px;
 }
-
 .avatar {
   border-radius: 100%;
   max-width: 30px;
 }
-
 .username {
   display: none;
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--orange);
 }
 
+/* searchInputBlock */
 .searchInputBlock {
   position: relative;
   width: 100%;
@@ -52,7 +55,8 @@
   color: var(--greyC4);
 }
 
-.iconsBlock {
+/* emailIconsBlock */
+.emailIconsBlock {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -92,21 +96,18 @@
     background-color: transparent;
   }
 
+  /* userLink */
   .userLink {
     order: 2;
   }
-
   .avatar {
     max-width: 50px;
   }
-
   .username {
     display: block;
-    font-weight: 500;
-    font-size: 20px;
-    color: var(--orange);
   }
 
+  /* searchInputBlock */
   .searchInputBlock {
     order: 1;
   }
@@ -126,7 +127,8 @@
     background: var(--white);
   }
 
-  .iconsBlock {
+  /* emailIconsBlock */
+  .emailIconsBlock {
     gap: 9px;
     max-width: 100%;
   }
@@ -149,6 +151,12 @@
     gap: 50px;
   }
 
+  /* userLink */
+  .username {
+    color: var(--black);
+  }
+
+  /* searchInputBlock */
   .searchInput {
     width: 361px;
   }
