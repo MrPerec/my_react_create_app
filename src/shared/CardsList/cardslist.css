@@ -3,3 +3,9 @@
     padding: 40px 0;
   }
 }
+
+@media (min-width: 1540px) {
+  .cardsList {
+    padding: 67px 0;
+  }
+}

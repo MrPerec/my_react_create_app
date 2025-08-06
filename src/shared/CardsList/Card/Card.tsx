@@ -4,25 +4,27 @@ import styles from './card.css';
 export function Card() {
   return (
     <li className={styles.card}>
+      {/* user-block */}
       <div className={styles.textContent}>
         <div className={styles.metaData}>
           <div className={styles.userLink}>
             <img className={styles.avatar} src='https://cdn.dribbble.com/users/2173663/avatars/small/c4c633361e233ae7e0b9882264c95b1a.jpg?1579775888' alt='avatar' />
             <a className={styles.username} href='#user-url'>
-              Константин Кодов
+              Дмитрий Гришин
             </a>
           </div>
           <span className={styles.createdAt}>
-            <span className={styles.publishedLabel}>опубликовано </span>8 часов назад
+            <span className={styles.publishedLabel}>опубликовано </span>4 часа назад
           </span>
         </div>
         <h2 className={styles.title}>
           <a className={styles.postLink} href='#post-url'>
-            Следует отметить, что новая модель организационной деятельности Следует отметить, что новая модель организационной деятельности
+            Реализация намеченных плановых заданий
           </a>
         </h2>
       </div>
 
+      {/* picture */}
       <div className={styles.preview}>
         <img
           className={styles.previewImg}
@@ -31,6 +33,7 @@ export function Card() {
         />
       </div>
 
+      {/* menu-three-dots */}
       <div className={styles.menu}>
         <button className={styles.menuButton}>
           <svg width='5' height='20' viewBox='0 0 5 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -41,6 +44,7 @@ export function Card() {
         </button>
       </div>
 
+      {/* buttons-interactive */}
       <div className={styles.controls}>
         <div className={styles.karmaCounter}>
           <button className={styles.up}>
