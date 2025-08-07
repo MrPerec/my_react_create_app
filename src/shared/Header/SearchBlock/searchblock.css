@@ -1,0 +1,163 @@
+.searchBlock {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  border-radius: 0 0 7px 7px;
+  padding: 13px 20px;
+  margin: 0 0 36px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background-color: var(--white);
+}
+
+/* userLink */
+.userLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+  gap: 13px;
+}
+.avatar {
+  border-radius: 100%;
+  max-width: 30px;
+}
+.username {
+  display: none;
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--orange);
+}
+
+/* searchInputBlock */
+.searchInputBlock {
+  position: relative;
+  width: 100%;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 9px;
+  left: 16px;
+  width: 11px;
+  height: 11px;
+  fill: var(--greyC4);
+}
+
+.searchInput {
+  border-radius: 30px;
+  border: transparent;
+  padding: 8px 0 8px 31px;
+  width: 100%;
+  background: var(--greyF4);
+  font-size: 12px;
+  color: var(--greyC4);
+}
+
+/* emailIconsBlock */
+.emailIconsBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row nowrap;
+  max-width: 30px;
+  width: 100%;
+}
+
+.emailCounterText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  width: 12.77px;
+  height: 12.77px;
+  font-weight: 500;
+  font-size: 9px;
+  text-align: center;
+  color: var(--white);
+  background-color: var(--orange);
+}
+
+.emailCounterIcon {
+  width: 13px;
+  height: 11px;
+  fill: var(--greyD9);
+}
+
+@media all and (min-width: 1024px) {
+  .searchBlock {
+    gap: 30px;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    order: 3;
+    box-shadow: none;
+    background-color: transparent;
+  }
+
+  /* userLink */
+  .userLink {
+    order: 2;
+  }
+  .avatar {
+    max-width: 50px;
+  }
+  .username {
+    display: block;
+  }
+
+  /* searchInputBlock */
+  .searchInputBlock {
+    order: 1;
+  }
+
+  .searchIcon {
+    width: 19px;
+    height: 19px;
+    top: 15px;
+    left: 27px;
+  }
+
+  .searchInput {
+    padding: 14px 0 14px 56.59px;
+    width: 280px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    background: var(--white);
+  }
+
+  /* emailIconsBlock */
+  .emailIconsBlock {
+    gap: 9px;
+    max-width: 100%;
+  }
+
+  .emailCounterText {
+    width: 20px;
+    height: 20px;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .emailCounterIcon {
+    width: 20px;
+    height: 16px;
+  }
+}
+
+@media (min-width: 1540px) {
+  .searchBlock {
+    gap: 50px;
+  }
+
+  /* userLink */
+  .username {
+    color: var(--black);
+  }
+
+  /* searchInputBlock */
+  .searchInput {
+    width: 361px;
+  }
+}

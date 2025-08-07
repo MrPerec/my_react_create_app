@@ -1,0 +1,41 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  border-radius: 7px;
+  padding: 22px 0 10px;
+  background: var(--white);
+}
+
+/* все дочерние элементы будут растягиваться на 100% что бы переносились удобно на разные строки */
+.card > * {
+  flex: 1 1 100%;
+}
+
+@media (min-width: 1024px) {
+  .card {
+    flex-wrap: nowrap;
+    padding: 0 40px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .card > * {
+    flex: none;
+  }
+}
+
+@media (min-width: 1540px) {
+  .card {
+    padding: 0 60px;
+  }
+
+  .card:hover,
+  .card:focus-within {
+    outline: 1px solid var(--greyD9);
+  }
+
+  .card:hover h2 a,
+  .card:focus-within h2 a {
+    color: var(--orange);
+  }
+}
