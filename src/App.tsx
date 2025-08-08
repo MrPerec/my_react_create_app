@@ -8,12 +8,15 @@ import { Header } from './shared/Header';
 import { Content } from './shared/Content';
 import { CardsList } from './shared/CardsList/CardsList';
 
+import { MyHooks } from './HooksExample/HooksExample';
+
 function AppComponent() {
   return (
     <Layout>
       <Header />
       <Content>
         <CardsList />
+        <MyHooks />
       </Content>
     </Layout>
   );
