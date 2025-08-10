@@ -4,7 +4,6 @@
   flex-flow: row wrap;
   border-radius: 7px;
   padding: 22px 0 10px;
-  background: var(--white);
 }
 
 /* все дочерние элементы будут растягиваться на 100% что бы переносились удобно на разные строки */
