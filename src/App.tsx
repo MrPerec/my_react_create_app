@@ -9,7 +9,7 @@ import { Content } from './shared/Content';
 import { CardsList } from './shared/CardsList/CardsList';
 import { DropDown } from './shared/DropDown';
 
-// 5
+// 4 и 5
 import { GenericList } from './GenericList/GenericList';
 
 function AppComponent() {
