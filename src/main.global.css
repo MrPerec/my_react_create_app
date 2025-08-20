@@ -2,6 +2,7 @@
 
 :root {
   --black: #333333;
+  --black00: #000000;
   --orange: #cc6633;
   --green: #a4cc33;
   --white: #ffffff;
@@ -11,6 +12,10 @@
   --greyC4: #c4c4c4;
   --grey99: #999999;
   --grey66: #666666;
+  --greyEC: #ececec;
+
+  --dropDownWidthMobile: 140px;
+  --dropDownWidthTablet: 157px;
 }
 
 html {
