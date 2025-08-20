@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { hot } from 'react-hot-loader';
 import './normalize.css';
 import './main.global.css';
@@ -19,4 +19,4 @@ function AppComponent() {
   );
 }
 
-export const App = hot(module)(AppComponent);
+export const App = hot(module)(() => <AppComponent />);
