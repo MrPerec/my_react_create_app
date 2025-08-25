@@ -61,6 +61,9 @@
 .greyEC {
   color: var(--greyEC);
 }
+.grey97 {
+  color: var(--grey97);
+}
 
 .bold {
   font-weight: bold;

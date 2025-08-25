@@ -9,13 +9,13 @@ interface IGenericListProps {
     id: string;
     text: string;
     onClick?: (id: string) => void;
-    icon?: React.JSX.Element;
+    icon?: React.ReactNode;
   }[];
 }
 
 export function GenericList({ list }: IGenericListProps) {
   const resultList = list.map(({ As = 'div', text, onClick = noop, className, id, href, icon }) => {
-    let content: string | React.JSX.Element = text;
+    let content: string | React.ReactNode = text;
 
     if (icon) {
       content = (

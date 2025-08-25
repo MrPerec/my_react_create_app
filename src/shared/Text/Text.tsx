@@ -47,6 +47,7 @@ export enum EColor {
   grey99 = 'grey99',
   grey66 = 'grey66',
   greyEC = 'greyEC',
+  grey97 = 'grey97',
 }
 
 type TSizes = 28 | 20 | 16 | 14 | 12 | 10;
