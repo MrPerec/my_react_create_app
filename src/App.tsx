@@ -15,7 +15,7 @@ function AppComponent() {
       <Header />
       <Content>
         <CardsList />
-        <br />
+        {/* <br />
         <Text size={20} mobileSize={28} color={EColor.green} bold>
           Label1
         </Text>
@@ -24,7 +24,7 @@ function AppComponent() {
         </Text>
         <Text size={20} mobileSize={16}>
           Label3
-        </Text>
+        </Text> */}
       </Content>
     </Layout>
   );

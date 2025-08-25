@@ -1,0 +1,35 @@
+.blockIcon {
+  width: 12px;
+  height: 12px;
+  fill: var(--grey99);
+}
+
+.commentsIcon {
+  width: 15px;
+  height: 15px;
+  fill: var(--grey99);
+}
+
+.menuIcon {
+  width: 5px;
+  height: 20px;
+  fill: var(--greyD9);
+}
+
+.saveIcon {
+  width: 14px;
+  height: 14px;
+  fill: var(--grey97);
+}
+
+.shareIcon {
+  width: 12px;
+  height: 14px;
+  fill: var(--grey99);
+}
+
+.warningIcon {
+  width: 14px;
+  height: 12px;
+  fill: var(--grey99);
+}

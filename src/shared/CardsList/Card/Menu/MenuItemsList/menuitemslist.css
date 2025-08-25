@@ -1,0 +1,25 @@
+.menuItemsList {
+  padding: 0 20px;
+}
+
+.menuItem {
+  padding: 12px 0;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 7px;
+}
+
+.menuItem:not(:last-child) {
+  border-bottom: 1px solid var(--greyEC);
+}
+
+.menuItem:hover {
+  cursor: pointer;
+}
+.menuItem:hover > span {
+  color: var(--orange);
+}
+.menuItem:hover > svg {
+  fill: var(--orange);
+}
