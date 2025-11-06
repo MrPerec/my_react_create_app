@@ -19,12 +19,7 @@ enum EIcons {
   warning = 'WarningIcon',
   comments = 'CommentsIcon',
   save = 'SaveIcon',
-  // saveCircle = 'SaveCircleIcon',
   share = 'ShareIcon',
-  // shareCircle = 'ShareCircleIcon',
-  // arrowDown = 'ArrowDownIcon',
-  // arrowUp = 'ArrowUpIcon',
-  // menu = 'MenuIcon',
 }
 
 export { EColor, EIcons };
