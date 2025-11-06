@@ -29,26 +29,7 @@
 import React from 'react';
 import styles from './text.css';
 import classNames from 'classnames';
-
-/** создали enum (типо константы) для цветов
- * Объявили тут в качестве примера, но в реальных проектах такие вещи нужно объявлять более глобально, в отдельном файле с глобальными
- * Enum и константами
- */
-export enum EColor {
-  black = 'black',
-  black00 = 'black00',
-  orange = 'orange',
-  green = 'green',
-  white = 'white',
-  greyF4 = 'greyF4',
-  greyF3 = 'greyF3',
-  greyD9 = 'greyD9',
-  greyC4 = 'greyC4',
-  grey99 = 'grey99',
-  grey66 = 'grey66',
-  greyEC = 'greyEC',
-  grey97 = 'grey97',
-}
+import { EColor } from '../../enum';
 
 type TSizes = 28 | 20 | 16 | 14 | 12 | 10;
 
@@ -67,12 +48,12 @@ export function Text(props: ITextProps) {
   const { As = 'span', children, size, mobileSize, tabletSize, desktopSize, color = EColor.black, bold = false } = props;
 
   const classes = classNames(
-    styles[`s${size}`],
-    { [styles[`m${mobileSize}`]]: mobileSize }, // для адаптива мобилного
-    { [styles[`t${tabletSize}`]]: tabletSize }, // для адаптива планшета
-    { [styles[`d${desktopSize}`]]: desktopSize }, // для адаптива десктопа
-    styles[color], // цвет
-    { [styles.bold]: bold },
+    styles[`s${size}`], // размер шрифта
+    { [styles[`m${mobileSize}`]]: mobileSize }, // для адаптива мобильного, если в mobileSize что-то есть то сгенерирует этот класс
+    { [styles[`t${tabletSize}`]]: tabletSize }, // для адаптива планшета, если в tabletSize что-то есть то сгенерирует этот класс
+    { [styles[`d${desktopSize}`]]: desktopSize }, // для адаптива десктопа, если в desktopSize что-то есть то сгенерирует этот класс
+    styles[color], // цвет, условие как в предыдущем примере, не обязательно т.к. по умолчанию false
+    { [styles.bold]: bold }, // толщина шрифта, если в bold что-то есть то сгенерирует этот класс
   );
 
   return <As className={classes}>{children}</As>;

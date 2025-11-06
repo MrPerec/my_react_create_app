@@ -4,6 +4,7 @@ import styles from './card.css';
 import { TextContent } from './TextContent/TextContent';
 import { Preview } from './Preview/Preview';
 import { Menu } from './Menu/Menu';
+// import { MenuOld } from './Menu/Menu_old';
 import { Controls } from './Controls/Controls';
 
 export function Card() {
@@ -12,6 +13,7 @@ export function Card() {
       <TextContent />
       <Preview />
       <Menu />
+      {/* <MenuOld /> */}
       <Controls />
     </li>
   );

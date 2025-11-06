@@ -1,35 +1,29 @@
-.blockIcon {
-  width: 12px;
-  height: 12px;
-  fill: var(--grey99);
-}
-
-.commentsIcon {
-  width: 15px;
-  height: 15px;
-  fill: var(--grey99);
-}
-
 .menuIcon {
   width: 5px;
   height: 20px;
   fill: var(--greyD9);
 }
 
-.saveIcon {
-  width: 14px;
-  height: 14px;
-  fill: var(--grey97);
+.arrowupIcon {
+  width: 19px;
+  height: 10px;
+  fill: var(--greyC4);
 }
 
-.shareIcon {
-  width: 12px;
-  height: 14px;
-  fill: var(--grey99);
+.arrowdownIcon {
+  width: 19px;
+  height: 10px;
+  fill: var(--greyC4);
 }
 
-.warningIcon {
-  width: 14px;
-  height: 12px;
-  fill: var(--grey99);
+.shareCircleIcon {
+  width: 20px;
+  height: 20px;
+  fill: var(--white);
+}
+
+.saveCircleIcon {
+  width: 20px;
+  height: 20px;
+  fill: var(--white);
 }
