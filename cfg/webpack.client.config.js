@@ -1,11 +1,13 @@
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
-const { HotModuleReplacementPlugin } = require('webpack');
+const { HotModuleReplacementPlugin, DefinePlugin } = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV;
 const IS_DEV = NODE_ENV === 'development';
-const GLOBAL_CSS_REGEXP = /\.global\.css$/; // 4.3 будет добавляться надпись global для глобаотных стилей
+const GLOBAL_CSS_REGEXP = /\.global\.css$/;
+const DEV_PLUGINS = [new CleanWebpackPlugin(), new HotModuleReplacementPlugin()];
+const COMMON_PLUGINS = [new DefinePlugin({ 'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'` })];
 
 function setupDevtool() {
   if (IS_DEV) return 'eval';
@@ -46,17 +48,17 @@ module.exports = {
             },
           },
         ],
-        exclude: GLOBAL_CSS_REGEXP, // 4.3 будет матчить все css файлы кроме global
+        exclude: GLOBAL_CSS_REGEXP,
       },
       {
-        test: GLOBAL_CSS_REGEXP, // 4.3
+        test: GLOBAL_CSS_REGEXP,
         use: ['style-loader', 'css-loader'],
       },
     ],
   },
 
   devtool: setupDevtool(),
-  plugins: IS_DEV ? [new CleanWebpackPlugin(), new HotModuleReplacementPlugin()] : [],
+  plugins: IS_DEV ? DEV_PLUGINS.concat(COMMON_PLUGINS) : COMMON_PLUGINS,
   optimization: {
     minimizer: [
       new TerserPlugin({
