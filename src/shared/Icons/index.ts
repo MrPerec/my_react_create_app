@@ -8,3 +8,4 @@ export * from './ArrowUpIcon';
 export * from './ArrowDownIcon';
 export * from './ShareCircleIcon';
 export * from './SaveCircleIcon';
+export * from './IconAnon';

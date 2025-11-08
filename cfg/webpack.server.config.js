@@ -1,9 +1,11 @@
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
+const { DefinePlugin } = require('webpack');
 
 const NODE_ENV = process.env.NODE_ENV;
 const GLOBAL_CSS_REGEXP = /\.global\.css$/;
+const IS_DEV = NODE_ENV === 'development';
 
 module.exports = {
   target: 'node',
@@ -39,10 +41,10 @@ module.exports = {
             },
           },
         ],
-        exclude: GLOBAL_CSS_REGEXP, // 4.3 будет матчить все css файлы кроме global
+        exclude: GLOBAL_CSS_REGEXP,
       },
       {
-        test: GLOBAL_CSS_REGEXP, // 4.3
+        test: GLOBAL_CSS_REGEXP,
         use: ['css-loader'],
       },
     ],
@@ -55,4 +57,6 @@ module.exports = {
       }),
     ],
   },
+  devtool: IS_DEV ? 'eval' : false,
+  plugins: [new DefinePlugin({ 'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'` })],
 };

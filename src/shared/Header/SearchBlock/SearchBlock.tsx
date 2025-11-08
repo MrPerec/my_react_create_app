@@ -1,16 +1,18 @@
 import React from 'react';
 import styles from './searchblock.css';
+import { UserBlock } from './UserBlock';
 
 export function SearchBlock() {
   return (
     <div className={styles.searchBlock}>
       {/* userBlock */}
-      <div className={styles.userLink}>
+      {/* <div className={styles.userLink}>
         <img className={styles.avatar} src='https://cdn.dribbble.com/users/2173663/avatars/small/c4c633361e233ae7e0b9882264c95b1a.jpg?1579775888' alt='Константин Кодов' />
         <a className={styles.username} href='#user-url'>
           Константин
         </a>
-      </div>
+      </div> */}
+      <UserBlock />
 
       {/* searchInputBlock */}
       <div className={styles.searchInputBlock}>
