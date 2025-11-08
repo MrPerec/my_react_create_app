@@ -1,0 +1,170 @@
+/* размеры */
+.s12 {
+  width: 12px;
+  height: 12px;
+}
+.s14 {
+  width: 14px;
+  height: 14px;
+}
+.s15 {
+  width: 15px;
+  height: 15px;
+}
+.s16 {
+  width: 16px;
+  height: 16px;
+}
+.s18 {
+  width: 18px;
+  height: 18px;
+}
+.s19 {
+  width: 19px;
+  height: 19px;
+}
+.s20 {
+  width: 20px;
+  height: 20px;
+}
+
+/* цвета */
+.black {
+  fill: var(--black);
+}
+.black00 {
+  fill: var(--black00);
+}
+.orange {
+  fill: var(--orange);
+}
+.green {
+  fill: var(--green);
+}
+.white {
+  fill: var(--white);
+}
+.greyF4 {
+  fill: var(--greyF4);
+}
+.greyF3 {
+  fill: var(--greyF3);
+}
+.greyD9 {
+  fill: var(--greyD9);
+}
+.greyC4 {
+  fill: var(--greyC4);
+}
+.grey99 {
+  fill: var(--grey99);
+}
+.grey66 {
+  fill: var(--grey66);
+}
+.greyEC {
+  fill: var(--greyEC);
+}
+.grey97 {
+  fill: var(--grey97);
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/* мобильный адаптив */
+@media all and (min-width: 320px) and (max-width: 1023px) {
+  .m12 {
+    width: 12px;
+    height: 12px;
+  }
+  .m14 {
+    width: 14px;
+    height: 14px;
+  }
+  .m15 {
+    width: 15px;
+    height: 15px;
+  }
+  .m16 {
+    width: 16px;
+    height: 16px;
+  }
+  .m18 {
+    width: 18px;
+    height: 18px;
+  }
+  .m19 {
+    width: 19px;
+    height: 19px;
+  }
+  .m20 {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* tablet */
+@media all and (min-width: 1024px) and (max-width: 1539px) {
+  .t12 {
+    width: 12px;
+    height: 12px;
+  }
+  .t14 {
+    width: 14px;
+    height: 14px;
+  }
+  .t15 {
+    width: 15px;
+    height: 15px;
+  }
+  .t16 {
+    width: 16px;
+    height: 16px;
+  }
+  .t18 {
+    width: 18px;
+    height: 18px;
+  }
+  .t19 {
+    width: 19px;
+    height: 19px;
+  }
+  .t20 {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* desktop */
+@media all and (min-width: 1540px) {
+  .d12 {
+    width: 12px;
+    height: 12px;
+  }
+  .d14 {
+    width: 14px;
+    height: 14px;
+  }
+  .d15 {
+    width: 15px;
+    height: 15px;
+  }
+  .d16 {
+    width: 16px;
+    height: 16px;
+  }
+  .d18 {
+    width: 18px;
+    height: 18px;
+  }
+  .d19 {
+    width: 19px;
+    height: 19px;
+  }
+  .d20 {
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -4,3 +4,7 @@ export * from './MenuIcon';
 export * from './SaveIcon';
 export * from './ShareIcon';
 export * from './WarningIcon';
+export * from './ArrowUpIcon';
+export * from './ArrowDownIcon';
+export * from './ShareCircleIcon';
+export * from './SaveCircleIcon';

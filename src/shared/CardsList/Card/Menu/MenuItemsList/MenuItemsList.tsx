@@ -1,28 +1,36 @@
 import React from 'react';
 import styles from './menuitemslist.css';
-import { WarningIcon } from '../../../../Icons/WarningIcon';
-import { BlockIcon } from '../../../../Icons/BlockIcon';
-import { Text, EColor } from '../../../../Text';
+import { Text } from '../../../../Text';
+import { Icon } from '../../../../Icon';
+import { EColor, EIcons } from '../../../../../enum';
 
 interface IMenuItemsListProps {
-  postId: string;
+  list: {
+    As?: 'li' | 'button' | 'div';
+    postId: string;
+    text: string;
+    icon: {
+      name: EIcons;
+      size?: number;
+      mobileSize?: number;
+      tabletSize?: number;
+      desktopSize?: number;
+      color?: EColor;
+    };
+  }[];
 }
 
-export function MenuItemsList({ postId }: IMenuItemsListProps) {
-  return (
-    <ul className={styles.menuItemsList}>
-      <li className={styles.menuItem} onClick={() => console.log(postId)}>
-        <BlockIcon />
+export function MenuItemsList({ list }: IMenuItemsListProps) {
+  const resultList = list.map(({ As = 'li', text, postId, icon }) => {
+    return (
+      <As className={styles.menuItem} key={postId} onClick={() => console.log(postId)}>
+        <Icon name={icon.name} size={icon?.size} mobileSize={icon?.mobileSize} tabletSize={icon?.tabletSize} desktopSize={icon?.desktopSize} color={icon?.color} />
         <Text size={12} color={EColor.grey99}>
-          Скрыть
+          {text}
         </Text>
-      </li>
-      <li className={styles.menuItem}>
-        <WarningIcon />
-        <Text size={12} color={EColor.grey99}>
-          Пожаловаться
-        </Text>
-      </li>
-    </ul>
-  );
+      </As>
+    );
+  });
+
+  return <ul className={styles.menuItemsList}>{resultList}</ul>;
 }
