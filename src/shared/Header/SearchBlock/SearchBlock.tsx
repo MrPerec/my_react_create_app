@@ -1,18 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './searchblock.css';
 import { UserBlock } from './UserBlock';
+import axios from 'axios';
 
-export function SearchBlock() {
+interface ISearchPropsBlock {
+  token: string;
+}
+
+interface IUserData {
+  name?: string;
+  iconImg?: string;
+}
+
+export function SearchBlock({ token }: ISearchPropsBlock) {
+  // сохраняем полученные данные после обращения к endpoint
+  const [data, setData] = useState<IUserData>({});
+
+  // выполняем запрос авторизации к endpoint из браузера
+  useEffect(() => {
+    axios
+      .get('https://oauth.reddit.com/api/v1/me', {
+        headers: { Authorization: `bearer ${token}` },
+      })
+      // посмотреть структуру ответа api можно по адресу https://www.reddit.com/dev/api/ (но кокретно для /api/v1/me нет описания в этом случае просто делаем console.log)
+      .then(({ data }) => {
+        setData({ name: data?.name, iconImg: data?.icon_img });
+      })
+      .catch(console.log);
+    // указываем token в качестве зависимости
+  }, [token]);
+
   return (
     <div className={styles.searchBlock}>
-      {/* userBlock */}
-      {/* <div className={styles.userLink}>
-        <img className={styles.avatar} src='https://cdn.dribbble.com/users/2173663/avatars/small/c4c633361e233ae7e0b9882264c95b1a.jpg?1579775888' alt='Константин Кодов' />
-        <a className={styles.username} href='#user-url'>
-          Константин
-        </a>
-      </div> */}
-      <UserBlock />
+      <UserBlock avatarSrc={data?.iconImg} username={data?.name} />
 
       {/* searchInputBlock */}
       <div className={styles.searchInputBlock}>
