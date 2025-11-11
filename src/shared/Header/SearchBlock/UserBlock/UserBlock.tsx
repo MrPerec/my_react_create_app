@@ -4,6 +4,7 @@ import { Break } from '../../../Break';
 import { EColor } from '../../../../enum';
 import { Text } from '../../../Text';
 import { IconAnon } from '../../../Icons';
+import { REDIRECT_URI } from '../../../../constants';
 
 interface IUserBlockProps {
   avatarSrc?: string;
@@ -13,7 +14,6 @@ interface IUserBlockProps {
 export function UserBlock({ avatarSrc, username }: IUserBlockProps) {
   const RESPONSE_TYPE = `code`;
   const RANDOM_STRING = `random_string`;
-  const REDIRECT_URI = `http://localhost:3000/auth`;
   const DURATION = `permanent`;
   const SCOPE_STRING = `read submit identity`;
   const AUTHORIZATION_URL = `https://www.reddit.com/api/v1/authorize?client_id=${process.env.CLIENT_ID}&response_type=${RESPONSE_TYPE}&state=${RANDOM_STRING}&redirect_uri=${REDIRECT_URI}&duration=${DURATION}&scope=${SCOPE_STRING}`;
