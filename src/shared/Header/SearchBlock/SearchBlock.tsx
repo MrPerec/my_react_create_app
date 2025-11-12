@@ -3,13 +3,11 @@ import styles from './searchblock.css';
 import { UserBlock } from './UserBlock';
 import { useUserData } from '../../../hooks/useUserData';
 
-interface ISearchPropsBlock {
-  token: string;
-}
-
-export function SearchBlock({ token }: ISearchPropsBlock) {
+// удалил проп token
+export function SearchBlock() {
   // сделали кастомный хук и вынесли всю логику получения информации о пользователе в него
-  const [data] = useUserData(token);
+  // удалил проп token и сразу из хука useUserData получаем все данные для аватарки
+  const [data] = useUserData();
 
   return (
     <div className={styles.searchBlock}>
