@@ -1,0 +1,50 @@
+.searchInputBlock {
+  position: relative;
+  width: 100%;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 9px;
+  left: 16px;
+  width: 11px;
+  height: 11px;
+  fill: var(--greyC4);
+}
+
+.searchInput {
+  border-radius: 30px;
+  border: transparent;
+  padding: 8px 0 8px 31px;
+  width: 100%;
+  background: var(--greyF4);
+  font-size: 12px;
+  color: var(--greyC4);
+}
+
+@media all and (min-width: 1024px) {
+  .searchInputBlock {
+    order: 1;
+  }
+
+  .searchIcon {
+    width: 19px;
+    height: 19px;
+    top: 15px;
+    left: 27px;
+  }
+
+  .searchInput {
+    padding: 14px 0 14px 56.59px;
+    width: 280px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    background: var(--white);
+  }
+}
+
+@media (min-width: 1540px) {
+  .searchInput {
+    width: 361px;
+  }
+}
