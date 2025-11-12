@@ -1,0 +1,47 @@
+.emailIconsBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row nowrap;
+  max-width: 30px;
+  width: 100%;
+}
+
+.emailCounterText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  width: 12.77px;
+  height: 12.77px;
+  font-weight: 500;
+  font-size: 9px;
+  text-align: center;
+  color: var(--white);
+  background-color: var(--orange);
+}
+
+.emailCounterIcon {
+  width: 13px;
+  height: 11px;
+  fill: var(--greyD9);
+}
+
+@media all and (min-width: 1024px) {
+  .emailIconsBlock {
+    gap: 9px;
+    max-width: 100%;
+  }
+
+  .emailCounterText {
+    width: 20px;
+    height: 20px;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .emailCounterIcon {
+    width: 20px;
+    height: 16px;
+  }
+}
