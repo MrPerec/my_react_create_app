@@ -1,34 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './searchblock.css';
 import { UserBlock } from './UserBlock';
-import axios from 'axios';
+import { useUserData } from '../../../hooks/useUserData';
 
 interface ISearchPropsBlock {
   token: string;
 }
 
-interface IUserData {
-  name?: string;
-  iconImg?: string;
-}
-
 export function SearchBlock({ token }: ISearchPropsBlock) {
-  // сохраняем полученные данные после обращения к endpoint
-  const [data, setData] = useState<IUserData>({});
-
-  // выполняем запрос авторизации к endpoint из браузера
-  useEffect(() => {
-    axios
-      .get('https://oauth.reddit.com/api/v1/me', {
-        headers: { Authorization: `bearer ${token}` },
-      })
-      // посмотреть структуру ответа api можно по адресу https://www.reddit.com/dev/api/ (но кокретно для /api/v1/me нет описания в этом случае просто делаем console.log)
-      .then(({ data }) => {
-        setData({ name: data?.name, iconImg: data?.icon_img });
-      })
-      .catch(console.log);
-    // указываем token в качестве зависимости
-  }, [token]);
+  // сделали кастомный хук и вынесли всю логику получения информации о пользователе в него
+  const [data] = useUserData(token);
 
   return (
     <div className={styles.searchBlock}>
