@@ -4,17 +4,20 @@ import styles from './card.css';
 import { TextContent } from './TextContent/TextContent';
 import { Preview } from './Preview/Preview';
 import { Menu } from './Menu/Menu';
-// import { MenuOld } from './Menu/Menu_old';
 import { Controls } from './Controls/Controls';
+import { IPostData } from '../../../hooks/usePostsData';
 
-export function Card() {
+interface ICardProps {
+  cardData: IPostData;
+}
+
+export function Card({ cardData }: ICardProps) {
   return (
     <li className={styles.card}>
-      <TextContent />
-      <Preview />
+      <TextContent author={cardData.author} post={cardData.post} />
+      <Preview preview={cardData.preview} />
       <Menu />
-      {/* <MenuOld /> */}
-      <Controls />
+      <Controls karmaCount={cardData.karmaCount} commentsCount={cardData.commentsCount} />
     </li>
   );
 }

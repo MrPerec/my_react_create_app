@@ -6,10 +6,8 @@ interface IUserData {
   name?: string;
   iconImg?: string;
 }
-// удалим token из пропов
 export function useUserData(): [IUserData] {
   const [data, setData] = useState<IUserData>({});
-  // получаем token из context и сразу подставляем его в запрос к endpoint
   const token = useContext(tokenContext);
 
   useEffect(() => {

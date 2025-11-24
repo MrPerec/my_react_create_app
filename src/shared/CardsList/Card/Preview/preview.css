@@ -3,9 +3,11 @@
   margin-bottom: 10px;
 }
 .previewImg {
-  width: 100%;
+  max-height: 107px;
   height: 100%;
+  width: 100%;
   object-fit: cover;
+  object-position: top;
 }
 
 @media (min-width: 1024px) {

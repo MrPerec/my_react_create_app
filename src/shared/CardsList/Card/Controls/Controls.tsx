@@ -4,14 +4,19 @@ import { ArrowUpIcon, ArrowDownIcon, SaveCircleIcon, ShareCircleIcon } from '../
 import { EColor, EIcons } from '../../../../enum';
 import { Icon } from '../../../Icon';
 
-export function Controls() {
+interface IControlsProps {
+  karmaCount: number;
+  commentsCount: number;
+}
+
+export function Controls({ karmaCount, commentsCount }: IControlsProps) {
   return (
     <div className={styles.controls}>
       <div className={styles.karmaCounter}>
         <button className={styles.up}>
           <ArrowUpIcon />
         </button>
-        <span className={styles.karmaValue}>234</span>
+        <span className={styles.karmaValue}>{karmaCount}</span>
         <button className={styles.up}>
           <ArrowDownIcon />
         </button>
@@ -19,7 +24,7 @@ export function Controls() {
 
       <button className={styles.commentsButton}>
         <Icon name={EIcons.comments} color={EColor.greyC4} size={15} />
-        <span className={styles.commentsNumber}>13</span>
+        <span className={styles.commentsNumber}>{commentsCount}</span>
       </button>
 
       <div className={styles.actions}>
