@@ -1,0 +1,31 @@
+.title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: normal;
+}
+
+.postLink {
+  overflow: hidden;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1540px) {
+  .postLink::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
