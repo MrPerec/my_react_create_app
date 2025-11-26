@@ -10,7 +10,8 @@ export interface ITitleProps {
 export function Title({ link, title }: ITitleProps) {
   /** создадим state для модяльного окна */
   const [isModelOpen, setIsModelOpen] = useState(false);
-  let modalElem = isModelOpen && <Post />;
+  // в Post передаем ф-ю закрытия модального окна onClose
+  let modalElem = isModelOpen && <Post onClose={() => setIsModelOpen(false)} />;
 
   return (
     <h2 className={styles.title}>
