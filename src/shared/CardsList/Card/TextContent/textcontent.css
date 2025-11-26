@@ -1,55 +1,6 @@
 .textContent {
   padding: 0 20px 15px;
 }
-.metaData {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: row;
-  gap: 5px;
-  margin-bottom: 7px;
-}
-
-.userLink {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-flow: row nowrap;
-  gap: 7px;
-}
-.avatar {
-  border-radius: 100%;
-  max-width: 20px;
-}
-.username {
-  font-weight: 400;
-  font-size: 10px;
-  color: var(--orange);
-}
-
-.createdAt,
-.createdAt * {
-  font-size: 10px;
-  color: var(--grey99);
-}
-.publishedLabel {
-  display: none;
-}
-
-.title {
-  margin: 0;
-  font-size: 16px;
-  line-height: 19px;
-  font-weight: normal;
-}
-
-.postLink {
-  overflow: hidden;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
-}
 
 @media (min-width: 1024px) {
   .textContent {
@@ -62,56 +13,10 @@
     padding: 0;
     margin-right: auto;
   }
-  .metaData {
-    display: flex;
-    order: 1;
-    margin: 0;
-  }
-
-  .userLink {
-    order: 1;
-  }
-  .username {
-    font-size: 14px;
-  }
-
-  .createdAt {
-    font-size: 14px;
-    margin-right: 5px;
-  }
-  .publishedLabel {
-    display: inline;
-    font-size: 14px;
-  }
-  .title {
-    font-size: 20px;
-  }
 }
 
 @media (min-width: 1540px) {
   .textContent {
     flex-basis: 672px;
-  }
-
-  .userLink:hover a {
-    text-decoration: underline;
-  }
-
-  .userLink:hover a {
-    text-decoration: underline;
-  }
-
-  .postLink::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
-
-  .username {
-    position: relative;
-    z-index: 1;
   }
 }

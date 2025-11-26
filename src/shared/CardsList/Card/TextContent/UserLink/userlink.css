@@ -1,0 +1,75 @@
+.metaData {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  gap: 5px;
+  margin-bottom: 7px;
+}
+
+.userLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+  gap: 7px;
+}
+
+.avatar {
+  border-radius: 100%;
+  max-width: 20px;
+}
+
+.username {
+  font-weight: 400;
+  font-size: 10px;
+  color: var(--orange);
+}
+
+.createdAt,
+.createdAt * {
+  font-size: 10px;
+  color: var(--grey99);
+}
+.publishedLabel {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .metaData {
+    display: flex;
+    order: 1;
+    margin: 0;
+  }
+
+  .userLink {
+    order: 1;
+  }
+  .username {
+    font-size: 14px;
+  }
+
+  .createdAt {
+    font-size: 14px;
+    margin-right: 5px;
+  }
+  .publishedLabel {
+    display: inline;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1540px) {
+  .userLink:hover a {
+    text-decoration: underline;
+  }
+
+  .userLink:hover a {
+    text-decoration: underline;
+  }
+
+  .username {
+    position: relative;
+    z-index: 1;
+  }
+}
