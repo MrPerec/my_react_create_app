@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { hot } from 'react-hot-loader';
 import './normalize.css';
 import './main.global.css';
@@ -11,9 +11,12 @@ import { useToken } from './hooks/useToken';
 import { tokenContext } from './shared/context/tokenContext';
 import { UserContextProvider } from './shared/context/UserContext';
 import { PostsContextProvider } from './shared/context/PostsContext';
+import { commentContext } from './shared/context/commentContext';
 
 function AppComponent() {
   const [token] = useToken();
+  // добавили стэйт для комментариев
+  const [commentValue, setCommentValue] = useState('');
 
   return (
     <tokenContext.Provider value={token}>
@@ -22,7 +25,9 @@ function AppComponent() {
           <Header />
           <Content>
             <PostsContextProvider>
-              <CardsList />
+              <commentContext.Provider value={{ value: commentValue, onChange: setCommentValue }}>
+                <CardsList />
+              </commentContext.Provider>
             </PostsContextProvider>
           </Content>
         </Layout>
