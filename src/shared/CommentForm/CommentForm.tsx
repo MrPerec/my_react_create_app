@@ -1,44 +1,28 @@
-import React, { ChangeEvent, FormEvent, useRef, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useContext, useRef, useState } from 'react';
 import styles from './commentform.css';
+import { userContext } from '../context/UserContext';
+import { commentContext } from '../context/commentContext';
 
-/** получение value в "неуправляемом компоненты" */
-/* export function CommentForm() {
-  // через useRef получаем значение value из тега textarea
-  const textAreaRef = useRef<HTMLTextAreaElement>(null);
-
-  function handleSubmit(event: FormEvent) {
-    // отменяем событие перезагрузки странице при нажатии на кнопку submit которое вызывается по умолчанию
-    event.preventDefault();
-    // выводим значение textarea по нажатию на submit
-    console.log(textAreaRef.current?.value);
-  }
-
-  return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <textarea className={styles.input} ref={textAreaRef} />
-      <button type='submit' className={styles.button}>
-        Комментировать
-      </button>
-    </form>
-  );
-} */
-
-/** получение value в "управляемом компоненте" */
 export function CommentForm() {
-  const [textAreaValue, setTextAreaValue] = useState('');
+  // убираем старый стэйт
+  // const [textAreaValue, setTextAreaValue] = useState('');
+
+  // добавили получение комментариев и ф-ю для их изминения из контекста
+  const { value, onChange } = useContext(commentContext);
 
   function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
-    setTextAreaValue(event.target.value);
+    // setTextAreaValue(event.target.value);
+    onChange(event.target.value);
   }
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
-    console.log(textAreaValue);
   }
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <textarea className={styles.input} value={textAreaValue} onChange={handleChange} />
+      {/* <textarea className={styles.input} value={textAreaValue} onChange={handleChange} /> */}
+      <textarea className={styles.input} value={value} onChange={handleChange} />
       <button type='submit' className={styles.button}>
         Комментировать
       </button>
