@@ -1,11 +1,12 @@
-.form {
+/*.form {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-}
+  align-items: flex-end; 
+}*/
 
 .input {
-  height: 89px;
+  display: block;
+  min-height: 89px;
   width: 100%;
   border: 1px solid #d9d9d9;
   border-radius: 3px 3px 0 0;
@@ -13,12 +14,14 @@
 }
 
 .button {
+  display: block;
   border-radius: 0 0 3px 0;
-  width: 220px;
-  height: 50px;
+  margin-left: auto;
+  padding: 17px 50px;
+  min-height: 50px;
+  max-width: 220px;
+  width: 100%;
   background: var(--orange);
   font-weight: 500;
-  font-size: 14px;
-  text-align: center;
   color: var(--white);
 }
