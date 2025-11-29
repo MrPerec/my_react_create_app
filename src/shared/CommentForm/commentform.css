@@ -1,0 +1,24 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.input {
+  height: 89px;
+  width: 100%;
+  border: 1px solid #d9d9d9;
+  border-radius: 3px 3px 0 0;
+  resize: none;
+}
+
+.button {
+  border-radius: 0 0 3px 0;
+  width: 220px;
+  height: 50px;
+  background: var(--orange);
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+  color: var(--white);
+}
