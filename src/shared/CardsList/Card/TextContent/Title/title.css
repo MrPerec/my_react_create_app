@@ -3,15 +3,20 @@
   font-size: 16px;
   line-height: 19px;
   font-weight: normal;
+  cursor: pointer;
 }
 
-.postLink {
+.title:hover {
+  color: var(--orange);
+}
+
+/* .postLink {
   overflow: hidden;
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   display: -webkit-box;
-}
+} */
 
 @media (min-width: 1024px) {
   .title {
@@ -19,7 +24,7 @@
   }
 }
 
-@media (min-width: 1540px) {
+/* @media (min-width: 1540px) {
   .postLink::after {
     content: '';
     position: absolute;
@@ -28,4 +33,4 @@
     bottom: 0;
     left: 0;
   }
-}
+} */

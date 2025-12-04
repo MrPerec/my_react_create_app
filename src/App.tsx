@@ -12,24 +12,29 @@ import { tokenContext } from './shared/context/tokenContext';
 import { UserContextProvider } from './shared/context/UserContext';
 import { PostsContextProvider } from './shared/context/PostsContext';
 import { commentContext } from './shared/context/commentContext';
+import { useScreenWidth } from './hooks/useScreenWidth';
+import { screenWidthContext } from './shared/context/screenWidthContext';
 
 function AppComponent() {
   const [token] = useToken();
+  const [screenWidth] = useScreenWidth();
   const [commentValue, setCommentValue] = useState('');
 
   return (
     <tokenContext.Provider value={token}>
       <UserContextProvider>
-        <Layout>
-          <Header />
-          <Content>
-            <PostsContextProvider>
-              <commentContext.Provider value={{ value: commentValue, onChange: setCommentValue }}>
-                <CardsList />
-              </commentContext.Provider>
-            </PostsContextProvider>
-          </Content>
-        </Layout>
+        <screenWidthContext.Provider value={screenWidth}>
+          <Layout>
+            <Header />
+            <Content>
+              <PostsContextProvider>
+                <commentContext.Provider value={{ value: commentValue, onChange: setCommentValue }}>
+                  <CardsList />
+                </commentContext.Provider>
+              </PostsContextProvider>
+            </Content>
+          </Layout>
+        </screenWidthContext.Provider>
       </UserContextProvider>
     </tokenContext.Provider>
   );
