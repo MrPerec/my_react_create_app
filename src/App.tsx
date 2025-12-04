@@ -15,7 +15,6 @@ import { commentContext } from './shared/context/commentContext';
 
 function AppComponent() {
   const [token] = useToken();
-  // добавили стэйт для комментариев
   const [commentValue, setCommentValue] = useState('');
 
   return (

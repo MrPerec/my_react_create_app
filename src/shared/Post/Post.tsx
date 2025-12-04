@@ -8,16 +8,10 @@ interface IPostsProps {
 }
 
 export function Post(props: IPostsProps) {
-  // создаём ref который повесим на наш элемент Post что бы получить от него ссылку на этот элемент
   const postRef = useRef<HTMLDivElement>(null);
 
-  // создадим обработчик кликов вне модального окна
   useEffect(() => {
     function handleClick(event: MouseEvent) {
-      /* при помощи event.target будем смотреть на что мы кликнули что бы в итоге отследить что это не модальное окно а значит можно его закрыть
-      а что бы понимать какой элемент модальное окно воспользуемся хуком useRef который будет отдавать "ссылку" на модальное окно 
-      При клике делаем проверку что то на что кликнули это Нода и что ref не содержит ссылку на модальное окно
-      */
       if (event.target instanceof Node && !postRef.current?.contains(event.target)) {
         props.onClose?.();
       }
@@ -25,20 +19,13 @@ export function Post(props: IPostsProps) {
 
     document.addEventListener('click', handleClick);
 
-    /* так же нужно обязательно очищать слушателя событий при размонтировании компонента для этого
-      useEffect должен возвращать фунцкию удаления слушателя
-    */
-    return () => {
-      document.removeEventListener('click', handleClick);
-    };
-  }, []); // с пустой зависимостью это выполнится 1 раз при монтировании компонента
+    return () => document.removeEventListener('click', handleClick);
+  }, []);
 
-  // выполняем проверку на существование node куда вставляем модальное окно
   const modalNode = document.querySelector('#modal_root');
   if (!modalNode) return null;
 
   return ReactDOM.createPortal(
-    // вешаем useRef На элемент
     <div className={styles.modal} ref={postRef}>
       <h2>Следует отметить, что новая модель организационной деятельности поможет</h2>
       <div className={styles.content}>

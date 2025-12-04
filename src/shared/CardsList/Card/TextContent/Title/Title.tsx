@@ -8,9 +8,7 @@ export interface ITitleProps {
 }
 
 export function Title({ link, title }: ITitleProps) {
-  /** создадим state для модяльного окна */
   const [isModelOpen, setIsModelOpen] = useState(false);
-  // в Post передаем ф-ю закрытия модального окна onClose
   let modalElem = isModelOpen && <Post onClose={() => setIsModelOpen(false)} />;
 
   return (
@@ -19,10 +17,7 @@ export function Title({ link, title }: ITitleProps) {
         className={styles.postLink}
         href={link}
         target='_blank'
-        onClick={() => {
-          /** при нажатии на title будем менять state */
-          setIsModelOpen(true);
-        }}>
+        onClick={() => setIsModelOpen(true)}>
         {title}
       </a>
       {modalElem}

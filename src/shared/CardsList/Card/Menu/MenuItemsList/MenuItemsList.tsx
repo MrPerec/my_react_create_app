@@ -7,7 +7,7 @@ import { EColor, EIcons } from '../../../../../enum';
 interface IMenuItemsListProps {
   list: {
     As?: 'li' | 'button' | 'div';
-    postId: string;
+    id: number;
     text: string;
     icon: {
       name: EIcons;
@@ -21,10 +21,17 @@ interface IMenuItemsListProps {
 }
 
 export function MenuItemsList({ list }: IMenuItemsListProps) {
-  const resultList = list.map(({ As = 'li', text, postId, icon }) => {
+  const resultList = list.map(({ As = 'li', text, id, icon }) => {
     return (
-      <As className={styles.menuItem} key={postId} onClick={() => console.log(postId)}>
-        <Icon name={icon.name} size={icon?.size} mobileSize={icon?.mobileSize} tabletSize={icon?.tabletSize} desktopSize={icon?.desktopSize} color={icon?.color} />
+      <As className={styles.menuItem} key={id} onClick={() => console.log(id)}>
+        <Icon
+          name={icon.name}
+          size={icon?.size}
+          mobileSize={icon?.mobileSize}
+          tabletSize={icon?.tabletSize}
+          desktopSize={icon?.desktopSize}
+          color={icon?.color}
+        />
         <Text size={12} color={EColor.grey99}>
           {text}
         </Text>
