@@ -1,9 +1,16 @@
-.dropdownContainer {
+/* .dropdownContainer {
   position: absolute;
   z-index: 1;
-  right: 0;
-  top: 10px;
+  right: 30px;
+  top: 30px;
   box-shadow: 0 0 20px;
-  background-repeat: 3px;
   background-color: var(--white);
+} */
+
+/* with portal */
+.dropdownContainer {
+  position: absolute;
+  box-shadow: 0 0 20px;
+  background-color: var(--white);
+  transform: translateX(-100%);
 }

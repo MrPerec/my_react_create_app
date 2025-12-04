@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './dropdown.css';
 import { noop } from '../../utils/js/noop';
@@ -13,12 +13,24 @@ interface IDropdownProps {
 
 export function DropDown(props: IDropdownProps) {
   const { button, children, isOpen, onOpen = noop, onClose = noop } = props;
+
   const [isDropDownOpen, setIsDropDownOpen] = useState(isOpen);
+  const [position, setPosition] = useState({ top: 0, left: 0 });
+  const buttonRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => setIsDropDownOpen(isOpen), [isOpen]);
   useEffect(() => (isDropDownOpen ? onOpen() : onClose()), [isDropDownOpen]);
 
   const handleOpen = () => {
+    if (buttonRef?.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+
+      setPosition({
+        top: rect.bottom + window.scrollY,
+        left: rect.left + window.scrollX,
+      });
+    }
+
     if (isOpen === undefined) {
       setIsDropDownOpen(!isDropDownOpen);
     } else {
@@ -27,7 +39,7 @@ export function DropDown(props: IDropdownProps) {
     }
   };
 
-  return (
+  /* return (
     <>
       <div onClick={handleOpen}>{button}</div>
       {isDropDownOpen && (
@@ -36,27 +48,30 @@ export function DropDown(props: IDropdownProps) {
         </div>
       )}
     </>
-  );
+  ); */
 
-  /* const modalNode = document.querySelector('#modal_root');
+  /* with portal */
+  const modalNode = document.querySelector('#modal_root');
   if (!modalNode) return null;
 
-  let dropdownListElem;
-  if (isDropDownOpen) {
-    dropdownListElem = createPortal(
-      <div className={styles.listContainer}>
-        <div className={styles.list} onClick={() => setIsDropDownOpen(false)}>
-          {children}
-        </div>
-      </div>,
-      modalNode,
-    );
-  }
-
   return (
-    <div className={styles.container}>
-      <div onClick={handleOpen}>{button}</div>
-      {dropdownListElem}
-    </div>
-  ); */
+    <>
+      <div ref={buttonRef} onClick={handleOpen}>
+        {button}
+      </div>
+      {isDropDownOpen &&
+        createPortal(
+          <div
+            className={styles.dropdownContainer}
+            style={{
+              top: `${position.top}px`,
+              left: `${position.left}px`,
+            }}
+            onClick={() => setIsDropDownOpen(false)}>
+            {children}
+          </div>,
+          modalNode,
+        )}
+    </>
+  );
 }
