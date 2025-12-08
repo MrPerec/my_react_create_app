@@ -9,3 +9,14 @@
   background-color: white;
   z-index: 2;
 }
+
+.closeIconContainer {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.closeIconContainer:hover svg {
+  fill: var(--orange);
+}

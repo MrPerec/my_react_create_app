@@ -2,6 +2,8 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styles from './post.css';
 import ReactDOM from 'react-dom';
 import { CommentForm } from '../CommentForm';
+import { EColor, EIcons } from '../../enum';
+import { Icon } from '../Icon';
 
 interface IPostsProps {
   titleRef: React.RefObject<HTMLHeadingElement | null>;
@@ -35,6 +37,9 @@ export function Post({ titleRef, onClose }: IPostsProps) {
 
   return ReactDOM.createPortal(
     <div className={styles.post} ref={postRef} style={{ top: `${topPosition}px` }}>
+      <div className={styles.closeIconContainer} onClick={onClose}>
+        <Icon name={EIcons.close} color={EColor.greyD9} size={21} />
+      </div>
       <h2>Следует отметить, что новая модель организационной деятельности поможет</h2>
       <div className={styles.content}>
         <p>

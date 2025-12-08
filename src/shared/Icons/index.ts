@@ -14,3 +14,4 @@ export * from './EmailIconMobile';
 export * from './SearchIcon';
 export * from './RocketIcon';
 export * from './CollapseIcon';
+export * from './CloseIcon';

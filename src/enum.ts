@@ -13,6 +13,7 @@ enum EColor {
   grey66 = 'grey66',
   greyEC = 'greyEC',
   grey97 = 'grey97',
+  greyAD = 'greyAD',
 }
 
 enum EIcons {
@@ -32,6 +33,7 @@ enum EIcons {
   search = 'SearchIcon',
   rocket = 'RocketIcon',
   collapse = 'CollapseIcon',
+  close = 'CloseIcon',
 }
 
 export { EColor, EIcons };

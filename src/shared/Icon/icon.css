@@ -38,6 +38,9 @@
 .grey97 {
   fill: var(--grey97);
 }
+.greyAD {
+  fill: var(--greyAD);
+}
 
 .bold {
   font-weight: bold;
@@ -84,6 +87,10 @@
 .s20 {
   width: 20px;
   height: 16px;
+}
+.s21 {
+  width: 21px;
+  height: 21px;
 }
 .s20x16 {
   width: 20px;

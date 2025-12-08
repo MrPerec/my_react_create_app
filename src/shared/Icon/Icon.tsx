@@ -19,6 +19,7 @@ import {
   SearchIcon,
   RocketIcon,
   CollapseIcon,
+  CloseIcon,
 } from '../Icons';
 
 type TSizes = number | string;
@@ -125,6 +126,11 @@ export function Icon(props: IIconProps) {
     case EIcons.collapse:
       iconElem = <CollapseIcon />;
       viewBox = '0 0 10 6';
+      break;
+
+    case EIcons.close:
+      iconElem = <CloseIcon />;
+      viewBox = '0 0 21 21';
       break;
 
     default:
