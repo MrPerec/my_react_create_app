@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './emailblock.css';
+import { Icon } from '../../../Icon';
+import { EColor, EIcons } from '../../../../enum';
+import { screenWidthContext } from '../../../context/screenWidthContext';
 
 export function EmailBlock() {
+  const screenWidth = useContext(screenWidthContext);
+
+  let emailIconElem = <Icon name={EIcons.emailMobile} color={EColor.greyD9} mobileSize={'12x10'} />;
+  if (screenWidth >= 1024) {
+    emailIconElem = <Icon name={EIcons.email} color={EColor.greyD9} size={'20x16'} />;
+  }
+
   return (
     <div className={styles.emailIconsBlock}>
       <span className={styles.emailCounterText}>4</span>
-      <svg className={styles.emailCounterIcon} viewBox='0 0 13 11' xmlns='http://www.w3.org/2000/svg'>
-        <path d='M11.7235 0.276367H1.51072C0.808598 0.276367 0.240514 0.850834 0.240514 1.55296L0.234131 9.21252C0.234131 9.91465 0.808598 10.4891 1.51072 10.4891H11.7235C12.4256 10.4891 13.0001 9.91465 13.0001 9.21252V1.55296C13.0001 0.850834 12.4256 0.276367 11.7235 0.276367ZM11.7235 2.82955L6.6171 6.02104L1.51072 2.82955V1.55296L6.6171 4.74444L11.7235 1.55296V2.82955Z' />
-      </svg>
+      {emailIconElem}
     </div>
   );
 }

@@ -3,10 +3,10 @@ import styles from './menu.css';
 import { DropDown } from '../../../DropDown';
 import { Text } from '../../../Text';
 import { MenuItemsList } from './MenuItemsList';
-import { EColor } from '../../../../enum';
-import { MenuIcon } from '../../../Icons';
+import { EColor, EIcons } from '../../../../enum';
 import { menuList } from './MenuItemsList/constants';
 import { screenWidthContext } from '../../../context/screenWidthContext';
+import { Icon } from '../../../Icon';
 
 export function Menu(): React.JSX.Element {
   const screenWidth = useContext(screenWidthContext);
@@ -25,7 +25,7 @@ export function Menu(): React.JSX.Element {
 
   const menuBtn: React.ReactNode = (
     <button className={styles.menuButton}>
-      <MenuIcon />
+      <Icon name={EIcons.menu} color={EColor.greyC4} size={20} />
     </button>
   );
 

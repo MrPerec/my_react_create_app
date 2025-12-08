@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './controls.css';
-import { ArrowUpIcon, ArrowDownIcon, SaveCircleIcon, ShareCircleIcon } from '../../../Icons';
 import { EColor, EIcons } from '../../../../enum';
 import { Icon } from '../../../Icon';
 
@@ -13,12 +12,12 @@ export function Controls({ karmaCount, commentsCount }: IControlsProps) {
   return (
     <div className={styles.controls}>
       <div className={styles.karmaCounter}>
-        <button className={styles.up}>
-          <ArrowUpIcon />
+        <button className={styles.buttonUp}>
+          <Icon name={EIcons.arrowUp} color={EColor.greyC4} size={'19x10'} />
         </button>
         <span className={styles.karmaValue}>{karmaCount}</span>
-        <button className={styles.up}>
-          <ArrowDownIcon />
+        <button className={styles.buttomDown}>
+          <Icon name={EIcons.arrowDown} color={EColor.greyC4} size={'19x10'} />
         </button>
       </div>
 
@@ -29,10 +28,10 @@ export function Controls({ karmaCount, commentsCount }: IControlsProps) {
 
       <div className={styles.actions}>
         <button className={styles.shareButton}>
-          <ShareCircleIcon />
+          <Icon name={EIcons.shareCircle} color={EColor.greyC4} size={20} />
         </button>
         <button className={styles.saveButton}>
-          <SaveCircleIcon />
+          <Icon name={EIcons.saveCircle} color={EColor.greyC4} size={20} />
         </button>
       </div>
     </div>

@@ -39,6 +39,7 @@ export function DropDown(props: IDropdownProps) {
     }
   };
 
+  /** без portal предпочтительней */
   /* return (
     <>
       <div onClick={handleOpen}>{button}</div>

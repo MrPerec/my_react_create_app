@@ -11,55 +11,20 @@
   background-color: var(--white);
 }
 
-/* userLink */
-.userLink {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-flow: row nowrap;
-  gap: 13px;
-}
-.avatar {
-  border-radius: 100%;
-  max-width: 30px;
-}
-.username {
-  display: none;
-  font-weight: 500;
-  font-size: 20px;
-  color: var(--orange);
-}
-
 @media all and (min-width: 1024px) {
   .searchBlock {
-    gap: 30px;
     border-radius: 0;
     padding: 0;
     margin: 0;
+    gap: 30px;
     order: 3;
     box-shadow: none;
     background-color: transparent;
-  }
-
-  /* userLink */
-  .userLink {
-    order: 2;
-  }
-  .avatar {
-    max-width: 50px;
-  }
-  .username {
-    display: block;
   }
 }
 
 @media (min-width: 1540px) {
   .searchBlock {
     gap: 50px;
-  }
-
-  /* userLink */
-  .username {
-    color: var(--black);
   }
 }

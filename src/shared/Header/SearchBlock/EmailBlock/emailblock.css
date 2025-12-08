@@ -5,6 +5,11 @@
   flex-flow: row nowrap;
   max-width: 30px;
   width: 100%;
+  cursor: pointer;
+}
+
+.emailIconsBlock:hover > svg {
+  fill: var(--orange);
 }
 
 .emailCounterText {
@@ -21,16 +26,10 @@
   background-color: var(--orange);
 }
 
-.emailCounterIcon {
-  width: 13px;
-  height: 11px;
-  fill: var(--greyD9);
-}
-
 @media all and (min-width: 1024px) {
   .emailIconsBlock {
-    gap: 9px;
-    max-width: 100%;
+    gap: 7px;
+    max-width: 47px;
   }
 
   .emailCounterText {
@@ -38,10 +37,5 @@
     height: 20px;
     font-weight: 500;
     font-size: 14px;
-  }
-
-  .emailCounterIcon {
-    width: 20px;
-    height: 16px;
   }
 }

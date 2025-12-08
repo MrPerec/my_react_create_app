@@ -6,6 +6,7 @@
   --orange: #cc6633;
   --green: #a4cc33;
   --white: #ffffff;
+  --red: #cc3361;
   --greyF4: #f4f4f4;
   --greyF3: #f3f3f3;
   --greyD9: #d9d9d9;
@@ -58,7 +59,8 @@ a {
 
 button {
   padding: 0;
-  border: 0;
-  background: transparent;
+  border: none;
+  background-color: transparent;
   cursor: pointer;
+  text-decoration: none;
 }

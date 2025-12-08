@@ -90,7 +90,7 @@ export function usePostsData(): [IPostData[]] {
                   imgLink: imageLink.replace(/&amp;/g, '&'),
                   alt: title,
                 },
-                score: score,
+                karmaCount: score,
                 commentsCount: num_comments,
               };
             });

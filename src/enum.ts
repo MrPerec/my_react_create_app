@@ -4,6 +4,7 @@ enum EColor {
   orange = 'orange',
   green = 'green',
   white = 'white',
+  red = 'red',
   greyF4 = 'greyF4',
   greyF3 = 'greyF3',
   greyD9 = 'greyD9',
@@ -20,6 +21,17 @@ enum EIcons {
   comments = 'CommentsIcon',
   save = 'SaveIcon',
   share = 'ShareIcon',
+  arrowUp = 'ArrowUpIcon',
+  arrowDown = 'ArrowDownIcon',
+  shareCircle = 'ShareCircleIcon',
+  saveCircle = 'SaveCircleIcon',
+  menu = 'MenuIcon',
+  anon = 'AnonIcon',
+  email = 'EmailIcon',
+  emailMobile = 'EmailIconMobile',
+  search = 'SearchIcon',
+  rocket = 'RocketIcon',
+  collapse = 'CollapseIcon',
 }
 
 export { EColor, EIcons };

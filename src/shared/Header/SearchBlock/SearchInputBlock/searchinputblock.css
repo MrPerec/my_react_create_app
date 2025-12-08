@@ -3,13 +3,10 @@
   width: 100%;
 }
 
-.searchIcon {
+.searchInputBlock > svg {
   position: absolute;
   top: 9px;
   left: 16px;
-  width: 11px;
-  height: 11px;
-  fill: var(--greyC4);
 }
 
 .searchInput {
@@ -24,19 +21,17 @@
 
 @media all and (min-width: 1024px) {
   .searchInputBlock {
+    max-width: 280px;
     order: 1;
   }
 
-  .searchIcon {
-    width: 19px;
-    height: 19px;
+  .searchInputBlock > svg {
     top: 15px;
     left: 27px;
   }
 
   .searchInput {
     padding: 14px 0 14px 56.59px;
-    width: 280px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
     font-size: 20px;
     background: var(--white);
@@ -44,7 +39,7 @@
 }
 
 @media (min-width: 1540px) {
-  .searchInput {
-    width: 361px;
+  .searchInputBlock {
+    max-width: 361px;
   }
 }
