@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import { CommentForm } from '../CommentForm';
 import { EColor, EIcons } from '../../enum';
 import { Icon } from '../Icon';
+import { KarmaCounter } from '../KarmaCounter';
+import { TextContent } from '../CardsList/Card/TextContent';
 
 interface IPostsProps {
   titleRef: React.RefObject<HTMLHeadingElement | null>;
@@ -40,7 +42,10 @@ export function Post({ titleRef, onClose }: IPostsProps) {
       <div className={styles.closeIconContainer} onClick={onClose}>
         <Icon name={EIcons.close} color={EColor.greyD9} size={21} />
       </div>
-      <h2>Следует отметить, что новая модель организационной деятельности поможет</h2>
+      <div className={styles.headerContainer}>
+        <KarmaCounter karmaCount={311} />
+        <TextContent author={fakeTitleData.author} post={fakeTitleData.post} />
+      </div>
       <div className={styles.content}>
         <p>
           Есть над чем задуматься: тщательные исследования конкурентов представляют собой не что
@@ -66,3 +71,19 @@ export function Post({ titleRef, onClose }: IPostsProps) {
     modalNode,
   );
 }
+
+/** fake data */
+const fakeAuthorName = 'someName';
+
+const fakeTitleData = {
+  author: {
+    avatarLink: `https://api.dicebear.com/7.x/avataaars/svg?seed=${fakeAuthorName}`,
+    profilerLink: '#',
+    name: fakeAuthorName,
+  },
+  post: {
+    link: '#',
+    title: 'Следует отметить, что новая модель организационной деятельности поможет',
+    createdTime: 1765105483.0,
+  },
+};

@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './controls.css';
 import { EColor, EIcons } from '../../../../enum';
 import { Icon } from '../../../Icon';
+import { KarmaCounter } from '../../../KarmaCounter';
 
 interface IControlsProps {
   karmaCount: number;
@@ -11,15 +12,7 @@ interface IControlsProps {
 export function Controls({ karmaCount, commentsCount }: IControlsProps) {
   return (
     <div className={styles.controls}>
-      <div className={styles.karmaCounter}>
-        <button className={styles.buttonUp}>
-          <Icon name={EIcons.arrowUp} color={EColor.greyC4} size={'19x10'} />
-        </button>
-        <span className={styles.karmaValue}>{karmaCount}</span>
-        <button className={styles.buttomDown}>
-          <Icon name={EIcons.arrowDown} color={EColor.greyC4} size={'19x10'} />
-        </button>
-      </div>
+      <KarmaCounter karmaCount={karmaCount} />
 
       <button className={styles.commentsButton}>
         <Icon name={EIcons.comments} color={EColor.greyC4} size={15} />

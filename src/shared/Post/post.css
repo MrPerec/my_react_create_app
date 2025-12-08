@@ -20,3 +20,13 @@
 .closeIconContainer:hover svg {
   fill: var(--orange);
 }
+
+.headerContainer {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.headerContainer h2::after {
+  content: none;
+}
