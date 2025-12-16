@@ -1,32 +1,34 @@
 import React from 'react';
 import styles from './userlink.css';
-import { IAuthor, IPost } from '../../../../../hooks/usePostsData';
+import { IAuthor } from '../../../../../hooks/usePostsData';
 import formatRedditDate from '../../../../../utils/js/formatRedditDate';
+import { Time } from '../../../../Time';
+import { EColor } from '../../../../../enum';
+import { Text } from '../../../../Text';
 
 interface ITextContentProps {
   author: IAuthor;
   createdTime: number;
+  isComment?: boolean;
 }
 
-export function UserLink({ author, createdTime }: ITextContentProps) {
-  const date = new Date(createdTime * 1000);
-  const titleFormat = date.toUTCString();
-  const dateTimeFormat = date.toISOString();
-  const timeAgo = formatRedditDate(createdTime);
+export function UserLink({ author, createdTime, isComment = false }: ITextContentProps) {
+  let timeWrapperStyles = styles.timeWrapper;
+  if (isComment) timeWrapperStyles = `${timeWrapperStyles} ${styles.timeWrapperComment}`;
 
   return (
     <div className={styles.metaData}>
-      <div className={styles.userLink}>
-        <img className={styles.avatar} src={author.avatarLink} alt='avatar' />
-        <a className={styles.username} href={author.profilerLink} target='_blank'>
-          {author.name}
-        </a>
+      <img className={styles.avatar} src={author.avatarLink} alt={`Аватар автора ${author.name}`} />
+      <a className={styles.username} href={author.profilerLink} target='_blank'>
+        {author.name}
+      </a>
+      <div className={timeWrapperStyles}>
+        <Time timestamp={createdTime}>
+          <Text color={EColor.grey99} size={14} mobileSize={10}>
+            {formatRedditDate(createdTime)}
+          </Text>
+        </Time>
       </div>
-      <span className={styles.createdAt}>
-        <time title={titleFormat} dateTime={dateTimeFormat} className={styles.publishedLabel}>
-          {timeAgo}
-        </time>
-      </span>
     </div>
   );
 }

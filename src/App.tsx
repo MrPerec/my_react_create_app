@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { hot } from 'react-hot-loader';
 import './normalize.css';
 import './main.global.css';
@@ -8,29 +8,27 @@ import { Header } from './shared/Header';
 import { Content } from './shared/Content';
 import { CardsList } from './shared/CardsList/CardsList';
 import { useToken } from './hooks/useToken';
-import { tokenContext } from './shared/context/tokenContext';
-import { UserContextProvider } from './shared/context/UserContext';
-import { PostsContextProvider } from './shared/context/PostsContext';
-import { commentContext } from './shared/context/commentContext';
+import { tokenContext } from './context/tokenContext';
+import { UserContextProvider } from './context/UserContext';
+import { PostsContextProvider } from './context/PostsContext';
+import { ScreenWidthContextProvider } from './context/ScreenWidthContext';
 
 function AppComponent() {
   const [token] = useToken();
-  // добавили стэйт для комментариев
-  const [commentValue, setCommentValue] = useState('');
 
   return (
     <tokenContext.Provider value={token}>
       <UserContextProvider>
-        <Layout>
-          <Header />
-          <Content>
-            <PostsContextProvider>
-              <commentContext.Provider value={{ value: commentValue, onChange: setCommentValue }}>
+        <ScreenWidthContextProvider>
+          <Layout>
+            <Header />
+            <Content>
+              <PostsContextProvider>
                 <CardsList />
-              </commentContext.Provider>
-            </PostsContextProvider>
-          </Content>
-        </Layout>
+              </PostsContextProvider>
+            </Content>
+          </Layout>
+        </ScreenWidthContextProvider>
       </UserContextProvider>
     </tokenContext.Provider>
   );

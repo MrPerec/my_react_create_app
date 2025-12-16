@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { tokenContext } from '../shared/context/tokenContext';
+import { tokenContext } from '../context/tokenContext';
 
 interface IUserData {
   name?: string;
   iconImg?: string;
 }
 export function useUserData(): [IUserData] {
-  const [data, setData] = useState<IUserData>({});
+  const [userData, setUserData] = useState<IUserData>({});
   const token = useContext(tokenContext);
 
   useEffect(() => {
@@ -16,10 +16,10 @@ export function useUserData(): [IUserData] {
         headers: { Authorization: `bearer ${token}` },
       })
       .then(({ data }) => {
-        setData({ name: data?.name, iconImg: data?.icon_img });
+        setUserData({ name: data?.name, iconImg: data?.icon_img });
       })
       .catch(console.log);
   }, [token]);
 
-  return [data];
+  return [userData];
 }

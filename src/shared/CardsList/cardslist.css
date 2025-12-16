@@ -1,11 +1,17 @@
+.cardsList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 @media all and (min-width: 1024px) {
   .cardsList {
-    padding: 40px 0;
+    padding: 20px 0;
   }
 }
 
 @media (min-width: 1540px) {
   .cardsList {
-    padding: 67px 0;
+    padding: 47px 0;
   }
 }

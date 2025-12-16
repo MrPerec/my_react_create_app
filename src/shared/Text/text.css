@@ -69,6 +69,13 @@
   font-weight: bold;
 }
 
+.lh167 {
+  line-height: 167%;
+}
+.lh171 {
+  line-height: 171%;
+}
+
 /* мобильный адаптив */
 @media all and (min-width: 320px) and (max-width: 1023px) {
   .m28 {

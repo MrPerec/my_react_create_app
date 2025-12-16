@@ -9,7 +9,5 @@ interface IPreviewProps {
 export function Preview({ preview }: IPreviewProps) {
   const { imgLink, alt } = preview;
 
-  let previewElem = <img className={styles.previewImg} src={imgLink} alt={alt} />;
-
-  return <div className={styles.preview}>{previewElem}</div>;
+  return <img className={styles.previewImg} src={imgLink} alt={alt} />;
 }

@@ -1,0 +1,50 @@
+.karmaCounter {
+  display: flex;
+}
+.karmaCounter > * + * {
+  padding: 0 0 0 4px;
+}
+
+.karmaValue {
+  font-weight: 500;
+  font-size: 12px;
+  text-align: center;
+  color: var(--greyC4);
+}
+
+.buttonUp {
+  height: 10px;
+}
+.buttomDown {
+  height: 10px;
+}
+.buttonUp:hover > svg {
+  cursor: pointer;
+  fill: var(--green);
+}
+.buttomDown:hover > svg {
+  cursor: pointer;
+  fill: var(--red);
+}
+
+@media (min-width: 1024px) {
+  .karmaCounter {
+    justify-content: center;
+    flex-flow: column nowrap;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 7px;
+    padding: 0;
+  }
+
+  .karmaCounter > * + * {
+    padding: 0;
+  }
+  .karmaValue {
+    max-height: 12px;
+    font-weight: 400;
+    text-align: center;
+    font-size: 14px;
+    color: var(--black);
+  }
+}

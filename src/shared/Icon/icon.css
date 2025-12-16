@@ -1,33 +1,3 @@
-/* размеры */
-.s12 {
-  width: 12px;
-  height: 12px;
-}
-.s14 {
-  width: 14px;
-  height: 14px;
-}
-.s15 {
-  width: 15px;
-  height: 15px;
-}
-.s16 {
-  width: 16px;
-  height: 16px;
-}
-.s18 {
-  width: 18px;
-  height: 18px;
-}
-.s19 {
-  width: 19px;
-  height: 19px;
-}
-.s20 {
-  width: 20px;
-  height: 20px;
-}
-
 /* цвета */
 .black {
   fill: var(--black);
@@ -68,16 +38,118 @@
 .grey97 {
   fill: var(--grey97);
 }
+.greyAD {
+  fill: var(--greyAD);
+}
 
 .bold {
   font-weight: bold;
 }
 
+/* размеры */
+
+.s12 {
+  width: 12px;
+  height: 12px;
+}
+.s14 {
+  width: 14px;
+  height: 14px;
+}
+.s14x8 {
+  width: 14px;
+  height: 8px;
+}
+.s14x17 {
+  width: 14px;
+  height: 17px;
+}
+.s14x16 {
+  width: 14px;
+  height: 16px;
+}
+.s15 {
+  width: 15px;
+  height: 15px;
+}
+.s16 {
+  width: 16px;
+  height: 16px;
+}
+.s16x18 {
+  width: 16px;
+  height: 18px;
+}
+.s16x20 {
+  width: 16px;
+  height: 20px;
+}
+.s18 {
+  width: 18px;
+  height: 18px;
+}
+.s19 {
+  width: 19px;
+  height: 19px;
+}
+.s19x10 {
+  width: 19px;
+  height: 10px;
+}
+.s20 {
+  width: 20px;
+  height: 20px;
+}
+.s20x10 {
+  width: 20px;
+  height: 10px;
+}
+.s20x12 {
+  width: 20px;
+  height: 12px;
+}
+.s20x18 {
+  width: 20px;
+  height: 18px;
+}
+.s21 {
+  width: 21px;
+  height: 21px;
+}
+.s20x16 {
+  width: 20px;
+  height: 16px;
+}
+.s22x16 {
+  width: 22px;
+  height: 16px;
+}
+.s50 {
+  width: 50px;
+  height: 50px;
+}
+
 /* мобильный адаптив */
 @media all and (min-width: 320px) and (max-width: 1023px) {
-  .m12 {
-    width: 12px;
-    height: 12px;
+  .m9x11 {
+    width: 9px;
+    height: 11px;
+  }
+  .m10x6 {
+    width: 10px;
+    height: 6px;
+  }
+  .m11 {
+    width: 11px;
+    height: 11px;
+  }
+  .m12x10 {
+    width: 12.77px;
+    height: 10.21px;
+  }
+  .m13 {
+    width: 13px;
+    height: 11px;
   }
   .m14 {
     width: 14px;
@@ -102,6 +174,10 @@
   .m20 {
     width: 20px;
     height: 20px;
+  }
+  .m30 {
+    width: 30px;
+    height: 30px;
   }
 }
 

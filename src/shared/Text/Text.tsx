@@ -31,29 +31,41 @@ import styles from './text.css';
 import classNames from 'classnames';
 import { EColor } from '../../enum';
 
-type TSizes = 28 | 20 | 16 | 14 | 12 | 10;
+export type TSizesText = 28 | 20 | 16 | 14 | 12 | 10;
 
 interface ITextProps {
-  As?: 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'div'; // все возможные теги обёртки текста
-  children?: React.ReactNode; // дочерний эл-т
-  size: TSizes; // размер шрифта
-  mobileSize?: TSizes; // размер шрифта мобильного адаптива
-  tabletSize?: TSizes; // размер шрифта планшетного адаптива
-  desktopSize?: TSizes; // размер шрифта десктопного адаптива
-  color?: EColor; // все возможные цвета
-  bold?: boolean; // жирный шрифт
+  As?: 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'div';
+  children?: React.ReactNode;
+  size: TSizesText;
+  mobileSize?: TSizesText;
+  tabletSize?: TSizesText;
+  desktopSize?: TSizesText;
+  color?: EColor;
+  bold?: boolean;
+  lineHeightPercent?: 171 | 167;
 }
 
 export function Text(props: ITextProps) {
-  const { As = 'span', children, size, mobileSize, tabletSize, desktopSize, color = EColor.black, bold = false } = props;
+  const {
+    As = 'span',
+    children,
+    size,
+    mobileSize,
+    tabletSize,
+    desktopSize,
+    color = EColor.black,
+    bold = false,
+    lineHeightPercent,
+  } = props;
 
   const classes = classNames(
-    styles[`s${size}`], // размер шрифта
-    { [styles[`m${mobileSize}`]]: mobileSize }, // для адаптива мобильного, если в mobileSize что-то есть то сгенерирует этот класс
-    { [styles[`t${tabletSize}`]]: tabletSize }, // для адаптива планшета, если в tabletSize что-то есть то сгенерирует этот класс
-    { [styles[`d${desktopSize}`]]: desktopSize }, // для адаптива десктопа, если в desktopSize что-то есть то сгенерирует этот класс
-    styles[color], // цвет, условие как в предыдущем примере, не обязательно т.к. по умолчанию false
-    { [styles.bold]: bold }, // толщина шрифта, если в bold что-то есть то сгенерирует этот класс
+    styles[`s${size}`],
+    { [styles[`m${mobileSize}`]]: mobileSize },
+    { [styles[`t${tabletSize}`]]: tabletSize },
+    { [styles[`d${desktopSize}`]]: desktopSize },
+    styles[color],
+    { [styles.bold]: bold },
+    styles[`lh${lineHeightPercent}`],
   );
 
   return <As className={classes}>{children}</As>;

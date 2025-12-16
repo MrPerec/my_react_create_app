@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { tokenContext } from '../shared/context/tokenContext';
+import { tokenContext } from '../context/tokenContext';
 import axios from 'axios';
 
 export interface IAuthor {
@@ -30,6 +30,7 @@ export interface IPostData {
 
 interface IFetchPostsData {
   readonly data: {
+    readonly id: string;
     readonly title: string;
     readonly author: string;
     readonly num_comments: number;
@@ -60,10 +61,21 @@ export function usePostsData(): [IPostData[]] {
         .then(({ data }) => {
           if (data?.data?.children.length > 0) {
             const posts = data.data.children.map(({ data }: IFetchPostsData) => {
-              const { title, thumbnail, author, num_comments, score, permalink, created_utc, preview } = data;
+              const {
+                title,
+                thumbnail,
+                author,
+                num_comments,
+                score,
+                permalink,
+                created_utc,
+                preview,
+                id,
+              } = data;
               const imageLink = preview?.images[0]?.source?.url || thumbnail;
 
               return {
+                id,
                 author: {
                   avatarLink: `https://api.dicebear.com/7.x/avataaars/svg?seed=${author}`,
                   profilerLink: `https://www.reddit.com/user/${author}`,
@@ -78,7 +90,7 @@ export function usePostsData(): [IPostData[]] {
                   imgLink: imageLink.replace(/&amp;/g, '&'),
                   alt: title,
                 },
-                score: score,
+                karmaCount: score,
                 commentsCount: num_comments,
               };
             });
