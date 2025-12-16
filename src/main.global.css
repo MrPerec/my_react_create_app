@@ -16,6 +16,7 @@
   --greyEC: #ececec;
   --grey97: #979797;
   --greyAD: #adadad;
+  --greyE5: #e5e5e5;
 
   --dropDownWidthMobile: 140px;
   --dropDownWidthTablet: 157px;
@@ -78,4 +79,10 @@ h6 {
 p {
   display: block;
   margin: 0;
+}
+
+figure,
+image {
+  margin: 0;
+  padding: 0;
 }

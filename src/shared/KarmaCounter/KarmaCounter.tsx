@@ -4,7 +4,7 @@ import { Icon } from '../Icon';
 import { EColor, EIcons } from '../../enum';
 
 interface IKarmaCounterProps {
-  karmaCount: number;
+  karmaCount?: number;
 }
 
 export function KarmaCounter({ karmaCount }: IKarmaCounterProps) {
@@ -14,7 +14,7 @@ export function KarmaCounter({ karmaCount }: IKarmaCounterProps) {
         <button className={styles.buttonUp}>
           <Icon name={EIcons.arrowUp} color={EColor.greyC4} size={'19x10'} />
         </button>
-        <span className={styles.karmaValue}>{karmaCount}</span>
+        {karmaCount && <span className={styles.karmaValue}>{karmaCount}</span>}
         <button className={styles.buttomDown}>
           <Icon name={EIcons.arrowDown} color={EColor.greyC4} size={'19x10'} />
         </button>

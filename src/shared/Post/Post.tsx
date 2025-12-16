@@ -1,11 +1,19 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styles from './post.css';
-import ReactDOM from 'react-dom';
-import { CommentForm } from '../CommentForm';
+import { createPortal } from 'react-dom';
+import { CommentFormControlled } from '../CommentFormControlled';
 import { EColor, EIcons } from '../../enum';
 import { Icon } from '../Icon';
 import { KarmaCounter } from '../KarmaCounter';
 import { TextContent } from '../CardsList/Card/TextContent';
+import { MenuItemsList } from '../CardsList/Card/Menu/MenuItemsList';
+import { postMenuList } from './constants';
+import { Text } from '../Text';
+import { SortButton } from '../SortButton';
+import { PostContent } from './PostContent';
+import { Comments } from './Comments';
+import formatRedditDate from '../../utils/js/formatRedditDate';
+import { Time } from '../Time';
 
 interface IPostsProps {
   titleRef: React.RefObject<HTMLHeadingElement | null>;
@@ -30,60 +38,151 @@ export function Post({ titleRef, onClose }: IPostsProps) {
     }
 
     document.addEventListener('click', handleClick);
-
     return () => document.removeEventListener('click', handleClick);
   });
 
   const modalNode = document.querySelector('#modal_root');
   if (!modalNode) return null;
 
-  return ReactDOM.createPortal(
-    <div className={styles.post} ref={postRef} style={{ top: `${topPosition}px` }}>
-      <div className={styles.closeIconContainer} onClick={onClose}>
+  return createPortal(
+    <article className={styles.post} ref={postRef} style={{ top: `${topPosition}px` }}>
+      <button className={styles.closeButton} onClick={onClose}>
         <Icon name={EIcons.close} color={EColor.greyD9} size={21} />
-      </div>
+      </button>
       <div className={styles.headerContainer}>
-        <KarmaCounter karmaCount={311} />
-        <TextContent author={fakeTitleData.author} post={fakeTitleData.post} />
+        <KarmaCounter karmaCount={postData.karmaCount} />
+        <TextContent author={postData.author} post={postData.post} />
       </div>
-      <div className={styles.content}>
-        <p>
-          Есть над чем задуматься: тщательные исследования конкурентов представляют собой не что
-          иное, как квинтэссенцию победы маркетинга над разумом и должны быть ассоциативно
-          распределены по отраслям. Прежде всего, начало повседневной работы по формированию позиции
-          однозначно фиксирует необходимость кластеризации усилий. Но сторонники тоталитаризма в
-          науке и по сей день остаются уделом либералов, которые жаждут быть превращены в посмешище,
-          хотя само их существование приносит несомненную пользу обществу.
-        </p>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate libero, aliquam
-          expedita atque beatae sapiente quibusdam corrupti ab officiis fuga. Veritatis asperiores
-          dignissimos est nisi autem velit incidunt sequi repellat?
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim adipisci ex natus ab
-          quaerat molestiae deserunt atque cupiditate repellendus, cumque modi autem quos blanditiis
-          alias iure eligendi! Recusandae, modi illo?
-        </p>
+      <div className={styles.contentContainer}>
+        <PostContent />
       </div>
-      <CommentForm />
-    </div>,
+      <div className={styles.postMenuItemsListContainer}>
+        <MenuItemsList list={postMenuList} isDirectionRow={true} textSize={{ size: 14 }} />
+        <Text color={EColor.grey99} size={14} lineHeightPercent={171}>
+          {`${postData.votedPercent}% Проголосовали`}
+        </Text>
+      </div>
+      <div className={styles.commentFormContainer}>
+        <CommentFormControlled authorName={postData.author.name} />
+      </div>
+      <div className={styles.postSortContainer}>
+        <Text color={EColor.grey99} size={14}>
+          Сортировать по:
+        </Text>
+        <SortButton size={14} />
+      </div>
+      <div className={styles.commentsContainer}>
+        <Comments comments={postData.comments} />
+      </div>
+      <div className={styles.hiddenComment}>
+        <button className={styles.addButton}>
+          <Icon name={EIcons.plusCircle} color={EColor.orange} size={20} />
+        </button>
+        <Text color={EColor.grey99} size={14}>
+          {'Комментарий был скрыт модератором '}
+          <Time timestamp={postData.hiddenCommentTime}>
+            <Text color={EColor.grey99} size={14}>
+              {formatRedditDate(postData.hiddenCommentTime)}
+            </Text>
+          </Time>
+        </Text>
+      </div>
+    </article>,
     modalNode,
   );
 }
 
-/** fake data */
-const fakeAuthorName = 'someName';
-
-const fakeTitleData = {
+/** fake post data */
+const postData = {
   author: {
-    avatarLink: `https://api.dicebear.com/7.x/avataaars/svg?seed=${fakeAuthorName}`,
+    avatarLink: `https://api.dicebear.com/7.x/avataaars/svg?seed=someName`,
     profilerLink: '#',
-    name: fakeAuthorName,
+    name: 'someName',
   },
   post: {
     link: '#',
     title: 'Следует отметить, что новая модель организационной деятельности поможет',
     createdTime: 1765105483.0,
   },
+  karmaCount: 311,
+  hiddenCommentTime: 1765488808.0,
+  votedPercent: 54,
+  comments: [
+    {
+      id: 1,
+      author: {
+        avatarLink: `https://api.dicebear.com/7.x/avataaars/svg?seed=commentAuthor5`,
+        profilerLink: '#',
+        name: 'Михаил Рогов',
+      },
+      createdTime: 1765121113.0,
+      text: 'Сторонники тоталитаризма в науке будут объективно рассмотрены соответствующими инстанциями. Лишь реплицированные с зарубежных источников, современные исследования будут описаны максимально подробно. ',
+      replies: [
+        {
+          id: 11,
+          author: {
+            avatarLink: `https://api.dicebear.com/7.x/avataaars/svg?seed=commentAuthor6`,
+            profilerLink: '#',
+            name: 'Вика Салмина',
+          },
+          createdTime: 1765111413.0,
+          text: 'Принимая во внимание показатели успешности, разбавленное изрядной долей эмпатии, рациональное мышление прекрасно подходит для реализации анализа существующих паттернов поведения. Равным образом, убеждённость некоторых оппонентов, в своём классическом представлении.',
+          replies: [
+            {
+              id: 111,
+              author: {
+                avatarLink: `https://api.dicebear.com/7.x/avataaars/svg?seed=commentAuthor7`,
+                profilerLink: '#',
+                name: 'Зураб Желев',
+              },
+              createdTime: 1765111113.0,
+              text: 'А также диаграммы связей неоднозначны и будут функционально разнесены на независимые элементы. Следует отметить, что начало повседневной работы по формированию позиции однозначно определяет каждого участника как способного принимать собственные решения.',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 2,
+      author: {
+        avatarLink: `https://api.dicebear.com/7.x/avataaars/svg?seed=commentAuthor1`,
+        profilerLink: '#',
+        name: 'Алексей Киняев',
+      },
+      createdTime: 1765105483.0,
+      text: 'Безусловно, повышение уровня гражданского сознания однозначно фиксирует необходимость стандартных.',
+    },
+    {
+      id: 3,
+      author: {
+        avatarLink: `https://api.dicebear.com/7.x/avataaars/svg?seed=commentAuthor2`,
+        profilerLink: '#',
+        name: 'Дмитрий Фёдоров',
+      },
+      createdTime: 1765105413.0,
+      text: 'Сторонники тоталитаризма в науке будут объективно рассмотрены соответствующими инстанциями. Лишь реплицированные с зарубежных источников, современные исследования будут описаны максимально подробно. ',
+    },
+    {
+      id: 4,
+      author: {
+        avatarLink: `https://api.dicebear.com/7.x/avataaars/svg?seed=commentAuthor3`,
+        profilerLink: '#',
+        name: 'Игорь Полищук',
+      },
+      createdTime: 1765105113.0,
+      text: 'Но активно развивающиеся страны третьего мира своевременно верифицированы. В целом, конечно.',
+      replies: [
+        {
+          id: 41,
+          author: {
+            avatarLink: `https://api.dicebear.com/7.x/avataaars/svg?seed=commentAuthor4`,
+            profilerLink: '#',
+            name: 'Денис Беликов',
+          },
+          createdTime: 1765101413.0,
+          text: 'Новая модель организационной деятельности представляет собой интересный эксперимент проверки форм воздействия. Вот вам яркий пример современных тенденций - перспективное планирование способствует повышению качества кластеризации усилий. Внезапно, некоторые особенности внутренней политики.',
+        },
+      ],
+    },
+  ],
 };

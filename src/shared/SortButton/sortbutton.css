@@ -1,0 +1,14 @@
+.sortButtonContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+@media all and (min-width: 1024px) {
+  .sortButtonContainer {
+    gap: 3px;
+    width: max-content;
+  }
+}

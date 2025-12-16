@@ -1,49 +1,19 @@
-.sortBlock {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
-  padding: 11px 20px;
-  margin: 0 0 20px;
-  background-color: var(--white);
-}
-
-.sortTextBlock {
+.sortBlockContainer {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
   gap: 4px;
-}
-
-.sortText {
-  max-height: 14px;
-  font-size: 12px;
-  color: var(--orange);
-}
-
-.sortButton {
-  max-height: 6px;
+  padding: 11px 20px;
+  margin: 0 0 20px;
+  background-color: var(--white);
 }
 
 @media all and (min-width: 1024px) {
-  .sortBlock {
+  .sortBlockContainer {
     margin: 0 auto 0 0;
     padding: 0;
     background-color: transparent;
     background-repeat: 0;
-  }
-
-  .sortTextBlock {
-    gap: 5px;
-    margin-right: 5px;
-  }
-
-  .sortText {
-    font-size: 20px;
-  }
-
-  .sortButton {
-    max-height: 8px;
   }
 }

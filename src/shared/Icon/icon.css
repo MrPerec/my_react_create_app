@@ -60,6 +60,10 @@
   width: 14px;
   height: 8px;
 }
+.s14x17 {
+  width: 14px;
+  height: 17px;
+}
 .s14x16 {
   width: 14px;
   height: 16px;
@@ -71,6 +75,14 @@
 .s16 {
   width: 16px;
   height: 16px;
+}
+.s16x18 {
+  width: 16px;
+  height: 18px;
+}
+.s16x20 {
+  width: 16px;
+  height: 20px;
 }
 .s18 {
   width: 18px;
@@ -86,7 +98,19 @@
 }
 .s20 {
   width: 20px;
-  height: 16px;
+  height: 20px;
+}
+.s20x10 {
+  width: 20px;
+  height: 10px;
+}
+.s20x12 {
+  width: 20px;
+  height: 12px;
+}
+.s20x18 {
+  width: 20px;
+  height: 18px;
 }
 .s21 {
   width: 21px;
@@ -94,6 +118,10 @@
 }
 .s20x16 {
   width: 20px;
+  height: 16px;
+}
+.s22x16 {
+  width: 22px;
   height: 16px;
 }
 .s50 {

@@ -14,6 +14,7 @@ enum EColor {
   greyEC = 'greyEC',
   grey97 = 'grey97',
   greyAD = 'greyAD',
+  greyE5 = 'greyE5',
 }
 
 enum EIcons {
@@ -29,11 +30,23 @@ enum EIcons {
   menu = 'MenuIcon',
   anon = 'AnonIcon',
   email = 'EmailIcon',
-  emailMobile = 'EmailIconMobile',
   search = 'SearchIcon',
   rocket = 'RocketIcon',
   collapse = 'CollapseIcon',
   close = 'CloseIcon',
+  pdf = 'PdfIcon',
+  font = 'FontIcon',
+  pen = 'PenIcon',
+  chat = 'ChatIcon',
+  voice = 'VoiceIcon',
+  link = 'LinkIcon',
+  refresh = 'RefreshIcon',
+  person = 'PersonIcon',
+  download = 'DownloadIcon',
+  document = 'DocumentIcon',
+  picture = 'PictureIcon',
+  quote = 'QuoteIcon',
+  plusCircle = 'plusCircleIcon',
 }
 
 export { EColor, EIcons };

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { tokenContext } from '../shared/context/tokenContext';
+import { tokenContext } from '../context/tokenContext';
 import axios from 'axios';
 
 export interface IAuthor {

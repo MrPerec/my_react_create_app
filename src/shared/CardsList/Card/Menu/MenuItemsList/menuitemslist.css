@@ -1,17 +1,27 @@
 .menuItemsList {
-  padding: 0 20px;
+  display: flex;
+}
+.menuItemsListRow {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+.menuItemsListColumn {
+  flex-direction: column;
 }
 
 .menuItem {
-  padding: 11px 0;
   display: flex;
   flex-flow: row;
   align-items: center;
   gap: 5px;
 }
-
-.menuItem:not(:last-child) {
+.menuItemColumn:not(:last-child) {
+  padding-bottom: 12px;
   border-bottom: 1px solid var(--greyEC);
+}
+.menuItemColumn:not(:first-child) {
+  padding-top: 11px;
 }
 
 .menuItem:hover {
@@ -29,7 +39,11 @@
     padding-top: 8px;
     padding-bottom: 11px;
   }
-  .menuItem {
-    padding: 6px 0;
+
+  .menuItemColumn:not(:last-child) {
+    padding-bottom: 6px;
+  }
+  .menuItemColumn:not(:first-child) {
+    padding-top: 5px;
   }
 }

@@ -15,21 +15,33 @@ import {
   MenuIcon,
   AnonIcon,
   EmailIcon,
-  EmailIconMobile,
   SearchIcon,
   RocketIcon,
   CollapseIcon,
   CloseIcon,
+  PdfIcon,
+  FontIcon,
+  PersonIcon,
+  PenIcon,
+  ChatIcon,
+  VoiceIcon,
+  LinkIcon,
+  RefreshIcon,
+  DownloadIcon,
+  DocumentIcon,
+  PictureIcon,
+  QuoteIcon,
+  PlusCircleIcon,
 } from '../Icons';
 
-type TSizes = number | string;
+export type TSizesIcon = number | string;
 
 interface IIconProps {
   name: EIcons;
-  size?: TSizes;
-  mobileSize?: TSizes;
-  tabletSize?: TSizes;
-  desktopSize?: TSizes;
+  size?: TSizesIcon;
+  mobileSize?: TSizesIcon;
+  tabletSize?: TSizesIcon;
+  desktopSize?: TSizesIcon;
   color?: EColor;
 }
 
@@ -44,102 +56,44 @@ export function Icon(props: IIconProps) {
     styles[color],
   );
 
-  let iconElem: React.ReactNode;
-  let viewBox: string = '0 0 14 14';
+  const iconData: Record<EIcons, { icon: React.ReactNode; viewBox?: string }> = {
+    [EIcons.block]: { icon: <BlockIcon />, viewBox: '0 0 14 14' },
+    [EIcons.warning]: { icon: <WarningIcon />, viewBox: '0 0 16 14' },
+    [EIcons.comments]: { icon: <CommentsIcon />, viewBox: '0 0 15 15' },
+    [EIcons.save]: { icon: <SaveIcon />, viewBox: '0 0 14 14' },
+    [EIcons.share]: { icon: <ShareIcon />, viewBox: '0 0 12 14' },
+    [EIcons.arrowUp]: { icon: <ArrowUpIcon />, viewBox: '0 0 19 10' },
+    [EIcons.arrowDown]: { icon: <ArrowDownIcon />, viewBox: '0 0 19 10' },
+    [EIcons.shareCircle]: { icon: <ShareCircleIcon />, viewBox: '0 0 20 20' },
+    [EIcons.saveCircle]: { icon: <SaveCircleIcon />, viewBox: '0 0 20 20' },
+    [EIcons.menu]: { icon: <MenuIcon />, viewBox: '0 0 5 20' },
+    [EIcons.anon]: { icon: <AnonIcon />, viewBox: '0 0 50 50' },
+    [EIcons.email]: { icon: <EmailIcon />, viewBox: '0 0 20 16' },
+    [EIcons.search]: { icon: <SearchIcon />, viewBox: '0 0 19 19' },
+    [EIcons.rocket]: { icon: <RocketIcon />, viewBox: '0 0 9 11' },
+    [EIcons.collapse]: { icon: <CollapseIcon />, viewBox: '0 0 10 6' },
+    [EIcons.close]: { icon: <CloseIcon />, viewBox: '0 0 21 21' },
+    [EIcons.pdf]: { icon: <PdfIcon />, viewBox: '0 0 20 20' },
+    [EIcons.font]: { icon: <FontIcon />, viewBox: '0 0 16 18' },
+    [EIcons.pen]: { icon: <PenIcon />, viewBox: '0 0 18 18' },
+    [EIcons.chat]: { icon: <ChatIcon />, viewBox: '0 0 20 20' },
+    [EIcons.voice]: { icon: <VoiceIcon />, viewBox: '0 0 20 18' },
+    [EIcons.link]: { icon: <LinkIcon />, viewBox: '0 0 20 10' },
+    [EIcons.refresh]: { icon: <RefreshIcon />, viewBox: '0 0 22 16' },
+    [EIcons.person]: { icon: <PersonIcon />, viewBox: '0 0 18 18' },
+    [EIcons.download]: { icon: <DownloadIcon />, viewBox: '0 0 14 17' },
+    [EIcons.document]: { icon: <DocumentIcon />, viewBox: '0 0 16 20' },
+    [EIcons.picture]: { icon: <PictureIcon />, viewBox: '0 0 18 18' },
+    [EIcons.quote]: { icon: <QuoteIcon />, viewBox: '0 0 20 12' },
+    [EIcons.plusCircle]: { icon: <PlusCircleIcon />, viewBox: '0 0 19 19' },
+  };
 
-  switch (name) {
-    case EIcons.block:
-      iconElem = <BlockIcon />;
-      viewBox = '0 0 14 14';
-      break;
-
-    case EIcons.warning:
-      iconElem = <WarningIcon />;
-      viewBox = '0 0 16 14';
-      break;
-
-    case EIcons.comments:
-      iconElem = <CommentsIcon />;
-      viewBox = '0 0 15 15';
-      break;
-
-    case EIcons.save:
-      iconElem = <SaveIcon />;
-      viewBox = '0 0 14 14';
-      break;
-
-    case EIcons.share:
-      iconElem = <ShareIcon />;
-      viewBox = '0 0 12 14';
-      break;
-
-    case EIcons.arrowUp:
-      iconElem = <ArrowUpIcon />;
-      viewBox = '0 0 19 10';
-      break;
-
-    case EIcons.arrowDown:
-      iconElem = <ArrowDownIcon />;
-      viewBox = '0 0 19 10';
-      break;
-
-    case EIcons.shareCircle:
-      iconElem = <ShareCircleIcon />;
-      viewBox = '0 0 20 20';
-      break;
-
-    case EIcons.saveCircle:
-      iconElem = <SaveCircleIcon />;
-      viewBox = '0 0 20 20';
-      break;
-
-    case EIcons.menu:
-      iconElem = <MenuIcon />;
-      viewBox = '0 0 5 20';
-      break;
-
-    case EIcons.anon:
-      iconElem = <AnonIcon />;
-      viewBox = '0 0 50 50';
-      break;
-
-    case EIcons.email:
-      iconElem = <EmailIcon />;
-      viewBox = '0 0 20 16';
-      break;
-
-    case EIcons.emailMobile:
-      iconElem = <EmailIconMobile />;
-      viewBox = '0 0 12.77 10.21';
-      break;
-
-    case EIcons.search:
-      iconElem = <SearchIcon />;
-      viewBox = '0 0 19 19';
-      break;
-
-    case EIcons.rocket:
-      iconElem = <RocketIcon />;
-      viewBox = '0 0 9 11';
-      break;
-
-    case EIcons.collapse:
-      iconElem = <CollapseIcon />;
-      viewBox = '0 0 10 6';
-      break;
-
-    case EIcons.close:
-      iconElem = <CloseIcon />;
-      viewBox = '0 0 21 21';
-      break;
-
-    default:
-      break;
-  }
+  if (!iconData[name]) return null;
+  const { icon, viewBox } = iconData[name];
 
   return (
     <svg className={classes} viewBox={viewBox} xmlns='http://www.w3.org/2000/svg'>
-      {iconElem}
+      {icon}
     </svg>
   );
 }

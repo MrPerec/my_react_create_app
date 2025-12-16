@@ -5,7 +5,7 @@ import { Text } from '../../../Text';
 import { MenuItemsList } from './MenuItemsList';
 import { EColor, EIcons } from '../../../../enum';
 import { menuList } from './MenuItemsList/constants';
-import { screenWidthContext } from '../../../context/screenWidthContext';
+import { screenWidthContext } from '../../../../context/ScreenWidthContext';
 import { Icon } from '../../../Icon';
 
 export function Menu(): React.JSX.Element {
@@ -32,7 +32,9 @@ export function Menu(): React.JSX.Element {
   return (
     <div className={styles.menuContainer}>
       <DropDown button={menuBtn}>
-        <MenuItemsList list={menuListCurrent} />
+        <div className={styles.menuMenuItemsListContainer}>
+          <MenuItemsList list={menuListCurrent} textSize={{ size: 14 }} />
+        </div>
         {closeBtn}
       </DropDown>
     </div>

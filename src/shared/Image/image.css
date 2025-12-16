@@ -1,0 +1,39 @@
+/* размеры контейнера изображения */
+.w840 {
+  max-width: 840px;
+}
+.w410 {
+  max-width: 410px;
+}
+.w267 {
+  max-width: 267px;
+}
+
+.h495 {
+  min-height: 495px;
+}
+.h300 {
+  min-height: 300px;
+}
+.h195 {
+  min-height: 195px;
+}
+
+/* собственные стили компонента */
+.imageFigure {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+.imageImg {
+  border-radius: 3px;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.imageFigcaption {
+  font-size: 12px;
+  line-height: 167%;
+  color: var(--grey99);
+}
