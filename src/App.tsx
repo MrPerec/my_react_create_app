@@ -12,24 +12,27 @@ import { tokenContext } from './context/tokenContext';
 import { UserContextProvider } from './context/UserContext';
 import { PostsContextProvider } from './context/PostsContext';
 import { ScreenWidthContextProvider } from './context/ScreenWidthContext';
+import { CommentContextProvider } from './context/CommentContext';
 
 function AppComponent() {
   const [token] = useToken();
 
   return (
     <tokenContext.Provider value={token}>
-      <UserContextProvider>
-        <ScreenWidthContextProvider>
-          <Layout>
-            <Header />
-            <Content>
-              <PostsContextProvider>
-                <CardsList />
-              </PostsContextProvider>
-            </Content>
-          </Layout>
-        </ScreenWidthContextProvider>
-      </UserContextProvider>
+      <ScreenWidthContextProvider>
+        <UserContextProvider>
+          <PostsContextProvider>
+            <CommentContextProvider>
+              <Layout>
+                <Header />
+                <Content>
+                  <CardsList />
+                </Content>
+              </Layout>
+            </CommentContextProvider>
+          </PostsContextProvider>
+        </UserContextProvider>
+      </ScreenWidthContextProvider>
     </tokenContext.Provider>
   );
 }

@@ -63,7 +63,7 @@ export function Post({ titleRef, onClose }: IPostsProps) {
         </Text>
       </div>
       <div className={styles.commentFormContainer}>
-        <CommentFormControlled authorName={postData.author.name} />
+        <CommentFormControlled commentId={postData.id} authorName={postData.author.name} />
       </div>
       <div className={styles.postSortContainer}>
         <Text color={EColor.grey99} size={14}>
@@ -94,6 +94,7 @@ export function Post({ titleRef, onClose }: IPostsProps) {
 
 /** fake post data */
 const postData = {
+  id: 12345,
   author: {
     avatarLink: `https://api.dicebear.com/7.x/avataaars/svg?seed=someName`,
     profilerLink: '#',

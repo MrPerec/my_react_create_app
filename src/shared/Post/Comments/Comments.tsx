@@ -60,7 +60,11 @@ function Comment({ comment }: { comment: IComment }) {
                 <span>Uncontrolled</span>
                 <CommentFormUncontrolled authorName={author.name} />
                 <span>Controlled</span>
-                <CommentFormControlled textareaRef={commentRef} authorName={author.name} />
+                <CommentFormControlled
+                  textareaRef={commentRef}
+                  commentId={id}
+                  authorName={author.name}
+                />
               </Reply>
             )}
           </div>
