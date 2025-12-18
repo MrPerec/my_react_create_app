@@ -13,27 +13,41 @@ import { UserContextProvider } from './context/UserContext';
 import { PostsContextProvider } from './context/PostsContext';
 import { ScreenWidthContextProvider } from './context/ScreenWidthContext';
 import { CommentContextProvider } from './context/CommentContext';
+// импортируем createStore из redux
+import { createStore } from 'redux';
+// для работы с расширением в браузере ReduxDevTools
+import { composeWithDevTools } from 'redux-devtools-extension';
+// импортируем Provider который нужен для передачи store внутрь приложения
+import { Provider } from 'react-redux';
+
+// создаем глобальное хранилище
+// в качестве редьюсера установили ф-ю пустышку
+// 2й аргумент для работы с ReduxDevTools
+const store = createStore(() => {}, composeWithDevTools());
 
 function AppComponent() {
   const [token] = useToken();
 
+  // оборачиваем приложение в provider redux и передаём ему store
   return (
-    <tokenContext.Provider value={token}>
-      <ScreenWidthContextProvider>
-        <UserContextProvider>
-          <PostsContextProvider>
-            <CommentContextProvider>
-              <Layout>
-                <Header />
-                <Content>
-                  <CardsList />
-                </Content>
-              </Layout>
-            </CommentContextProvider>
-          </PostsContextProvider>
-        </UserContextProvider>
-      </ScreenWidthContextProvider>
-    </tokenContext.Provider>
+    <Provider store={store}>
+      <tokenContext.Provider value={token}>
+        <ScreenWidthContextProvider>
+          <UserContextProvider>
+            <PostsContextProvider>
+              <CommentContextProvider>
+                <Layout>
+                  <Header />
+                  <Content>
+                    <CardsList />
+                  </Content>
+                </Layout>
+              </CommentContextProvider>
+            </PostsContextProvider>
+          </UserContextProvider>
+        </ScreenWidthContextProvider>
+      </tokenContext.Provider>
+    </Provider>
   );
 }
 
