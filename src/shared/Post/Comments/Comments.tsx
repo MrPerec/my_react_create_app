@@ -8,7 +8,7 @@ import { Text } from '../../Text';
 import { commentsMenuList } from '../constants';
 import { IAuthor } from '../../../hooks/usePostsData';
 import { Reply } from './Reply';
-import { CommentFormControlled } from '../../CommentFormControlled';
+import { CommentForm } from '../../CommentForm';
 import { CommentFormUncontrolled } from '../../CommentFormUncontrolled/CommentFormUncontrolled';
 
 interface IComment {
@@ -57,14 +57,7 @@ function Comment({ comment }: { comment: IComment }) {
           <div id={portalNameNode}>
             {isReplyOpen && (
               <Reply portalNameNode={portalNameNode}>
-                <span>Uncontrolled</span>
-                <CommentFormUncontrolled authorName={author.name} />
-                <span>Controlled</span>
-                <CommentFormControlled
-                  textareaRef={commentRef}
-                  commentId={id}
-                  authorName={author.name}
-                />
+                <CommentForm textareaRef={commentRef} commentId={id} authorName={author.name} />
               </Reply>
             )}
           </div>
