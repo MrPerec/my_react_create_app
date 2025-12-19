@@ -1,7 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styles from './post.css';
 import { createPortal } from 'react-dom';
-import { CommentFormControlled } from '../CommentFormControlled';
+import { CommentForm } from '../CommentForm';
 import { EColor, EIcons } from '../../enum';
 import { Icon } from '../Icon';
 import { KarmaCounter } from '../KarmaCounter';
@@ -63,7 +63,7 @@ export function Post({ titleRef, onClose }: IPostsProps) {
         </Text>
       </div>
       <div className={styles.commentFormContainer}>
-        <CommentFormControlled commentId={postData.id} authorName={postData.author.name} />
+        <CommentForm commentId={postData.id} authorName={postData.author.name} />
       </div>
       <div className={styles.postSortContainer}>
         <Text color={EColor.grey99} size={14}>

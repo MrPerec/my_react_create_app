@@ -12,37 +12,38 @@ import { tokenContext } from './context/tokenContext';
 import { UserContextProvider } from './context/UserContext';
 import { PostsContextProvider } from './context/PostsContext';
 import { ScreenWidthContextProvider } from './context/ScreenWidthContext';
-import { CommentContextProvider } from './context/CommentContext';
-// импортируем createStore из redux
-import { createStore } from 'redux';
+// import { CommentContextProvider } from './context/CommentContext';
+// импортируем createStore из redux и тип для корневого Reducer
+import { ActionCreator, AnyAction, createStore, Reducer } from 'redux';
 // для работы с расширением в браузере ReduxDevTools
 import { composeWithDevTools } from 'redux-devtools-extension';
 // импортируем Provider который нужен для передачи store внутрь приложения
 import { Provider } from 'react-redux';
+import { rootReducer } from './store/store';
 
-// создаем глобальное хранилище
-// в качестве редьюсера установили ф-ю пустышку
-// 2й аргумент для работы с ReduxDevTools
-const store = createStore(() => {}, composeWithDevTools());
+/* создаем глобальное хранилище
+1й аргумент это корневой редюсер
+2й аргумент для работы с ReduxDevTools */
+const store = createStore(rootReducer, composeWithDevTools());
 
 function AppComponent() {
   const [token] = useToken();
 
-  // оборачиваем приложение в provider redux и передаём ему store
+  // оборачиваем приложение в provider redux и передаём ему store а <CommentContextProvider> </CommentContextProvider> можно удалить
   return (
     <Provider store={store}>
       <tokenContext.Provider value={token}>
         <ScreenWidthContextProvider>
           <UserContextProvider>
             <PostsContextProvider>
-              <CommentContextProvider>
-                <Layout>
-                  <Header />
-                  <Content>
-                    <CardsList />
-                  </Content>
-                </Layout>
-              </CommentContextProvider>
+              {/* <CommentContextProvider> */}
+              <Layout>
+                <Header />
+                <Content>
+                  <CardsList />
+                </Content>
+              </Layout>
+              {/* </CommentContextProvider> */}
             </PostsContextProvider>
           </UserContextProvider>
         </ScreenWidthContextProvider>
