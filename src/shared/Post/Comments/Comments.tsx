@@ -8,8 +8,7 @@ import { Text } from '../../Text';
 import { commentsMenuList } from '../constants';
 import { IAuthor } from '../../../hooks/usePostsData';
 import { Reply } from './Reply';
-import { CommentForm } from '../../CommentForm';
-import { CommentFormUncontrolled } from '../../CommentFormUncontrolled/CommentFormUncontrolled';
+import { ReplyFormContainer } from '../../ReplyFormContainer';
 
 interface IComment {
   id: number;
@@ -22,7 +21,7 @@ interface IComment {
 function Comment({ comment }: { comment: IComment }) {
   const { author, createdTime, text, id } = comment;
   const [isReplyOpen, setIsReplyOpen] = useState(false);
-  const commentRef = useRef<HTMLTextAreaElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   let repliesElem;
   if (comment?.replies && comment.replies.length > 0) {
@@ -38,7 +37,7 @@ function Comment({ comment }: { comment: IComment }) {
     };
   });
 
-  const portalNameNode = `replyTo${id}Container`;
+  const portalNode = `replyToContainer${id}`;
 
   return (
     <article className={styles.comment}>
@@ -54,10 +53,14 @@ function Comment({ comment }: { comment: IComment }) {
             {text}
           </Text>
           <MenuItemsList list={сommentsButtonsList} isDirectionRow={true} textSize={{ size: 14 }} />
-          <div id={portalNameNode}>
+          <div id={portalNode}>
             {isReplyOpen && (
-              <Reply portalNameNode={portalNameNode}>
-                <CommentForm textareaRef={commentRef} commentId={id} authorName={author.name} />
+              <Reply portalNode={portalNode}>
+                <ReplyFormContainer
+                  textareaRef={textareaRef}
+                  commentId={id}
+                  replyToName={author.name}
+                />
               </Reply>
             )}
           </div>
