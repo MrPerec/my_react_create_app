@@ -3,7 +3,7 @@
   margin: 0;
   max-width: fit-content;
   font-size: 16px;
-  line-height: 19px;
+  line-height: normal;
   font-weight: normal;
   overflow: hidden;
   line-clamp: 2;

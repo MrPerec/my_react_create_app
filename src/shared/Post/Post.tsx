@@ -1,7 +1,6 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styles from './post.css';
 import { createPortal } from 'react-dom';
-import { CommentForm } from '../CommentForm';
 import { EColor, EIcons } from '../../enum';
 import { Icon } from '../Icon';
 import { KarmaCounter } from '../KarmaCounter';
@@ -14,6 +13,7 @@ import { PostContent } from './PostContent';
 import { Comments } from './Comments';
 import formatRedditDate from '../../utils/js/formatRedditDate';
 import { Time } from '../Time';
+import { CommentFormContainer } from '../CommentFormContainer';
 
 interface IPostsProps {
   titleRef: React.RefObject<HTMLHeadingElement | null>;
@@ -63,7 +63,7 @@ export function Post({ titleRef, onClose }: IPostsProps) {
         </Text>
       </div>
       <div className={styles.commentFormContainer}>
-        <CommentForm commentId={postData.id} authorName={postData.author.name} />
+        <CommentFormContainer commentId={postData.id} />
       </div>
       <div className={styles.postSortContainer}>
         <Text color={EColor.grey99} size={14}>
