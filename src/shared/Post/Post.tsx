@@ -63,7 +63,7 @@ export function Post({ titleRef, onClose }: IPostsProps) {
         </Text>
       </div>
       <div className={styles.commentFormContainer}>
-        <CommentFormControlled commentId={postData.id} authorName={postData.author.name} />
+        <CommentFormControlled commentId={postData.id} />
       </div>
       <div className={styles.postSortContainer}>
         <Text color={EColor.grey99} size={14}>

@@ -38,7 +38,7 @@ function Comment({ comment }: { comment: IComment }) {
     };
   });
 
-  const portalNameNode = `replyTo${id}Container`;
+  const portalNameNode = `replyToContainer${id}`;
 
   return (
     <article className={styles.comment}>
@@ -57,13 +57,13 @@ function Comment({ comment }: { comment: IComment }) {
           <div id={portalNameNode}>
             {isReplyOpen && (
               <Reply portalNameNode={portalNameNode}>
-                <span>Uncontrolled</span>
+                {/* <span>Uncontrolled</span>
                 <CommentFormUncontrolled authorName={author.name} />
-                <span>Controlled</span>
+                <span>Controlled</span> */}
                 <CommentFormControlled
                   textareaRef={commentRef}
                   commentId={id}
-                  authorName={author.name}
+                  replyToName={author.name}
                 />
               </Reply>
             )}

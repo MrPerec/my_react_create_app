@@ -3,34 +3,41 @@ import styles from './commentformcontrolled.css';
 import { Icon } from '../Icon';
 import { iconsList } from './constants';
 import { userContext } from '../../context/UserContext';
-import { commentContext } from '../../context/CommentContext';
+import { ADD_COMMENT, commentContext, EDIT_COMMENT } from '../../context/CommentContext';
 
 interface ICommentFormProps {
   textareaRef?: React.RefObject<HTMLTextAreaElement | null>;
   commentId: number;
-  authorName: string;
+  replyToName?: string;
 }
 
-export function CommentFormControlled({ textareaRef, commentId, authorName }: ICommentFormProps) {
-  const { comment, setComment } = useContext(commentContext);
+export function CommentFormControlled(props: ICommentFormProps) {
+  const { textareaRef, commentId, replyToName } = props;
+
+  const { comment, dispatch } = useContext(commentContext);
   const userData = useContext(userContext);
 
-  const uniqueCommentName = `${authorName}${commentId}Textarea`;
-
   useEffect(() => {
-    setComment((prevState) => {
-      return [...prevState, { name: uniqueCommentName, value: `${authorName}, ` }];
-    });
+    if (replyToName) {
+      // dispatcher
+      dispatch({
+        type: ADD_COMMENT, // action
+        id: commentId,
+        value: `${replyToName}, `,
+      });
+    }
 
     if (textareaRef?.current) textareaRef.current.focus();
-  }, [authorName, uniqueCommentName]);
+  }, [replyToName, commentId]);
 
-  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>, index: number) => {
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>, commentId: number) => {
     const { value } = event.target;
 
-    setComment((prev) => {
-      prev[index].value = value;
-      return [...prev];
+    // dispatcher
+    dispatch({
+      type: EDIT_COMMENT, // action
+      id: commentId,
+      value,
     });
   };
 
@@ -48,16 +55,16 @@ export function CommentFormControlled({ textareaRef, commentId, authorName }: IC
     );
   });
 
-  let commentIndex = comment.findIndex((element) => element.name === uniqueCommentName);
+  let commentIndex = comment.findIndex((element) => element.id === commentId);
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <textarea
         className={styles.input}
-        name={comment[commentIndex]?.name || 'textarea'}
-        value={comment[commentIndex]?.value || ''}
+        name={`textarea${commentId}`}
+        value={comment[commentIndex]?.value}
         ref={textareaRef}
-        onChange={(ev) => handleChange(ev, commentIndex)}
+        onChange={(ev) => handleChange(ev, commentId)}
         placeholder={`${userData.name}, оставьте ваш комментарий`}
       />
       <ul className={styles.iconsButtonsList}>{iconsButtons}</ul>
