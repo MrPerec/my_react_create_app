@@ -6,8 +6,11 @@ import { REDIRECT_URI } from '../../../../constants';
 import { Icon } from '../../../Icon';
 import { userContext } from '../../../../context/UserContext';
 import { ANONYMOUS } from '../../../../hooks/useUserData';
+import { useToken } from '../../../../hooks/useToken';
 
 export function UserBlock() {
+  useToken();
+
   const { iconImg, name } = useContext(userContext);
 
   const RESPONSE_TYPE = `code`;

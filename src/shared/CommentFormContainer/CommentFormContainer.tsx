@@ -1,8 +1,10 @@
-import React, { ChangeEvent, FormEvent, useContext, useEffect } from 'react';
+import React, { ChangeEvent, FormEvent, useContext } from 'react';
 import { userContext } from '../../context/UserContext';
 import { useDispatch, useSelector } from 'react-redux';
-import { IComment, RootState, updateComment } from '../../store/store';
 import { CommentForm } from '../CommentForm/CommentForm';
+import { updateComment } from '../../actions/commentsActions';
+import { RootState } from '../../reducers/rootReducer';
+import { CommentsState } from '../../reducers/commentsReducer';
 
 interface ICommentFormContainerProps {
   commentId: number;
@@ -10,12 +12,12 @@ interface ICommentFormContainerProps {
 
 export function CommentFormContainer({ commentId }: ICommentFormContainerProps) {
   const userData = useContext(userContext);
-  const comment = useSelector<RootState, IComment[]>((state) => state.comment);
-  const dispatch = useDispatch();
+  const comment = useSelector<RootState, CommentsState>((state) => state.comments);
 
   let commentIndex = comment.findIndex((element) => element.id === commentId);
   if (commentIndex < 1) commentIndex = 0;
 
+  const dispatch = useDispatch();
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     dispatch(updateComment(commentIndex, event.target.value));
   };
