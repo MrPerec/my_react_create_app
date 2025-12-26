@@ -1,6 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
-import { tokenContext } from '../context/tokenContext';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { RootState } from '../reducers/rootReducer';
+import { tokenState } from '../reducers/tokenReducer';
 
 export interface IAuthor {
   avatarLink: string;
@@ -50,7 +52,7 @@ interface IFetchPostsData {
 
 export function usePostsData(): [IPostData[]] {
   const [postsData, setPostsData] = useState<IPostData[]>([]);
-  const token = useContext(tokenContext);
+  const token = useSelector<RootState, tokenState>((state) => state.token);
 
   useEffect(() => {
     if (token) {
