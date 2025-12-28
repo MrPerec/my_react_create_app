@@ -53,6 +53,7 @@
     "react-redux": "^7.2.9",
     "redux": "^4.2.1",
     "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^3.1.0",
     "unique-names-generator": "^4.7.1"
   }
 }
