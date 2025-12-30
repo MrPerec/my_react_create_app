@@ -1,15 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from './userblock.css';
 import { EColor, EIcons } from '../../../../enum';
 import { Text } from '../../../Text';
 import { REDIRECT_URI } from '../../../../constants';
 import { Icon } from '../../../Icon';
-import { userContext } from '../../../../context/UserContext';
 import { ANONYMOUS } from '../../../../hooks/useUserData';
 
-export function UserBlock() {
-  const { iconImg, name } = useContext(userContext);
+interface IUserBlock {
+  name?: string;
+  iconImg?: string;
+  loading?: boolean;
+}
 
+export function UserBlock({ iconImg, name, loading }: IUserBlock) {
   const RESPONSE_TYPE = `code`;
   const RANDOM_STRING = `random_string`;
   const DURATION = `permanent`;
@@ -28,7 +31,7 @@ export function UserBlock() {
       {userAvatarElem}
       <div className={styles.userName}>
         <Text size={20} color={userNameTextColor}>
-          {name}
+          {loading ? 'Загрузка...' : name}
         </Text>
       </div>
     </a>
