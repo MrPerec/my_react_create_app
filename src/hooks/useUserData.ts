@@ -66,7 +66,7 @@ export function useUserData(): IUseUserData {
         });
     } */
 
-    // новый код но уже все асинхронные операции вынесли в action для meActrions.ts
+    // новый код но уже все асинхронные операции что выполняются выше, вынесли в action для meActions.ts
     if (token) dispatch(meRequestAsync());
   }, [token]);
 
