@@ -8,7 +8,6 @@ import {
   MeRquestErrorAction,
   MeRquestSuccessAction,
 } from '../actions/meActions';
-import { ANONYMOUS } from '../hooks/useUserData';
 
 type MeActions = MeRquestAction | MeRquestSuccessAction | MeRquestErrorAction;
 
@@ -17,6 +16,8 @@ export type MeState = {
   error: string;
   data: IUserData;
 };
+
+export const ANONYMOUS = 'Аноним';
 
 const initialState: MeState = { loading: false, error: '', data: { name: ANONYMOUS, iconImg: '' } };
 

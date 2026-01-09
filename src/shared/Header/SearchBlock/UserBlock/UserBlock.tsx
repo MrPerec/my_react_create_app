@@ -4,7 +4,7 @@ import { EColor, EIcons } from '../../../../enum';
 import { Text } from '../../../Text';
 import { REDIRECT_URI } from '../../../../constants';
 import { Icon } from '../../../Icon';
-import { ANONYMOUS } from '../../../../hooks/useUserData';
+import { ANONYMOUS } from '../../../../reducers/meReducer';
 
 interface IUserBlock {
   name?: string;
