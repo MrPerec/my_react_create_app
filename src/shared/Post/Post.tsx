@@ -14,6 +14,7 @@ import { Comments } from './Comments';
 import formatRedditDate from '../../utils/js/formatRedditDate';
 import { Time } from '../Time';
 import { CommentFormContainer } from '../CommentFormContainer';
+import { CommentFormControlled } from '../CommentFormControlled';
 
 interface IPostsProps {
   titleRef: React.RefObject<HTMLHeadingElement | null>;
@@ -64,6 +65,10 @@ export function Post({ titleRef, onClose }: IPostsProps) {
       </div>
       <div className={styles.commentFormContainer}>
         <CommentFormContainer commentId={postData.id} />
+      </div>
+      <div className={styles.commentFormContainer}>
+        <h3>CommentFormControlled</h3>
+        <CommentFormControlled />
       </div>
       <div className={styles.postSortContainer}>
         <Text color={EColor.grey99} size={14}>
