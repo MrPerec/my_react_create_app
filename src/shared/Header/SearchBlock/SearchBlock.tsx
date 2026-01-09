@@ -8,11 +8,11 @@ import { useUserData } from '../../../hooks/useUserData';
 
 export function SearchBlock() {
   // const { iconImg, name } = useContext(userContext);
-  const { userData, loading } = useUserData();
+  const { data, loading } = useUserData();
 
   return (
     <div className={styles.searchBlock}>
-      <UserBlock iconImg={userData.iconImg} name={userData.name} loading={loading} />
+      <UserBlock iconImg={data.iconImg} name={data.name} loading={loading} />
       <SearchInputBlock />
       <EmailBlock />
     </div>

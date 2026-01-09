@@ -10,11 +10,12 @@ import {
   // meRequestError,
   // meRequestSuccess,
 } from '../actions/meActions';
+import { MeState } from '../reducers/meReducer';
 
 export const ANONYMOUS = 'Аноним';
 
 interface IUseUserData {
-  userData: IUserData;
+  data: IUserData;
   loading: boolean;
 }
 
@@ -22,8 +23,7 @@ export function useUserData(): IUseUserData {
   // const [userData, setUserData] = useState<IUserData>({ name: ANONYMOUS, iconImg: '' });
 
   // убрали получение из context и теперь получает данные из store Redux
-  const userData = useSelector<RootState, IUserData>((state) => state.me.data);
-  const loading = useSelector<RootState, boolean>((state) => state.me.loading);
+  const { data, loading } = useSelector<RootState, MeState>((state) => state.me);
 
   const token = useSelector<RootState, tokenState>((state) => state.token);
 
@@ -71,5 +71,5 @@ export function useUserData(): IUseUserData {
   }, [token]);
 
   // return [ userData ];
-  return { userData, loading };
+  return { data, loading };
 }

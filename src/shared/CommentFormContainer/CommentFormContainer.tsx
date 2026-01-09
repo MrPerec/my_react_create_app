@@ -13,7 +13,7 @@ interface ICommentFormContainerProps {
 
 export function CommentFormContainer({ commentId }: ICommentFormContainerProps) {
   // const userData = useContext(userContext);
-  const { userData } = useUserData();
+  const { data } = useUserData();
 
   const comment = useSelector<RootState, CommentsState>((state) => state.comments);
 
@@ -32,7 +32,7 @@ export function CommentFormContainer({ commentId }: ICommentFormContainerProps) 
   return (
     <CommentForm
       textareaName={`textarea${commentId}`}
-      userName={userData.name}
+      userName={data.name}
       textareaValue={comment[commentIndex].value}
       handleSubmit={handleSubmit}
       handleChange={handleChange}
