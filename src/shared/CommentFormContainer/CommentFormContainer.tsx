@@ -1,5 +1,4 @@
-import React, { ChangeEvent, FormEvent /* , useContext  */ } from 'react';
-// import { userContext } from '../../context/UserContext';
+import React, { ChangeEvent, FormEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CommentForm } from '../CommentForm/CommentForm';
 import { updateComment } from '../../actions/commentsActions';
@@ -12,8 +11,7 @@ interface ICommentFormContainerProps {
 }
 
 export function CommentFormContainer({ commentId }: ICommentFormContainerProps) {
-  // const userData = useContext(userContext);
-  const { userData } = useUserData();
+  const { data } = useUserData();
 
   const comment = useSelector<RootState, CommentsState>((state) => state.comments);
 
@@ -32,7 +30,7 @@ export function CommentFormContainer({ commentId }: ICommentFormContainerProps) 
   return (
     <CommentForm
       textareaName={`textarea${commentId}`}
-      userName={userData.name}
+      userName={data.name}
       textareaValue={comment[commentIndex].value}
       handleSubmit={handleSubmit}
       handleChange={handleChange}

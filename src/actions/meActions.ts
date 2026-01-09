@@ -38,7 +38,7 @@ export const meRequestError: ActionCreator<MeRquestErrorAction> = (error: string
   payload: { error },
 });
 
-// напишем асинхронный action
+// напишем асинхронный thunk action
 export const meRequestAsync =
   (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch, getState) => {
     // вызываем dispatch с action для запроса данных
