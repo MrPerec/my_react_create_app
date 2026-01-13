@@ -50,6 +50,7 @@
     "nodemon": "^3.1.9",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-hook-form": "^7.71.0",
     "react-redux": "^7.2.9",
     "redux": "^4.2.1",
     "redux-devtools-extension": "^2.13.9",

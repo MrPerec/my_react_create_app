@@ -11,9 +11,7 @@ export function CommentFormControlled() {
     setTouched(true);
     setValueError(validateValue());
 
-    const isFormValid = !validateValue();
-    if (!isFormValid) return;
-
+    if (validateValue()) return;
     alert('Форма отправлена!');
   };
 
@@ -28,8 +26,10 @@ export function CommentFormControlled() {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
+      <label htmlFor='textarea'>CommentFormControlled</label>
       <textarea
         className={styles.input}
+        name='textarea'
         value={value}
         onChange={handleChange}
         aria-invalid={valueError ? 'true' : undefined}
