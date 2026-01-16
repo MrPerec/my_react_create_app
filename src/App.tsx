@@ -7,18 +7,21 @@ import { Layout } from './shared/Layout';
 import { Header } from './shared/Header';
 import { Content } from './shared/Content';
 import { CardsList } from './shared/CardsList/CardsList';
-import { InitialState } from './InitialState/InitialState';
+import { Initial } from './Initial/Initial';
+import { PostsContextProvider } from './context/PostsContext';
 
 function AppComponent() {
   return (
-    <InitialState>
+    <Initial>
       <Layout>
         <Header />
         <Content>
-          <CardsList />
+          <PostsContextProvider>
+            <CardsList />
+          </PostsContextProvider>
         </Content>
       </Layout>
-    </InitialState>
+    </Initial>
   );
 }
 

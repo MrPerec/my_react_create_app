@@ -28,6 +28,13 @@ export interface IPostData {
   preview: IPreview;
   karmaCount: number;
   commentsCount: number;
+  loading: boolean;
+}
+
+export interface IUsePostsData {
+  postsData: IPostData[];
+  loading: boolean;
+  errorLoading: string;
 }
 
 interface IFetchPostsData {
@@ -50,59 +57,74 @@ interface IFetchPostsData {
   };
 }
 
-export function usePostsData(): [IPostData[]] {
+// export function usePostsData(): [IPostData[]] {
+export function usePostsData(): [IUsePostsData] {
   const [postsData, setPostsData] = useState<IPostData[]>([]);
+  const [loading, setLoading] = useState<boolean>(false); // можно назвать isLoading, panding, isPanding, fetching, isFetching...
+  const [errorLoading, setErrorLoading] = useState<string>('');
+
   const token = useSelector<RootState, tokenState>((state) => state.token);
 
   useEffect(() => {
-    if (token) {
-      axios
-        .get('https://oauth.reddit.com/r/all/top', {
-          headers: { Authorization: `bearer ${token}` },
-        })
-        .then(({ data }) => {
-          if (data?.data?.children.length > 0) {
-            const posts = data.data.children.map(({ data }: IFetchPostsData) => {
-              const {
-                title,
-                thumbnail,
-                author,
-                num_comments,
-                score,
-                permalink,
-                created_utc,
-                preview,
-                id,
-              } = data;
-              const imageLink = preview?.images[0]?.source?.url || thumbnail;
+    // что бы эта ф-я не мусорила в scope и не была видна в других местах лучше объявлять её внутри useEffect
+    async function loadPosts(tokenParam: tokenState) {
+      setLoading(true);
+      setErrorLoading('');
 
-              return {
-                id,
-                author: {
-                  avatarLink: `https://api.dicebear.com/7.x/avataaars/svg?seed=${author}`,
-                  profilerLink: `https://www.reddit.com/user/${author}`,
-                  name: author,
-                },
-                post: {
-                  link: `https://oauth.reddit.com${permalink}`,
-                  title: title,
-                  createdTime: created_utc,
-                },
-                preview: {
-                  imgLink: imageLink.replace(/&amp;/g, '&'),
-                  alt: title,
-                },
-                karmaCount: score,
-                commentsCount: num_comments,
-              };
-            });
+      try {
+        const { data } = await axios.get('https://oauth.reddit.com/r/all/top', {
+          headers: { Authorization: `bearer ${tokenParam}` },
+        });
 
-            setPostsData(posts);
-          }
-        })
-        .catch(console.log);
+        if (data?.data?.children.length > 0) {
+          const posts = data.data.children.map(({ data }: IFetchPostsData) => {
+            const {
+              title,
+              thumbnail,
+              author,
+              num_comments,
+              score,
+              permalink,
+              created_utc,
+              preview,
+              id,
+            } = data;
+            const imageLink = preview?.images[0]?.source?.url || thumbnail;
+
+            return {
+              id,
+              author: {
+                avatarLink: `https://api.dicebear.com/7.x/avataaars/svg?seed=${author}`,
+                profilerLink: `https://www.reddit.com/user/${author}`,
+                name: author,
+              },
+              post: {
+                link: `https://oauth.reddit.com${permalink}`,
+                title: title,
+                createdTime: created_utc,
+              },
+              preview: {
+                imgLink: imageLink.replace(/&amp;/g, '&'),
+                alt: title,
+              },
+              karmaCount: score,
+              commentsCount: num_comments,
+            };
+          });
+
+          setPostsData(posts);
+        }
+      } catch (error) {
+        // console.log(error); // для разработки, в реальном проекте нужно обрабатывать и выводить ошибки нормально
+        setErrorLoading(String(error));
+      }
+
+      setLoading(false);
     }
+
+    if (token) loadPosts(token);
   }, [token]);
 
-  return [postsData];
+  // return [postsData, loading];
+  return [{ postsData, loading, errorLoading }];
 }
