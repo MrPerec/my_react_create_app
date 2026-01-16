@@ -6,16 +6,20 @@ import { postsContext } from '../../context/PostsContext';
 import { IPostData } from '../../hooks/usePostsData';
 
 export function CardsList() {
-  const postsData = useContext(postsContext);
-  let cardsListElem = null;
+  const { postsData, loading, errorLoading } = useContext(postsContext);
 
-  if (postsData.length) {
+  let cardsListText = 'Список пуст';
+  if (loading) cardsListText = 'Загрузка...';
+  if (errorLoading) cardsListText = errorLoading;
+
+  let cardsListElem = <li style={{ margin: '0 auto' }}>{cardsListText}</li>;
+
+  if (postsData.length && !loading && !errorLoading) {
     const cardsItems = postsData.map((postData: IPostData, index) => {
       return <Card key={`${postData?.id}${index}`} cardData={postData} />;
     });
-
-    cardsListElem = <ul className={styles.cardsList}>{cardsItems}</ul>;
+    cardsListElem = <>{cardsItems}</>;
   }
 
-  return cardsListElem;
+  return <ul className={styles.cardsList}>{cardsListElem}</ul>;
 }
