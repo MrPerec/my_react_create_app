@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { RootState } from '../reducers/rootReducer';
@@ -35,6 +35,7 @@ export interface IUsePostsData {
   postsData: IPostData[];
   loading: boolean;
   errorLoading: string;
+  loadPosts: () => void;
 }
 
 interface IFetchPostsData {
@@ -47,36 +48,40 @@ interface IFetchPostsData {
     readonly permalink: string;
     readonly created_utc: string;
     readonly thumbnail: string;
-    readonly preview: {
-      images: [
-        {
-          source: { url: string };
-        },
-      ];
-    };
+    readonly preview: { images: [{ source: { url: string } }] };
   };
 }
 
-// export function usePostsData(): [IPostData[]] {
 export function usePostsData(): [IUsePostsData] {
   const [postsData, setPostsData] = useState<IPostData[]>([]);
-  const [loading, setLoading] = useState<boolean>(false); // можно назвать isLoading, panding, isPanding, fetching, isFetching...
+  const [loading, setLoading] = useState<boolean>(false);
   const [errorLoading, setErrorLoading] = useState<string>('');
+  // создали state для курсора after что бы получать последующие посты
+  const [nextAfter, setNextAfter] = useState<string>('');
 
   const token = useSelector<RootState, tokenState>((state) => state.token);
 
-  useEffect(() => {
-    // что бы эта ф-я не мусорила в scope и не была видна в других местах лучше объявлять её внутри useEffect
-    async function loadPosts(tokenParam: tokenState) {
-      setLoading(true);
-      setErrorLoading('');
+  // вынесли ф-ю из useEffect
+  const loadPosts = useCallback(async () => {
+    // если токена нет то выходим из ф-ии
+    if (!token) return;
 
-      try {
-        const { data } = await axios.get('https://oauth.reddit.com/r/all/top', {
-          headers: { Authorization: `bearer ${tokenParam}` },
-        });
+    setLoading(true);
+    setErrorLoading('');
 
-        if (data?.data?.children.length > 0) {
+    try {
+      const { data } = await axios.get('https://oauth.reddit.com/r/all/top/', {
+        headers: { Authorization: `bearer ${token}` },
+        // добавили cursor в параметр after для получения последующих постов
+        params: { limit: 10, after: nextAfter },
+      });
+
+      if (data?.data?.children && data?.data?.after) {
+        const { children, after } = data.data;
+        // устанавливаем следующий cursor для after
+        setNextAfter(after);
+
+        if (children.length > 0) {
           const posts = data.data.children.map(({ data }: IFetchPostsData) => {
             const {
               title,
@@ -112,19 +117,17 @@ export function usePostsData(): [IUsePostsData] {
             };
           });
 
-          setPostsData(posts);
+          // добавляем новые посты в state
+          setPostsData((prev) => prev.concat(...posts));
         }
-      } catch (error) {
-        // console.log(error); // для разработки, в реальном проекте нужно обрабатывать и выводить ошибки нормально
-        setErrorLoading(String(error));
       }
-
-      setLoading(false);
+    } catch (error) {
+      setErrorLoading(String(error));
     }
 
-    if (token) loadPosts(token);
-  }, [token]);
+    setLoading(false);
+  }, [token, nextAfter]);
 
-  // return [postsData, loading];
-  return [{ postsData, loading, errorLoading }];
+  // добавил ф-ю loadPosts в хук что бы можно было получать вызывать получение постов в других компонентах
+  return [{ postsData, loading, errorLoading, loadPosts }];
 }
