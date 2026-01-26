@@ -2,6 +2,7 @@ enum EColor {
   black = 'black',
   black00 = 'black00',
   orange = 'orange',
+  lightOrange = 'lightOrange',
   green = 'green',
   white = 'white',
   red = 'red',

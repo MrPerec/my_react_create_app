@@ -4,6 +4,7 @@ import { IUsePostsData, usePostsData } from '../hooks/usePostsData';
 export const postsContext = createContext<IUsePostsData>({
   postsData: [],
   loading: false,
+  loadingCount: 0,
   errorLoading: '',
   loadPosts: () => {},
 });

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './commentformreacthookform.css';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { Button } from '../Button';
 
 type Inputs = {
   exampleTextarea: string;
@@ -16,12 +17,12 @@ export function CommentFormReactHookForm() {
 
   // наш собственный хэнндлер для обработки
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
+    // console.log(data);
     alert('Форма отправлена!');
   };
 
   // Отслеживайте значение поля ввода, передав его имя.
-  console.log(watch('exampleTextarea'));
+  // console.log(watch('exampleTextarea'));
 
   const isShowError: boolean = Boolean(isSubmitted && !isSubmitSuccessful);
 
@@ -45,9 +46,10 @@ export function CommentFormReactHookForm() {
       {/* При сбое проверки полей будут возвращаться ошибки. */}
       {/* {isShowError && <span>Введите больше 3х символов</span>} */}
       {isShowError && <span>{errors?.exampleTextarea?.message}</span>}
-      <button className={styles.button} type='submit'>
+      {/* <button className={styles.button} type='submit'>
         Комментировать
-      </button>
+      </button> */}
+      <Button text='Комментировать' type='submit' />
     </form>
   );
 }
