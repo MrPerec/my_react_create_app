@@ -9,18 +9,21 @@ import { Content } from './shared/Content';
 import { CardsList } from './shared/CardsList/CardsList';
 import { Initial } from './Initial/Initial';
 import { PostsContextProvider } from './context/PostsContext';
+import { BrowserRouter, Link, Router } from 'react-router-dom';
 
 function AppComponent() {
   return (
     <Initial>
-      <Layout>
-        <Header />
-        <Content>
-          <PostsContextProvider>
-            <CardsList />
-          </PostsContextProvider>
-        </Content>
-      </Layout>
+      <BrowserRouter>
+        <Layout>
+          <Header />
+          <Content>
+            <PostsContextProvider>
+              <CardsList />
+            </PostsContextProvider>
+          </Content>
+        </Layout>
+      </BrowserRouter>
     </Initial>
   );
 }
