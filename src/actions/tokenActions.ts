@@ -12,7 +12,7 @@ export const setToken: ActionCreator<AnyAction> = (token: string) => ({
 // синхронный thunk
 export const saveToken =
   (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch, getState) => {
-    const token = localStorage.getItem('token') || window.__token__;
+    const token = window.__token__ || localStorage.getItem('token');
 
     dispatch(setToken(token));
     if (token) localStorage.setItem('token', token);
