@@ -70,7 +70,7 @@ export function usePostsData(): [IUsePostsData] {
     setErrorLoading('');
 
     try {
-      const { data } = await axios.get('https://oauth.reddit.com/r/all/top/', {
+      const { data } = await axios.get('https://oauth.reddit.com/r/Frontend/', {
         headers: { Authorization: `bearer ${token}` },
         // добавили cursor в параметр after для получения последующих постов
         params: { limit: 10, after: nextAfter },

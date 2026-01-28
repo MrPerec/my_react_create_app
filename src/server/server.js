@@ -9,9 +9,10 @@ const app = express();
 
 app.use('/static', express.static('./dist/client'));
 
-app.get('/', (request, response) => {
+/** перенесем этот кусок кода ниже */
+/* app.get('/', (request, response) => {
   response.send(indexTemplate(ReactDOM.renderToString(App())));
-});
+}); */
 
 app.get('/auth', (request, response) => {
   // отправляем post запрос
@@ -37,6 +38,14 @@ app.get('/auth', (request, response) => {
       response.send(indexTemplate(ReactDOM.renderToString(App()), data['access_token']));
     })
     .catch(console.log);
+});
+
+/** и вместо "/" пропишем звёздочку.
+ * Это значит что все адреса которые не совпадают с адресами которые описаны выше ('/static' и '/auth')
+ * будут обрабатываться этим скриптом
+ */
+app.get('*', (request, response) => {
+  response.send(indexTemplate(ReactDOM.renderToString(App())));
 });
 
 app.listen(3000, () => {

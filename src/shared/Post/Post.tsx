@@ -16,26 +16,34 @@ import { Time } from '../Time';
 import { CommentFormContainer } from '../CommentFormContainer';
 import { CommentFormControlled } from '../CommentFormControlled';
 import { CommentFormReactHookForm } from '../CommentFormReactHookForm';
+import { useHistory } from 'react-router-dom';
 
-interface IPostsProps {
-  titleRef: React.RefObject<HTMLHeadingElement | null>;
+/* interface IPostsProps {
+  titleRef?: React.RefObject<HTMLHeadingElement | null>;
   onClose?: () => void;
-}
+} */
 
-export function Post({ titleRef, onClose }: IPostsProps) {
+export function Post(/* { onClose }: IPostsProps */) {
   const postRef = useRef<HTMLDivElement>(null);
   const [topPosition, setTopPosition] = useState(0);
+  // нужен что бы закрывать модальное окно
+  const history = useHistory();
 
-  useLayoutEffect(() => {
-    if (titleRef?.current) {
-      setTopPosition(titleRef.current.getBoundingClientRect().top + window.scrollY - 68);
-    }
-  }, [titleRef]);
+  // создал ф-ю вместо старой которую получал из пропсов для закрытия модалки
+  const onClose = () => {
+    // метод закрытия из библиотеки react-router-dom
+    history.push('./');
+  };
 
   useEffect(() => {
+    setTopPosition(window.scrollY + 100);
+
     function handleClick(event: MouseEvent) {
       if (event.target instanceof Node && !postRef.current?.contains(event.target)) {
-        onClose?.();
+        // onClose?.();
+
+        // вместо внешнего состояния используем history из react-router-dom
+        onClose();
       }
     }
 
@@ -48,6 +56,7 @@ export function Post({ titleRef, onClose }: IPostsProps) {
 
   return createPortal(
     <article className={styles.post} ref={postRef} style={{ top: `${topPosition}px` }}>
+      {/* <button className={styles.closeButton} onClick={onClose}> */}
       <button className={styles.closeButton} onClick={onClose}>
         <Icon name={EIcons.close} color={EColor.greyD9} size={21} />
       </button>
