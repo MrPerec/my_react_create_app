@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { hot } from 'react-hot-loader';
 import './normalize.css';
 import './main.global.css';
@@ -9,22 +9,30 @@ import { Content } from './shared/Content';
 import { CardsList } from './shared/CardsList/CardsList';
 import { Initial } from './Initial/Initial';
 import { PostsContextProvider } from './context/PostsContext';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { Post } from './shared/Post';
+import { NoMatch } from './shared/NoMatch';
 
 function AppComponent() {
   return (
     <Initial>
       <Layout>
         <Header />
-        <Content>
-          <PostsContextProvider>
-            <CardsList />
-            <Route path={'/posts/:id'}>
-              <Post />
-            </Route>
-          </PostsContextProvider>
-        </Content>
+        <Switch>
+          <Route exact path='/'>
+            <Content>
+              <PostsContextProvider>
+                <CardsList />
+                <Route path={'/posts/:id'}>
+                  <Post />
+                </Route>
+              </PostsContextProvider>
+            </Content>
+          </Route>
+          <Route path='*'>
+            <NoMatch />
+          </Route>
+        </Switch>
       </Layout>
     </Initial>
   );
