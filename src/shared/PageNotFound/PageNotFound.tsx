@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './nomatch.css';
+import styles from './pagenotfound.css';
 import { useLocation } from 'react-router-dom';
 
-export function NoMatch() {
+export function PageNotFound() {
   let location = useLocation();
 
   return (
