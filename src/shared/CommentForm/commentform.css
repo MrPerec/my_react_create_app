@@ -35,7 +35,7 @@
   fill: var(--orange);
 }
 
-.button {
+/* .button {
   display: block;
   border-radius: 0 0 3px 0;
   margin-left: auto;
@@ -46,4 +46,4 @@
   background: var(--orange);
   font-weight: 500;
   color: var(--white);
-}
+} */

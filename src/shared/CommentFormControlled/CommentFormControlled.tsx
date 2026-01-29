@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import styles from './commentformcontrolled.css';
+import { Button } from '../Button';
 
 export function CommentFormControlled() {
   const [value, setValue] = useState('');
@@ -35,9 +36,10 @@ export function CommentFormControlled() {
         aria-invalid={valueError ? 'true' : undefined}
       />
       {touched && valueError && <div>{valueError}</div>}
-      <button className={styles.button} type='submit'>
+      {/* <button className={styles.button} type='submit'>
         Комментировать
-      </button>
+      </button> */}
+      <Button text='Комментировать' type='submit' />
     </form>
   );
 }

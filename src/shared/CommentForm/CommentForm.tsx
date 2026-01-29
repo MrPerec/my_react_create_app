@@ -2,6 +2,7 @@ import React, { ChangeEvent, FormEvent } from 'react';
 import styles from './commentform.css';
 import { Icon } from '../Icon';
 import { iconsList } from './constants';
+import { Button } from '../Button';
 
 interface ICommentFormProps {
   textareaRef?: React.RefObject<HTMLTextAreaElement | null>;
@@ -37,9 +38,10 @@ export function CommentForm(props: ICommentFormProps) {
         placeholder={`${userName}, оставьте ваш комментарий`}
       />
       <ul className={styles.iconsButtonsList}>{iconsButtons}</ul>
-      <button className={styles.button} type='submit'>
+      {/* <button className={styles.button} type='submit'>
         Комментировать
-      </button>
+      </button> */}
+      <Button text='Комментировать' type='submit' />
     </form>
   );
 }
