@@ -34,6 +34,7 @@ export interface IPostData {
 export interface IUsePostsData {
   postsData: IPostData[];
   loading: boolean;
+  loadingCount: number;
   errorLoading: string;
   loadPosts: () => void;
 }
@@ -56,14 +57,12 @@ export function usePostsData(): [IUsePostsData] {
   const [postsData, setPostsData] = useState<IPostData[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [errorLoading, setErrorLoading] = useState<string>('');
-  // создали state для курсора after что бы получать последующие посты
   const [nextAfter, setNextAfter] = useState<string>('');
+  const [loadingCount, setloadingCount] = useState<number>(0);
 
   const token = useSelector<RootState, tokenState>((state) => state.token);
 
-  // вынесли ф-ю из useEffect
   const loadPosts = useCallback(async () => {
-    // если токена нет то выходим из ф-ии
     if (!token) return;
 
     setLoading(true);
@@ -72,13 +71,11 @@ export function usePostsData(): [IUsePostsData] {
     try {
       const { data } = await axios.get('https://oauth.reddit.com/r/Frontend/', {
         headers: { Authorization: `bearer ${token}` },
-        // добавили cursor в параметр after для получения последующих постов
         params: { limit: 10, after: nextAfter },
       });
 
       if (data?.data?.children && data?.data?.after) {
         const { children, after } = data.data;
-        // устанавливаем следующий cursor для after
         setNextAfter(after);
 
         if (children.length > 0) {
@@ -117,8 +114,8 @@ export function usePostsData(): [IUsePostsData] {
             };
           });
 
-          // добавляем новые посты в state
           setPostsData((prev) => prev.concat(...posts));
+          setloadingCount((prev) => prev + 1);
         }
       }
     } catch (error) {
@@ -128,6 +125,5 @@ export function usePostsData(): [IUsePostsData] {
     setLoading(false);
   }, [token, nextAfter]);
 
-  // добавил ф-ю loadPosts в хук что бы можно было получать вызывать получение постов в других компонентах
-  return [{ postsData, loading, errorLoading, loadPosts }];
+  return [{ postsData, loading, loadingCount, errorLoading, loadPosts }];
 }
