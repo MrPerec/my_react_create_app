@@ -1,10 +1,12 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import styles from './cardslist.css';
 
 import { Card } from './Card/Card';
 import { postsContext } from '../../context/PostsContext';
 import { IPostData } from '../../hooks/usePostsData';
 import { Button } from '../Button';
+import { LoaderSpinner } from '../LoaderSpinner';
+import { PopupOverlay } from '../PopupOverlay';
 
 export function CardsList() {
   const { postsData, loading, loadingCount, errorLoading, loadPosts } = useContext(postsContext);
@@ -32,10 +34,19 @@ export function CardsList() {
   }, [bottomOfList.current, loadPosts, loadingCount]);
 
   let lastCardsListContent: string | React.ReactElement = 'Список пуст';
-  if (loading) lastCardsListContent = 'Загрузка...';
-  if (errorLoading) lastCardsListContent = errorLoading;
+
   if (isShowButton) {
     lastCardsListContent = <Button text='Загрузить ещё' onClickCallback={() => loadPosts()} />;
+  }
+
+  if (errorLoading) lastCardsListContent = errorLoading;
+
+  if (loading) {
+    lastCardsListContent = (
+      <PopupOverlay>
+        <LoaderSpinner />
+      </PopupOverlay>
+    );
   }
 
   let cardsListElem = null;

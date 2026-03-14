@@ -1,6 +1,6 @@
 import { Action, ActionCreator } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { RootState } from '../reducers/rootReducer';
+import { TRootState } from '../reducers/rootReducer';
 import axios from 'axios';
 
 export const ME_REQUEST = 'ME_REQUEST';
@@ -12,35 +12,37 @@ export interface IUserData {
   iconImg?: string;
 }
 
-export type MeRquestAction = {
+export type TMeRquestAction = {
   type: typeof ME_REQUEST;
 };
-export type MeRquestSuccessAction = {
+
+export type TMeRquestSuccessAction = {
   type: typeof ME_REQUEST_SUCCESS;
   payload: { data: IUserData };
 };
-export type MeRquestErrorAction = {
+
+export type TMeRquestErrorAction = {
   type: typeof ME_REQUEST_ERROR;
   payload: { error: string };
 };
 
-export const meRequest: ActionCreator<MeRquestAction> = () => ({
+export const meRequest: ActionCreator<TMeRquestAction> = () => ({
   type: ME_REQUEST,
 });
 
-export const meRequestSuccess: ActionCreator<MeRquestSuccessAction> = (data: IUserData) => ({
+export const meRequestSuccess: ActionCreator<TMeRquestSuccessAction> = (data: IUserData) => ({
   type: ME_REQUEST_SUCCESS,
   payload: { data },
 });
 
-export const meRequestError: ActionCreator<MeRquestErrorAction> = (error: string) => ({
+export const meRequestError: ActionCreator<TMeRquestErrorAction> = (error: string) => ({
   type: ME_REQUEST_ERROR,
   payload: { error },
 });
 
-// напишем асинхронный thunk action
+//  асинхронный thunk action
 export const meRequestAsync =
-  (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch, getState) => {
+  (): ThunkAction<void, TRootState, unknown, Action<string>> => (dispatch, getState) => {
     // вызываем dispatch с action для запроса данных
     dispatch(meRequest());
 
@@ -56,7 +58,6 @@ export const meRequestAsync =
         dispatch(meRequestSuccess(myUserData));
       })
       .catch((error) => {
-        console.log(error);
         // если данные НЕ получены вызываем action об ошибке
         dispatch(meRequestError(String(error)));
       });

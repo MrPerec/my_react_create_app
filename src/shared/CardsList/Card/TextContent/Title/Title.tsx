@@ -1,37 +1,31 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import styles from './title.css';
-import { Post } from '../../../../Post';
 import { Link } from 'react-router-dom';
+import { postRequestAsync } from '../../../../../actions/postAction';
+import { useDispatch } from 'react-redux';
 
 export interface ITitleProps {
-  link: string;
   title: string;
+  link: string;
+  postId: string;
 }
 
-/* export function Title({ link, title }: ITitleProps) {
-  const [isModelOpen, setIsModelOpen] = useState(false);
-  const titleRef = useRef<HTMLHeadingElement>(null);
+export function Title({ title, link, postId }: ITitleProps) {
+  const dispatch = useDispatch();
 
-  return (
-    <>
-      <h2 className={styles.title} ref={titleRef} onClick={() => setIsModelOpen(true)}>
+  let titleElem = (
+    <Link to={`/posts/${postId}}`} onClick={() => dispatch(postRequestAsync(postId))}>
+      {title}
+    </Link>
+  );
+
+  if (link) {
+    titleElem = (
+      <a className={styles.postLink} href={link} target='_blank'>
         {title}
-      </h2>
-      {isModelOpen && <Post titleRef={titleRef} onClose={() => setIsModelOpen(false)} />}
-    </>
-  );
-} */
+      </a>
+    );
+  }
 
-export function Title({ link, title }: ITitleProps) {
-  // убираем состояние, заменим его роутом
-  // const [isModelOpen, setIsModelOpen] = useState(false);
-
-  return (
-    <h2 className={styles.title}>
-      {/* вместо <a></a> и {title} будем использовать "Link". Вместо "href" используем "to" с уканаимем URI, onClick убрали т.к. Link из роута сам сделат переключение */}
-      <Link to={`/posts/1`}>{title}</Link>
-    </h2>
-    //   <Post /> перенесём в <App />
-    //   {isModelOpen && <Post titleRef={titleRef} onClose={() => setIsModelOpen(false)} />}
-  );
+  return <h2 className={styles.title}>{titleElem}</h2>;
 }

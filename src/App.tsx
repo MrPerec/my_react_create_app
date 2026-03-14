@@ -7,10 +7,10 @@ import { Layout } from './shared/Layout';
 import { Header } from './shared/Header';
 import { Content } from './shared/Content';
 import { CardsList } from './shared/CardsList/CardsList';
-import { Initial } from './Initial/Initial';
+import { Initial } from './shared/Initial/Initial';
 import { PostsContextProvider } from './context/PostsContext';
 import { Route /* , Switch  */ } from 'react-router-dom';
-import { Post } from './shared/Post';
+import { PostContainer } from './shared/PostContainer';
 // import { PageNotFound } from './shared/PageNotFound';
 
 function AppComponent() {
@@ -23,10 +23,10 @@ function AppComponent() {
         <Content>
           <PostsContextProvider>
             <CardsList />
-            <Route path={'/posts/:id'}>
-              <Post />
-            </Route>
           </PostsContextProvider>
+          <Route path={'/posts/:id'}>
+            <PostContainer />
+          </Route>
         </Content>
         {/* </Route> */}
         {/* <Route path='*'>

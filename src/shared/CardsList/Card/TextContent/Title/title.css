@@ -24,7 +24,8 @@
   }
 }
 
-@media (min-width: 1540px) {
+/* с этими стилями заголовок карточки перестает быть кликабельным. Не помню зачем я эти стили добавил */
+/* @media (min-width: 1540px) {
   .title::after {
     content: '';
     position: absolute;
@@ -32,5 +33,11 @@
     right: 0;
     bottom: 0;
     left: 0;
+  }
+} */
+@media (min-width: 1540px) {
+  .title {
+    line-clamp: none;
+    -webkit-line-clamp: none;
   }
 }

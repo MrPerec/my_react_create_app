@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CommentForm } from '../CommentForm/CommentForm';
 import { addReply, updateComment } from '../../actions/commentsActions';
 import { CommentsState } from '../../reducers/commentsReducer';
-import { RootState } from '../../reducers/rootReducer';
+import { TRootState } from '../../reducers/rootReducer';
 
 interface IReplyFormContainerProps {
   textareaRef?: React.RefObject<HTMLTextAreaElement | null>;
@@ -20,7 +20,7 @@ export function ReplyFormContainer(props: IReplyFormContainerProps) {
     if (textareaRef?.current) textareaRef.current.focus();
   }, [commentId, replyToName]);
 
-  const comment = useSelector<RootState, CommentsState>((state) => state.comments);
+  const comment = useSelector<TRootState, CommentsState>((state) => state.comments);
   let commentIndex = comment.findIndex((element) => element.id === commentId);
   if (commentIndex < 1) commentIndex = 0;
 

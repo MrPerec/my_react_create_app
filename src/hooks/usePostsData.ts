@@ -1,19 +1,21 @@
 import { useCallback, useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { RootState } from '../reducers/rootReducer';
-import { tokenState } from '../reducers/tokenReducer';
+import { TRootState } from '../reducers/rootReducer';
+import { TTokenState } from '../reducers/tokenReducer';
 
 export interface IAuthor {
   avatarLink: string;
   profilerLink: string;
   name: string;
 }
+
 export interface IPost {
   link: string;
   title: string;
   createdTime: number;
 }
+
 export interface IPreview {
   imgLink: string;
   videoLink: string;
@@ -28,7 +30,6 @@ export interface IPostData {
   preview: IPreview;
   karmaCount: number;
   commentsCount: number;
-  loading: boolean;
 }
 
 export interface IUsePostsData {
@@ -60,7 +61,7 @@ export function usePostsData(): [IUsePostsData] {
   const [nextAfter, setNextAfter] = useState<string>('');
   const [loadingCount, setloadingCount] = useState<number>(0);
 
-  const token = useSelector<RootState, tokenState>((state) => state.token);
+  const token = useSelector<TRootState, TTokenState>((state) => state.token);
 
   const loadPosts = useCallback(async () => {
     if (!token) return;
@@ -69,7 +70,8 @@ export function usePostsData(): [IUsePostsData] {
     setErrorLoading('');
 
     try {
-      const { data } = await axios.get('https://oauth.reddit.com/r/Frontend/', {
+      // https://oauth.reddit.com/r/Frontend/
+      const { data } = await axios.get('https://oauth.reddit.com/r/all/top/', {
         headers: { Authorization: `bearer ${token}` },
         params: { limit: 10, after: nextAfter },
       });

@@ -14,7 +14,7 @@ interface ICardProps {
 export function Card({ cardData }: ICardProps) {
   return (
     <li className={styles.card}>
-      <TextContent author={cardData.author} post={cardData.post} />
+      <TextContent author={cardData.author} post={cardData.post} postId={cardData.id} />
       <Preview preview={cardData.preview} />
       <Menu />
       <Controls karmaCount={cardData.karmaCount} commentsCount={cardData.commentsCount} />
