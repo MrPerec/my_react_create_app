@@ -1,5 +1,10 @@
-.previewImg {
+.previewContainer {
+  position: relative;
   margin-bottom: 10px;
+  width: 100%;
+}
+
+.previewImg {
   border-radius: 3px;
   max-height: 107px;
   height: 100%;
@@ -7,12 +12,18 @@
   object-fit: cover;
 }
 
+.previewOverlayContainer {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  opacity: 0.5;
+}
+
 @media (min-width: 1024px) {
-  .previewImg {
+  .previewContainer {
     margin: 0 38px 0 0;
-    max-height: 107px;
-    height: 100%;
-    width: 100%;
     max-width: 190px;
   }
 }

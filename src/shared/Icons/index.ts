@@ -27,3 +27,4 @@ export * from './DocumentIcon';
 export * from './PictureIcon';
 export * from './QuoteIcon';
 export * from './PlusCircleIcon';
+export * from './VideoIcon';

@@ -50,6 +50,7 @@ interface IFetchPostsData {
     readonly permalink: string;
     readonly created_utc: string;
     readonly thumbnail: string;
+    readonly is_video: boolean;
     readonly preview: { images: [{ source: { url: string } }] };
   };
 }
@@ -92,6 +93,7 @@ export function usePostsData(): [IUsePostsData] {
               created_utc,
               preview,
               id,
+              is_video,
             } = data;
             const imageLink = preview?.images[0]?.source?.url || thumbnail;
 
@@ -110,6 +112,7 @@ export function usePostsData(): [IUsePostsData] {
               preview: {
                 imgLink: imageLink.replace(/&amp;/g, '&'),
                 alt: title,
+                isVideo: is_video,
               },
               karmaCount: score,
               commentsCount: num_comments,

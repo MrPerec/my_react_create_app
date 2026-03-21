@@ -1,4 +1,5 @@
 enum EColor {
+  none = 'none',
   black = 'black',
   black00 = 'black00',
   orange = 'orange',
@@ -47,7 +48,8 @@ enum EIcons {
   document = 'DocumentIcon',
   picture = 'PictureIcon',
   quote = 'QuoteIcon',
-  plusCircle = 'plusCircleIcon',
+  plusCircle = 'PlusCircleIcon',
+  video = 'VidoeIcon',
 }
 
 export { EColor, EIcons };
