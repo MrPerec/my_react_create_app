@@ -13,19 +13,24 @@ export interface ITitleProps {
 export function Title({ title, link, postId }: ITitleProps) {
   const dispatch = useDispatch();
 
+  const titleClassSyles = link ? styles.titleLong : styles.titleShort;
+
   let titleElem = (
-    <Link to={`/posts/${postId}}`} onClick={() => dispatch(postRequestAsync(postId))}>
+    <Link
+      to={`/posts/${postId}}`}
+      onClick={() => dispatch(postRequestAsync(postId))}
+    >
       {title}
     </Link>
   );
 
   if (link) {
     titleElem = (
-      <a className={styles.postLink} href={link} target='_blank'>
+      <a className={styles.postLink} href={link} target="_blank">
         {title}
       </a>
     );
   }
 
-  return <h2 className={styles.title}>{titleElem}</h2>;
+  return <h2 className={titleClassSyles}>{titleElem}</h2>;
 }
