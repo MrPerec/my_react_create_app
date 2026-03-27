@@ -1,4 +1,4 @@
-import { EIcons } from '../../enum';
+import { EIcons } from '../../../enum';
 
 interface IIcon {
   name: EIcons;
@@ -81,7 +81,8 @@ export const postData = {
   },
   post: {
     link: '#',
-    title: 'Следует отметить, что новая модель организационной деятельности поможет',
+    title:
+      'Следует отметить, что новая модель организационной деятельности поможет',
     createdTime: 1765105483.0,
   },
   karmaCount: 311,

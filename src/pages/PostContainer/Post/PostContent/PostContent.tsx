@@ -1,9 +1,9 @@
 import React from 'react';
-import { Text } from '../../Text';
-import { EColor } from '../../../enum';
-import { TPost } from '../../../reducers/postReducer';
-import { PictureImage } from '../../PictureImage';
-import { VideoPlayer } from '../../VideoPlayer';
+import { Text } from '../../../../shared/Text';
+import { EColor } from '../../../../enum';
+import { TPost } from '../../../../reducers/postReducer';
+import { PictureImage } from '../../../../shared/PictureImage';
+import { VideoPlayer } from '../../../../shared/VideoPlayer';
 
 type TPostContentProps = {
   post: TPost;

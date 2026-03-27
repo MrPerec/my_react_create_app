@@ -1,8 +1,9 @@
 import React from 'react';
-import styles from './title.css';
 import { Link } from 'react-router-dom';
-import { postRequestAsync } from '../../../../../actions/postAction';
 import { useDispatch } from 'react-redux';
+
+import { postRequestAsync } from '../../../../../actions/postAction';
+import styles from './title.css';
 
 export interface ITitleProps {
   title: string;

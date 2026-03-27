@@ -1,21 +1,21 @@
 import React, { useEffect } from 'react';
 
-import { Icon } from '../Icon';
-import { KarmaCounter } from '../KarmaCounter';
-import { TextContent } from '../CardsList/Card/TextContent';
-import { MenuItemsList } from '../CardsList/Card/Menu/MenuItemsList';
-import { Text } from '../Text';
-import { SortButton } from '../SortButton';
+import { Icon } from '../../../shared/Icon';
+import { KarmaCounter } from '../../../shared/KarmaCounter';
+import { TextContent } from '../../CardsList/Card/TextContent';
+import { MenuItemsList } from '../../CardsList/Card/Menu/MenuItemsList';
+import { Text } from '../../../shared/Text';
+import { SortButton } from '../../../shared/SortButton';
 import { PostContent } from './PostContent';
 import { Comments } from './Comments';
-import { Time } from '../Time';
-import { CommentFormContainer } from '../CommentFormContainer';
+import { Time } from '../../../shared/Time';
+import { CommentFormContainer } from '../../../shared/CommentFormContainer';
 
 import styles from './post.css';
-import { EColor, EIcons } from '../../enum';
+import { EColor, EIcons } from '../../../enum';
 import { postMenuList, postData } from './constants';
-import { TPostData } from '../../reducers/postReducer';
-import formatRedditDate from '../../utils/js/formatRedditDate';
+import { TPostData } from '../../../reducers/postReducer';
+import formatRedditDate from '../../../utils/js/formatRedditDate';
 
 type TPostProps = {
   data: TPostData;

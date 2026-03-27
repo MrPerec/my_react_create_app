@@ -5,13 +5,16 @@ import { useSelector } from 'react-redux';
 
 import { TRootState } from '../../reducers/rootReducer';
 import { TPostState } from '../../reducers/postReducer';
-import { LoaderSpinner } from '../LoaderSpinner';
-import { PopupOverlay } from '../PopupOverlay';
-import { Post } from '../Post/Post';
+import { LoaderSpinner } from '../../shared/LoaderSpinner';
+import { PopupOverlay } from '../../shared/PopupOverlay';
+
+import { Post } from './Post/Post';
 
 export function PostContainer() {
   const postRef = useRef<HTMLDivElement>(null);
-  const { data, loading } = useSelector<TRootState, TPostState>((state) => state.post);
+  const { data, loading } = useSelector<TRootState, TPostState>(
+    (state) => state.post,
+  );
   const history = useHistory();
 
   const onClose = () => {
@@ -20,7 +23,10 @@ export function PostContainer() {
 
   useEffect(() => {
     function handleClick(event: MouseEvent) {
-      if (event.target instanceof Node && !postRef.current?.contains(event.target)) {
+      if (
+        event.target instanceof Node &&
+        !postRef.current?.contains(event.target)
+      ) {
         onClose();
       }
     }

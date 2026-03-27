@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import styles from './menu.css';
-import { DropDown } from '../../../DropDown';
-import { Text } from '../../../Text';
+import { DropDown } from '../../../../shared/DropDown';
+import { Text } from '../../../../shared/Text';
 import { MenuItemsList } from './MenuItemsList';
 import { EColor, EIcons } from '../../../../enum';
 import { menuList } from './MenuItemsList/constants';
 import { screenWidthContext } from '../../../../context/ScreenWidthContext';
-import { Icon } from '../../../Icon';
+import { Icon } from '../../../../shared/Icon';
 
 export function Menu(): React.JSX.Element {
   const screenWidth = useContext(screenWidthContext);

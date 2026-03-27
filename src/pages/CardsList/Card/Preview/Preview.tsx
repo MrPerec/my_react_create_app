@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './preview.css';
 import { IPreview } from '../../../../hooks/usePostsData';
-import { Icon } from '../../../Icon';
+import { Icon } from '../../../../shared/Icon';
 import { EColor, EIcons } from '../../../../enum';
 
 interface IPreviewProps {

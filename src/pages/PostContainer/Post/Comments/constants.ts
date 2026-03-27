@@ -1,4 +1,4 @@
-import { EIcons } from '../../../enum';
+import { EIcons } from '../../../../enum';
 
 interface IIcon {
   name: EIcons;

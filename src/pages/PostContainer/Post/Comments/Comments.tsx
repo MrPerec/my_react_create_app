@@ -1,14 +1,14 @@
 import React, { useRef, useState } from 'react';
 import styles from './comments.css';
-import { KarmaCounter } from '../../KarmaCounter';
-import { UserLink } from '../../CardsList/Card/TextContent/UserLink';
-import { EColor } from '../../../enum';
-import { MenuItemsList } from '../../CardsList/Card/Menu/MenuItemsList';
-import { Text } from '../../Text';
+import { KarmaCounter } from '../../../../shared/KarmaCounter';
+import { UserLink } from '../../../CardsList/Card/TextContent/UserLink';
+import { EColor } from '../../../../enum';
+import { MenuItemsList } from '../../../CardsList/Card/Menu/MenuItemsList';
+import { Text } from '../../../../shared/Text';
 import { commentsMenuList } from '../constants';
-import { IAuthor } from '../../../hooks/usePostsData';
+import { IAuthor } from '../../../../hooks/usePostsData';
 import { Reply } from './Reply';
-import { ReplyFormContainer } from '../../ReplyFormContainer';
+import { ReplyFormContainer } from '../../../../shared/ReplyFormContainer';
 
 interface IComment {
   id: number;
@@ -47,12 +47,20 @@ function Comment({ comment }: { comment: IComment }) {
       <div className={styles.commentBlock}>
         <div className={styles.commentTextWrapper}>
           <div className={styles.userLinkWrapper}>
-            <UserLink author={author} createdTime={createdTime} isComment={true} />
+            <UserLink
+              author={author}
+              createdTime={createdTime}
+              isComment={true}
+            />
           </div>
           <Text color={EColor.black} size={14} lineHeightPercent={171}>
             {text}
           </Text>
-          <MenuItemsList list={сommentsButtonsList} isDirectionRow={true} textSize={{ size: 14 }} />
+          <MenuItemsList
+            list={сommentsButtonsList}
+            isDirectionRow={true}
+            textSize={{ size: 14 }}
+          />
           <div id={portalNode}>
             {isReplyOpen && (
               <Reply portalNode={portalNode}>

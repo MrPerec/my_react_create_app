@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './controls.css';
 import { EColor, EIcons } from '../../../../enum';
-import { Icon } from '../../../Icon';
-import { KarmaCounter } from '../../../KarmaCounter';
+import { Icon } from '../../../../shared/Icon';
+import { KarmaCounter } from '../../../../shared/KarmaCounter';
 
 interface IControlsProps {
   karmaCount: number;

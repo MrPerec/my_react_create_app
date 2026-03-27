@@ -4,12 +4,13 @@ import styles from './cardslist.css';
 import { Card } from './Card/Card';
 import { postsContext } from '../../context/PostsContext';
 import { IPostData } from '../../hooks/usePostsData';
-import { Button } from '../Button';
-import { LoaderSpinner } from '../LoaderSpinner';
-import { PopupOverlay } from '../PopupOverlay';
+import { Button } from '../../shared/Button';
+import { LoaderSpinner } from '../../shared/LoaderSpinner';
+import { PopupOverlay } from '../../shared/PopupOverlay';
 
 export function CardsList() {
-  const { postsData, loading, loadingCount, errorLoading, loadPosts } = useContext(postsContext);
+  const { postsData, loading, loadingCount, errorLoading, loadPosts } =
+    useContext(postsContext);
 
   const bottomOfList = useRef<HTMLLIElement>(null);
   const LOAD_COUNT = 3;
@@ -36,7 +37,9 @@ export function CardsList() {
   let lastCardsListContent: string | React.ReactElement = 'Список пуст';
 
   if (isShowButton) {
-    lastCardsListContent = <Button text='Загрузить ещё' onClickCallback={() => loadPosts()} />;
+    lastCardsListContent = (
+      <Button text="Загрузить ещё" onClickCallback={() => loadPosts()} />
+    );
   }
 
   if (errorLoading) lastCardsListContent = errorLoading;
