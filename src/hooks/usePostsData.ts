@@ -65,7 +65,7 @@ export function usePostsData(): [IUsePostsData] {
   const token = useSelector<TRootState, TTokenState>((state) => state.token);
 
   const loadPosts = useCallback(async () => {
-    if (!token) return;
+    if (loading || !token) return;
 
     setLoading(true);
     setErrorLoading('');
@@ -121,15 +121,6 @@ export function usePostsData(): [IUsePostsData] {
 
           setPostsData((prev) => prev.concat(...posts));
           setloadingCount((prev) => prev + 1);
-
-          // setPostsData((prev) => (nextAfter === '' ? posts : prev.concat(...posts)));
-
-          /* if (nextAfter === '') {
-            setPostsData(posts);
-          } else {
-            setPostsData((prev) => prev.concat(...posts));
-            setloadingCount((prev) => prev + 1);
-          } */
         }
       }
     } catch (error) {
@@ -137,7 +128,7 @@ export function usePostsData(): [IUsePostsData] {
     }
 
     setLoading(false);
-  }, [token, nextAfter]);
+  }, [token, nextAfter, loading]);
 
   return [{ postsData, loading, loadingCount, errorLoading, loadPosts }];
 }

@@ -32,7 +32,7 @@ export function CardsList() {
     return () => {
       if (bottomOfList?.current) observer.unobserve(bottomOfList.current);
     };
-  }, [bottomOfList.current, loadPosts, loadingCount]);
+  }, [bottomOfList.current, loadPosts, isShowButton]);
 
   let lastCardsListContent: string | React.ReactElement = 'Список пуст';
 

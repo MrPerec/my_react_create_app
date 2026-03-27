@@ -23,14 +23,13 @@ function AppComponent() {
         <Header />
         <Content>
           <Switch>
-            {/* дублируется */}
-            {/* <Redirect exact from="/" to="/posts" /> */}
-            {/* <Redirect exact from="/auth" to="/posts" /> */}
-            <Route path={'/posts/:id'} component={PostContainer} />
+            <Redirect exact from="/" to="/posts" />
+            <Redirect exact from="/auth" to="/posts" />
             <Route path="/posts">
               <PostsContextProvider>
                 <CardsList />
               </PostsContextProvider>
+              <Route path={'/posts/:id'} component={PostContainer} />
             </Route>
             <Route path="*" component={PageNotFound} />
           </Switch>
