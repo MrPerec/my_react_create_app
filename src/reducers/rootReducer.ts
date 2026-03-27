@@ -2,11 +2,13 @@ import { combineReducers } from 'redux';
 import { commentsReducer } from './commentsReducer';
 import { tokenReducer } from './tokenReducer';
 import { meReducer } from './meReducer';
+import { postReducer } from './postReducer';
 
 export const rootReducer = combineReducers({
   comments: commentsReducer,
   token: tokenReducer,
   me: meReducer,
+  post: postReducer,
 });
 
-export type RootState = ReturnType<typeof rootReducer>;
+export type TRootState = ReturnType<typeof rootReducer>;

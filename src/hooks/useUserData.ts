@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../reducers/rootReducer';
-import { tokenState } from '../reducers/tokenReducer';
+import { TRootState } from '../reducers/rootReducer';
+import { TTokenState } from '../reducers/tokenReducer';
 import { IUserData, meRequestAsync } from '../actions/meActions';
-import { MeState } from '../reducers/meReducer';
+import { TMeState } from '../reducers/meReducer';
 
 interface IUseUserData {
   data: IUserData;
@@ -11,10 +11,9 @@ interface IUseUserData {
 }
 
 export function useUserData(): IUseUserData {
-  const { data, loading } = useSelector<RootState, MeState>((state) => state.me);
-  const token = useSelector<RootState, tokenState>((state) => state.token);
-
   const dispatch = useDispatch();
+  const token = useSelector<TRootState, TTokenState>((state) => state.token);
+  const { data, loading } = useSelector<TRootState, TMeState>((state) => state.me);
 
   useEffect(() => {
     if (token) dispatch(meRequestAsync());

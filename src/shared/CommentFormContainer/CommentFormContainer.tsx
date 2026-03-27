@@ -2,7 +2,7 @@ import React, { ChangeEvent, FormEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CommentForm } from '../CommentForm/CommentForm';
 import { updateComment } from '../../actions/commentsActions';
-import { RootState } from '../../reducers/rootReducer';
+import { TRootState } from '../../reducers/rootReducer';
 import { CommentsState } from '../../reducers/commentsReducer';
 import { useUserData } from '../../hooks/useUserData';
 
@@ -13,7 +13,7 @@ interface ICommentFormContainerProps {
 export function CommentFormContainer({ commentId }: ICommentFormContainerProps) {
   const { data } = useUserData();
 
-  const comment = useSelector<RootState, CommentsState>((state) => state.comments);
+  const comment = useSelector<TRootState, CommentsState>((state) => state.comments);
 
   let commentIndex = comment.findIndex((element) => element.id === commentId);
   if (commentIndex < 1) commentIndex = 0;

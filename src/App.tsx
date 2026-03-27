@@ -1,44 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { hot } from 'react-hot-loader';
-import './normalize.css';
-import './main.global.css';
+import { Redirect, Route, Switch } from 'react-router-dom';
+
+import { PostsContextProvider } from './context/PostsContext';
+
+import { CardsList } from './pages/CardsList/CardsList';
+import { PageNotFound } from './pages/PageNotFound';
 
 import { Layout } from './shared/Layout';
 import { Header } from './shared/Header';
 import { Content } from './shared/Content';
-import { CardsList } from './shared/CardsList/CardsList';
-import { Initial } from './Initial/Initial';
-import { PostsContextProvider } from './context/PostsContext';
-import { BrowserRouter, Route } from 'react-router-dom';
-import { Post } from './shared/Post';
+import { Initial } from './shared/Initial/Initial';
+import { PostContainer } from './pages/PostContainer';
+
+import './normalize.css';
+import './main.global.css';
 
 function AppComponent() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []); // вызывается 1 раз
-
   return (
     <Initial>
-      {/* что бы не возникало ошибки сделалил условие при оборачивании приложения в роутер 
-      p.s. возник баг с дублированием key у карточек постов */}
-      {mounted && (
-        <BrowserRouter>
-          <Layout>
-            <Header />
-            <Content>
+      <Layout>
+        <Header />
+        <Content>
+          <Switch>
+            <Redirect exact from="/" to="/posts" />
+            <Redirect from="/auth" to="/posts" />
+            <Route path="/posts">
               <PostsContextProvider>
                 <CardsList />
-                {/* теперь модальное окно <Post /> будем монтировать здесь при помощи <Route> */}
-                <Route path={'/posts/:id'}>
-                  <Post />
-                </Route>
               </PostsContextProvider>
-            </Content>
-          </Layout>
-        </BrowserRouter>
-      )}
+              <Route path={'/posts/:id'} component={PostContainer} />
+            </Route>
+            <Route path="*" component={PageNotFound} />
+          </Switch>
+        </Content>
+      </Layout>
     </Initial>
   );
 }

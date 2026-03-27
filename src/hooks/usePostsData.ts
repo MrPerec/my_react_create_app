@@ -1,19 +1,21 @@
 import { useCallback, useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { RootState } from '../reducers/rootReducer';
-import { tokenState } from '../reducers/tokenReducer';
+import { TRootState } from '../reducers/rootReducer';
+import { TTokenState } from '../reducers/tokenReducer';
 
 export interface IAuthor {
   avatarLink: string;
   profilerLink: string;
   name: string;
 }
+
 export interface IPost {
   link: string;
   title: string;
   createdTime: number;
 }
+
 export interface IPreview {
   imgLink: string;
   videoLink: string;
@@ -28,7 +30,6 @@ export interface IPostData {
   preview: IPreview;
   karmaCount: number;
   commentsCount: number;
-  loading: boolean;
 }
 
 export interface IUsePostsData {
@@ -49,6 +50,7 @@ interface IFetchPostsData {
     readonly permalink: string;
     readonly created_utc: string;
     readonly thumbnail: string;
+    readonly is_video: boolean;
     readonly preview: { images: [{ source: { url: string } }] };
   };
 }
@@ -60,16 +62,17 @@ export function usePostsData(): [IUsePostsData] {
   const [nextAfter, setNextAfter] = useState<string>('');
   const [loadingCount, setloadingCount] = useState<number>(0);
 
-  const token = useSelector<RootState, tokenState>((state) => state.token);
+  const token = useSelector<TRootState, TTokenState>((state) => state.token);
 
   const loadPosts = useCallback(async () => {
-    if (!token) return;
+    if (loading || !token) return;
 
     setLoading(true);
     setErrorLoading('');
 
     try {
-      const { data } = await axios.get('https://oauth.reddit.com/r/Frontend/', {
+      // https://oauth.reddit.com/r/Frontend/
+      const { data } = await axios.get('https://oauth.reddit.com/r/all/top/', {
         headers: { Authorization: `bearer ${token}` },
         params: { limit: 10, after: nextAfter },
       });
@@ -90,6 +93,7 @@ export function usePostsData(): [IUsePostsData] {
               created_utc,
               preview,
               id,
+              is_video,
             } = data;
             const imageLink = preview?.images[0]?.source?.url || thumbnail;
 
@@ -108,6 +112,7 @@ export function usePostsData(): [IUsePostsData] {
               preview: {
                 imgLink: imageLink.replace(/&amp;/g, '&'),
                 alt: title,
+                isVideo: is_video,
               },
               karmaCount: score,
               commentsCount: num_comments,
@@ -123,7 +128,7 @@ export function usePostsData(): [IUsePostsData] {
     }
 
     setLoading(false);
-  }, [token, nextAfter]);
+  }, [token, nextAfter, loading]);
 
   return [{ postsData, loading, loadingCount, errorLoading, loadPosts }];
 }

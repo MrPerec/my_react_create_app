@@ -1,11 +1,14 @@
 import { Reducer } from 'redux';
-import { SET_TOKEN } from '../actions/tokenActions';
+import { SET_TOKEN, TSetTokenAction } from '../actions/tokenActions';
 
-export type tokenState = string;
+export type TTokenState = string;
 
-const initialState: tokenState = '';
+const initialTokenState: TTokenState = '';
 
-export const tokenReducer: Reducer<tokenState> = (state = initialState, action) => {
+export const tokenReducer: Reducer<TTokenState, TSetTokenAction> = (
+  state = initialTokenState,
+  action,
+) => {
   switch (action?.type) {
     case SET_TOKEN:
       if (action.payload?.token) return action.payload.token;

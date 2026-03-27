@@ -1,14 +1,24 @@
 import { Reducer } from 'redux';
-import { ADD_REPLY, UPDATE_COMMENT } from '../actions/commentsActions';
+import {
+  ADD_REPLY,
+  TAddReplyAction,
+  TUpdateCommentAction,
+  UPDATE_COMMENT,
+} from '../actions/commentsActions';
+
+type commentsActions = TUpdateCommentAction | TAddReplyAction;
 
 export type CommentsState = {
   id: number;
   value: string;
 }[];
 
-const initialState: CommentsState = [{ id: 0, value: '' }];
+const initialCommentsState: CommentsState = [{ id: 0, value: '' }];
 
-export const commentsReducer: Reducer<CommentsState> = (state = initialState, action) => {
+export const commentsReducer: Reducer<CommentsState, commentsActions> = (
+  state = initialCommentsState,
+  action,
+) => {
   switch (action?.type) {
     case UPDATE_COMMENT:
       const updatedComments = state.map((elem, index) => {

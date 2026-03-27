@@ -1,0 +1,41 @@
+.titleShort,
+.titleLong {
+  display: -webkit-box;
+  margin: 0;
+  max-width: fit-content;
+  font-size: 16px;
+  line-height: normal;
+  font-weight: normal;
+  overflow: hidden;
+}
+
+.titleShort {
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.titleShort > *:hover,
+.titleLong > *:hover {
+  color: var(--orange);
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  .titleShort,
+  .titleLong {
+    font-size: 20px;
+  }
+
+  .titleShort {
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+  }
+}
+
+@media (min-width: 1540px) {
+  .titleShort {
+    line-clamp: none;
+    -webkit-line-clamp: none;
+  }
+}

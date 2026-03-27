@@ -4,14 +4,14 @@ import {
   ME_REQUEST,
   ME_REQUEST_ERROR,
   ME_REQUEST_SUCCESS,
-  MeRquestAction,
-  MeRquestErrorAction,
-  MeRquestSuccessAction,
+  TMeRquestAction,
+  TMeRquestErrorAction,
+  TMeRquestSuccessAction,
 } from '../actions/meActions';
 
-type MeActions = MeRquestAction | MeRquestSuccessAction | MeRquestErrorAction;
+type TMeActions = TMeRquestAction | TMeRquestSuccessAction | TMeRquestErrorAction;
 
-export type MeState = {
+export type TMeState = {
   loading: boolean;
   error: string;
   data: IUserData;
@@ -19,9 +19,13 @@ export type MeState = {
 
 export const ANONYMOUS = 'Аноним';
 
-const initialState: MeState = { loading: false, error: '', data: { name: ANONYMOUS, iconImg: '' } };
+const initialMeState: TMeState = {
+  loading: false,
+  error: '',
+  data: { name: ANONYMOUS, iconImg: '' },
+};
 
-export const meReducer: Reducer<MeState, MeActions> = (state = initialState, action) => {
+export const meReducer: Reducer<TMeState, TMeActions> = (state = initialMeState, action) => {
   switch (action?.type) {
     case ME_REQUEST:
       return {

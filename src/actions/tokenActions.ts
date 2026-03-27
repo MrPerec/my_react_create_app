@@ -1,18 +1,25 @@
-import { Action, ActionCreator, AnyAction } from 'redux';
+import { Action, ActionCreator } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { RootState } from '../reducers/rootReducer';
+
+import { TRootState } from '../reducers/rootReducer';
+import { TTokenState } from '../reducers/tokenReducer';
 
 export const SET_TOKEN = 'SET_TOKEN';
 
-export const setToken: ActionCreator<AnyAction> = (token: string) => ({
+export type TSetTokenAction = {
+  type: typeof SET_TOKEN;
+  payload: { token: TTokenState };
+};
+
+export const setToken: ActionCreator<TSetTokenAction> = (token: TTokenState) => ({
   type: SET_TOKEN,
   payload: { token },
 });
 
 // синхронный thunk
 export const saveToken =
-  (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch, getState) => {
-    const token = localStorage.getItem('token') || window.__token__;
+  (): ThunkAction<void, TRootState, unknown, Action<string>> => (dispatch, getState) => {
+    const token = window.__token__ || localStorage.getItem('token');
 
     dispatch(setToken(token));
     if (token) localStorage.setItem('token', token);
