@@ -4,15 +4,32 @@
   "main": "index.js",
   "scripts": {
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
-    "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "dev": "cross-env NODE_ENV=development CLIENT_ID=wT9ifqRx8AtLV-24amn9hA node ./bin/dev.js",
     "test": "jest",
-    "test-watch": "jest --watch"
+    "test-watch": "jest --watch",
+    "start": "node ./dist/server/server.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
-  "devDependencies": {
+  "engines": {
+    "node": "14.x"
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "classnames": "^2.2.6",
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-hook-form": "^7.71.0",
+    "react-redux": "^7.2.9",
+    "react-router-dom": "^5.3.4",
+    "redux": "^4.2.1",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^3.1.0",
+    "unique-names-generator": "^4.7.1",
     "@hot-loader/react-dom": "^16.13.0",
     "@types/enzyme": "^3.10.19",
     "@types/enzyme-adapter-react-16": "^1.0.9",
@@ -44,20 +61,5 @@
     "webpack-dev-server": "^5.2.0",
     "webpack-hot-middleware": "^2.26.1",
     "webpack-node-externals": "^3.0.0"
-  },
-  "dependencies": {
-    "axios": "^1.13.2",
-    "classnames": "^2.2.6",
-    "express": "^4.21.2",
-    "nodemon": "^3.1.9",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-hook-form": "^7.71.0",
-    "react-redux": "^7.2.9",
-    "react-router-dom": "^5.3.4",
-    "redux": "^4.2.1",
-    "redux-devtools-extension": "^2.13.9",
-    "redux-thunk": "^3.1.0",
-    "unique-names-generator": "^4.7.1"
   }
 }

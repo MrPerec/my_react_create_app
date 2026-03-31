@@ -9,6 +9,9 @@ import { indexTemplate } from './indexTemplate';
 import { App } from '../App';
 import { REDIRECT_URI } from '../constants';
 
+// heroku будет указывать собственный port для nodejs из своего окружения
+const PORT = process.env.PORT || 3000;
+
 const app = express();
 
 app.use('/static', express.static('./dist/client'));
@@ -53,6 +56,6 @@ app.get('*', (req, res) => {
   );
 });
 
-app.listen(3000, () => {
-  console.log('Server has started on http://localhost:3000');
+app.listen(PORT, () => {
+  console.log(`Server has started on http://localhost:${PORT}`);
 });
