@@ -14,7 +14,7 @@
   "license": "ISC",
   "description": "",
   "engines": {
-    "node": "14.x"
+    "node": "24.x"
   },
   "dependencies": {
     "@hot-loader/react-dom": "^16.13.0",
