@@ -1,4 +1,4 @@
-export const indexTemplate = (content, token) => `
+export const indexTemplate = (content, token, redirectUri) => `
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +8,8 @@ export const indexTemplate = (content, token) => `
   <title>My Reddit</title>
   <script src="/static/client.js" type="application/javascript"></script>
   <script>
-    window.__token__ = '${token ? token : ''}'
+    window.__token__ = '${token ?? ''}';
+    window.__redirect_uri__ = '${redirectUri ?? ''}';
   </script>
 </head>
 

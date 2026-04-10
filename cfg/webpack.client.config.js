@@ -7,11 +7,31 @@ const NODE_ENV = process.env.NODE_ENV;
 const IS_DEV = NODE_ENV === 'development';
 const GLOBAL_CSS_REGEXP = /\.global\.css$/;
 const DEV_PLUGINS = [new CleanWebpackPlugin(), new HotModuleReplacementPlugin()];
-const COMMON_PLUGINS = [new DefinePlugin({ 'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'` })];
+
+// const COMMON_PLUGINS = [new DefinePlugin({ 'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'` })];
+// дописал REDIRECT_URI и SECRET из окружения переменных process.env
+//  бы получать REDIRECT_URI в client окружении
+const COMMON_PLUGINS = [
+  new DefinePlugin({
+    'process.env.CLIENT_ID': JSON.stringify(process.env.CLIENT_ID),
+    'process.env.REDIRECT_URI': JSON.stringify(process.env.REDIRECT_URI), // ← Добавить эту строку
+    'process.env.SECRET': JSON.stringify(process.env.SECRET),
+  }),
+];
 
 function setupDevtool() {
   if (IS_DEV) return 'eval';
   return false;
+}
+
+function getEntry(params) {
+  if (IS_DEV) {
+    return [
+      path.resolve(__dirname, '../src/client/index.jsx'),
+      'webpack-hot-middleware/client?path=http://localhost:3001/static/__webpack_hmr',
+    ];
+  }
+  return [path.resolve(__dirname, '../src/client/index.jsx')];
 }
 
 module.exports = {
@@ -22,7 +42,7 @@ module.exports = {
       'react-dom': IS_DEV ? '@hot-loader/react-dom' : 'react-dom',
     },
   },
-  entry: [path.resolve(__dirname, '../src/client/index.jsx'), 'webpack-hot-middleware/client?path=http://localhost:3001/static/__webpack_hmr'],
+  entry: getEntry(),
   output: {
     path: path.resolve(__dirname, '../dist/client'),
     filename: 'client.js',

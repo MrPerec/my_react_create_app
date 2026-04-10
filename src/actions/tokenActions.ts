@@ -19,8 +19,12 @@ export const setToken: ActionCreator<TSetTokenAction> = (token: TTokenState) => 
 // синхронный thunk
 export const saveToken =
   (): ThunkAction<void, TRootState, unknown, Action<string>> => (dispatch, getState) => {
-    const token = window.__token__ || localStorage.getItem('token');
+    if (typeof window !== 'undefined') {
+      const token = window.__token__ || localStorage.getItem('token');
 
-    dispatch(setToken(token));
-    if (token) localStorage.setItem('token', token);
+      if (token) {
+        dispatch(setToken(token));
+        localStorage.setItem('token', token);
+      }
+    }
   };

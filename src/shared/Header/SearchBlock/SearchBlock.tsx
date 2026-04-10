@@ -6,11 +6,11 @@ import { EmailBlock } from './EmailBlock';
 import { useUserData } from '../../../hooks/useUserData';
 
 export function SearchBlock() {
-  const { data, loading } = useUserData();
+  const { data, loading, error } = useUserData();
 
   return (
     <div className={styles.searchBlock}>
-      <UserBlock iconImg={data.iconImg} name={data.name} loading={loading} />
+      <UserBlock iconImg={data.iconImg} name={data.name} loading={loading} error={error} />
       <SearchInputBlock />
       <EmailBlock />
     </div>
