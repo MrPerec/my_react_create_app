@@ -12,21 +12,11 @@ import { Post } from './Post/Post';
 
 export function PostContainer() {
   const postRef = useRef<HTMLDivElement>(null);
-  const { data, loading } = useSelector<TRootState, TPostState>(
-    (state) => state.post,
-  );
-  const history = useHistory();
-
-  const onClose = () => {
-    history.push('./');
-  };
+  const { data, loading } = useSelector<TRootState, TPostState>((state) => state.post);
 
   useEffect(() => {
     function handleClick(event: MouseEvent) {
-      if (
-        event.target instanceof Node &&
-        !postRef.current?.contains(event.target)
-      ) {
+      if (event.target instanceof Node && !postRef.current?.contains(event.target)) {
         onClose();
       }
     }
@@ -34,6 +24,12 @@ export function PostContainer() {
     document.addEventListener('click', handleClick);
     return () => document.removeEventListener('click', handleClick);
   });
+
+  const history = useHistory();
+
+  const onClose = () => {
+    history.push('./');
+  };
 
   const modalNode = document.querySelector('#modal_root');
   if (!modalNode) return null;
