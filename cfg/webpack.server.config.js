@@ -58,5 +58,14 @@ module.exports = {
     ],
   },
   devtool: IS_DEV ? 'eval' : false,
-  plugins: [new DefinePlugin({ 'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'` })],
+  // plugins: [new DefinePlugin({ 'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'` })],
+  // дописал REDIRECT_URI и SECRET из окружения переменных process.env что
+  //  бы получать REDIRECT_URI в client окружении
+  plugins: [
+    new DefinePlugin({
+      'process.env.CLIENT_ID': JSON.stringify(process.env.CLIENT_ID),
+      'process.env.REDIRECT_URI': JSON.stringify(process.env.REDIRECT_URI),
+      'process.env.SECRET': JSON.stringify(process.env.SECRET),
+    }),
+  ],
 };

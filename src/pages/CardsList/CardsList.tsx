@@ -9,9 +9,7 @@ import { LoaderSpinner } from '../../shared/LoaderSpinner';
 import { PopupOverlay } from '../../shared/PopupOverlay';
 
 export function CardsList() {
-  const { postsData, loading, loadingCount, errorLoading, loadPosts } =
-    useContext(postsContext);
-
+  const { postsData, loading, loadingCount, errorLoading, loadPosts } = useContext(postsContext);
   const bottomOfList = useRef<HTMLLIElement>(null);
   const LOAD_COUNT = 3;
 
@@ -22,7 +20,7 @@ export function CardsList() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) loadPosts();
+        if (!errorLoading && entries[0].isIntersecting) loadPosts();
       },
       { rootMargin: '100px' },
     );
@@ -32,14 +30,12 @@ export function CardsList() {
     return () => {
       if (bottomOfList?.current) observer.unobserve(bottomOfList.current);
     };
-  }, [bottomOfList.current, loadPosts, isShowButton]);
+  }, [bottomOfList.current, loadPosts, isShowButton, errorLoading]);
 
   let lastCardsListContent: string | React.ReactElement = 'Список пуст';
 
   if (isShowButton) {
-    lastCardsListContent = (
-      <Button text="Загрузить ещё" onClickCallback={() => loadPosts()} />
-    );
+    lastCardsListContent = <Button text='Загрузить ещё' onClickCallback={() => loadPosts()} />;
   }
 
   if (errorLoading) lastCardsListContent = errorLoading;

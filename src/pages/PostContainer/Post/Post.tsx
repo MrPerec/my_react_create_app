@@ -1,19 +1,21 @@
 import React, { useEffect } from 'react';
 
-import { Icon } from '../../../shared/Icon';
-import { KarmaCounter } from '../../../shared/KarmaCounter';
 import { TextContent } from '../../CardsList/Card/TextContent';
 import { MenuItemsList } from '../../CardsList/Card/Menu/MenuItemsList';
-import { Text } from '../../../shared/Text';
-import { SortButton } from '../../../shared/SortButton';
 import { PostContent } from './PostContent';
 import { Comments } from './Comments';
+
+import { Icon } from '../../../shared/Icon';
+import { KarmaCounter } from '../../../shared/KarmaCounter';
+import { Text } from '../../../shared/Text';
+import { SortButton } from '../../../shared/SortButton';
 import { Time } from '../../../shared/Time';
 import { CommentFormContainer } from '../../../shared/CommentFormContainer';
 
 import styles from './post.css';
-import { EColor, EIcons } from '../../../enum';
 import { postMenuList, postData } from './constants';
+
+import { EColor, EIcons } from '../../../enum';
 import { TPostData } from '../../../reducers/postReducer';
 import formatRedditDate from '../../../utils/js/formatRedditDate';
 
@@ -37,21 +39,13 @@ export function Post({ data, onClose }: TPostProps) {
       </button>
       <div className={styles.headerContainer}>
         <KarmaCounter karmaCount={data.karmaCount} />
-        <TextContent
-          author={data.author}
-          post={data.post}
-          isSourceLink={true}
-        />
+        <TextContent author={data.author} post={data.post} isSourceLink={true} />
       </div>
       <div className={styles.contentContainer}>
         <PostContent post={data.post} />
       </div>
       <div className={styles.postMenuItemsListContainer}>
-        <MenuItemsList
-          list={postMenuList}
-          isDirectionRow={true}
-          textSize={{ size: 14 }}
-        />
+        <MenuItemsList list={postMenuList} isDirectionRow={true} textSize={{ size: 14 }} />
         <Text color={EColor.grey99} size={14} lineHeightPercent={171}>
           {`${postData.votedPercent}% Проголосовали`}
         </Text>

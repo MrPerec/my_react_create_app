@@ -5,10 +5,10 @@ import { meReducer } from './meReducer';
 import { postReducer } from './postReducer';
 
 export const rootReducer = combineReducers({
-  comments: commentsReducer,
   token: tokenReducer,
   me: meReducer,
   post: postReducer,
+  comments: commentsReducer,
 });
 
 export type TRootState = ReturnType<typeof rootReducer>;
