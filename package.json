@@ -8,7 +8,7 @@
     "dev": "cross-env NODE_ENV=development CLIENT_ID=wT9ifqRx8AtLV-24amn9hA SECRET=rWrxIbCosGmwfXDqDqFShDAuodQtBw REDIRECT_URI=http://localhost:3000/auth node ./bin/dev.js",
     "test": "jest",
     "test-watch": "jest --watch",
-    "start": "env NODE_ENV=production CLIENT_ID=wT9ifqRx8AtLV SECRET=rWrxIbCosGmwfXDqDqFShDAuodQtBw REDIRECT_URI=https://amvera-mrperec-run-my-reddit/auth node ./dist/server/server.js"
+    "start": "env NODE_ENV=production CLIENT_ID=wT9ifqRx8AtLV SECRET=rWrxIbCosGmwfXDqDqFShDAuodQtBw REDIRECT_URI=https://my-reddit-five.vercel.app/auth node ./dist/server/server.js"
   },
   "author": "",
   "license": "ISC",
