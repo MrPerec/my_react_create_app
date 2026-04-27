@@ -71,5 +71,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server has started on http://localhost:${port}`);
+  console.log(`Server running on ${port} in ${process.env.NODE_ENV}`);
 });
