@@ -21,7 +21,15 @@ if (!IS_DEV) {
   // Подключаем compression
   app.use(compression());
   // Подключаем helmet
-  app.use(helmet());
+  app.use(
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          'script-src': ["'self'", "'unsafe-inline'"],
+        },
+      },
+    }),
+  );
   // app.use(helmet({ contentSecurityPolicy: false }));
 }
 
