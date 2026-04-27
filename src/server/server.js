@@ -12,7 +12,7 @@ import { App } from '../App';
 const app = express();
 
 // heroku будет указывать собственный port для nodejs из своего окружения
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 const redirectUri = process.env.REDIRECT_URI || `http://localhost:${port}/auth`;
 
 const IS_DEV = process.env.NODE_ENV === 'development';
