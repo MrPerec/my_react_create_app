@@ -21,13 +21,41 @@ if (!IS_DEV) {
   // Подключаем compression
   app.use(compression());
   // Подключаем helmet
-  // app.use(helmet({ contentSecurityPolicy: false })); // из видео
-  app.use(
+  // app.use(helmet());
+
+  // локально из deepseek
+  // app.use(helmet({ contentSecurityPolicy: false }));
+
+  /** deploy попытка 1 */
+  /* app.use(
     helmet({
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
           'script-src': ["'self'"],
+        },
+      },
+    }),
+  ); */
+
+  /** deploy попытка 2 */
+  app.use(
+    helmet({
+      contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+          'default-src': ["'self'"],
+          'script-src': ["'self'"],
+          'connect-src': ["'self'", 'https://oauth.reddit.com', 'https://www.reddit.com'],
+          'img-src': [
+            "'self'",
+            'data:',
+            'https://*.reddit.com',
+            'https://*.redd.it',
+            'https://*.redditmedia.com',
+          ],
+          'style-src': ["'self'", "'unsafe-inline'"],
+          'font-src': ["'self'", 'data:'],
         },
       },
     }),
