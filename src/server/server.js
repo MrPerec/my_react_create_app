@@ -21,7 +21,8 @@ if (!IS_DEV) {
   // Подключаем compression
   app.use(compression());
   // Подключаем helmet
-  app.use(
+  // app.use(helmet({ contentSecurityPolicy: false }));
+  /* app.use(
     helmet({
       contentSecurityPolicy: {
         directives: {
@@ -29,8 +30,7 @@ if (!IS_DEV) {
         },
       },
     }),
-  );
-  // app.use(helmet({ contentSecurityPolicy: false }));
+  ); */
 }
 
 app.use('/static', express.static('./dist/client'));
