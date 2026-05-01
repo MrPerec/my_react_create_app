@@ -21,50 +21,7 @@ if (!IS_DEV) {
   // Подключаем compression
   app.use(compression());
   // Подключаем helmet
-  // app.use(helmet());
-
-  // локально из deepseek
   app.use(helmet({ contentSecurityPolicy: false }));
-
-  /** deploy попытка 1 */
-  /* app.use(
-    helmet({
-      contentSecurityPolicy: {
-        useDefaults: true,
-        directives: {
-          'script-src': ["'self'"],
-        },
-      },
-    }),
-  ); */
-
-  /** deploy попытка 2 */
-  /* app.use(
-    helmet({
-      contentSecurityPolicy: {
-        directives: {
-          defaultSrc: ["'self'"],
-          scriptSrc: [
-            "'self'",
-            // если используешь inline (лучше убрать потом)
-            "'unsafe-inline'",
-          ],
-          styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
-          fontSrc: ["'self'", 'https://fonts.gstatic.com'],
-          imgSrc: [
-            "'self'",
-            'data:',
-            'https://preview.redd.it',
-            'https://i.redd.it',
-            'https://www.redditstatic.com',
-          ],
-          connectSrc: ["'self'", 'https://oauth.reddit.com'],
-          objectSrc: ["'none'"],
-          upgradeInsecureRequests: [],
-        },
-      },
-    }),
-  ); */
 }
 
 app.use('/static', express.static('./dist/client'));

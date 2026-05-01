@@ -19,7 +19,6 @@ export function UserBlock({ iconImg, name, loading, error }: IUserBlock) {
   const SCOPE_STRING = `read submit identity`;
 
   let redirectUri = process.env.REDIRECT_URI;
-  // if (typeof window !== 'undefined') redirectUri = window.__redirect_uri__ || redirectUri;
   if (typeof window !== 'undefined') {
     redirectUri = document.getElementById('root')?.dataset.redirect || redirectUri;
   }
