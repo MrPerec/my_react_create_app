@@ -24,7 +24,7 @@ if (!IS_DEV) {
   // app.use(helmet());
 
   // локально из deepseek
-  // app.use(helmet({ contentSecurityPolicy: false }));
+  app.use(helmet({ contentSecurityPolicy: false }));
 
   /** deploy попытка 1 */
   /* app.use(
@@ -39,27 +39,32 @@ if (!IS_DEV) {
   ); */
 
   /** deploy попытка 2 */
-  app.use(
+  /* app.use(
     helmet({
       contentSecurityPolicy: {
-        useDefaults: true,
         directives: {
-          'default-src': ["'self'"],
-          'script-src': ["'self'"],
-          'connect-src': ["'self'", 'https://oauth.reddit.com', 'https://www.reddit.com'],
-          'img-src': [
+          defaultSrc: ["'self'"],
+          scriptSrc: [
+            "'self'",
+            // если используешь inline (лучше убрать потом)
+            "'unsafe-inline'",
+          ],
+          styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
+          fontSrc: ["'self'", 'https://fonts.gstatic.com'],
+          imgSrc: [
             "'self'",
             'data:',
-            'https://*.reddit.com',
-            'https://*.redd.it',
-            'https://*.redditmedia.com',
+            'https://preview.redd.it',
+            'https://i.redd.it',
+            'https://www.redditstatic.com',
           ],
-          'style-src': ["'self'", "'unsafe-inline'"],
-          'font-src': ["'self'", 'data:'],
+          connectSrc: ["'self'", 'https://oauth.reddit.com'],
+          objectSrc: ["'none'"],
+          upgradeInsecureRequests: [],
         },
       },
     }),
-  );
+  ); */
 }
 
 app.use('/static', express.static('./dist/client'));
