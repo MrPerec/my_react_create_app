@@ -19,7 +19,10 @@ export function UserBlock({ iconImg, name, loading, error }: IUserBlock) {
   const SCOPE_STRING = `read submit identity`;
 
   let redirectUri = process.env.REDIRECT_URI;
-  if (typeof window !== 'undefined') redirectUri = window.__redirect_uri__ || redirectUri;
+  // if (typeof window !== 'undefined') redirectUri = window.__redirect_uri__ || redirectUri;
+  if (typeof window !== 'undefined') {
+    redirectUri = document.getElementById('root')?.dataset.redirect || redirectUri;
+  }
 
   const authorizationUrl = `https://www.reddit.com/api/v1/authorize?client_id=${process.env.CLIENT_ID}&response_type=${RESPONSE_TYPE}&state=${RANDOM_STRING}&redirect_uri=${redirectUri}&duration=${DURATION}&scope=${SCOPE_STRING}`;
 

@@ -21,16 +21,17 @@ if (!IS_DEV) {
   // Подключаем compression
   app.use(compression());
   // Подключаем helmet
-  // app.use(helmet({ contentSecurityPolicy: false }));
-  /* app.use(
+  // app.use(helmet({ contentSecurityPolicy: false })); // из видео
+  app.use(
     helmet({
       contentSecurityPolicy: {
+        useDefaults: true,
         directives: {
-          'script-src': ["'self'", "'unsafe-inline'"],
+          'script-src': ["'self'"],
         },
       },
     }),
-  ); */
+  );
 }
 
 app.use('/static', express.static('./dist/client'));

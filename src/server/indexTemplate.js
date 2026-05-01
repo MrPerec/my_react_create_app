@@ -7,14 +7,10 @@ export const indexTemplate = (content, token, redirectUri) => `
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Reddit</title>
   <script src="/static/client.js" type="application/javascript"></script>
-  <script>
-    window.__token__ = '${token ?? ''}';
-    window.__redirect_uri__ = '${redirectUri ?? ''}';
-  </script>
 </head>
 
 <body>
-  <div id="root">${content}</div>
+  <div id="root" data-token="${token ?? ''}" data-redirect="${redirectUri ?? ''}">${content}</div>
   <div id="modal_root"></div>
 </body>
 
