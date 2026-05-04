@@ -18,6 +18,7 @@ import { postMenuList, postData } from './constants';
 import { EColor, EIcons } from '../../../enum';
 import { TPostData } from '../../../reducers/postReducer';
 import formatRedditDate from '../../../utils/js/formatRedditDate';
+import { CommentFormEffector } from '../../../shared/CommentFormEffector';
 
 type TPostProps = {
   data: TPostData;
@@ -51,7 +52,9 @@ export function Post({ data, onClose }: TPostProps) {
         </Text>
       </div>
       <div className={styles.commentFormContainer}>
-        <CommentFormContainer commentId={Number(data.id)} />
+        {/* <CommentFormContainer commentId={Number(data.id)} /> */}
+        {/* замена на effector */}
+        <CommentFormEffector />
       </div>
       <div className={styles.postSortContainer}>
         <Text color={EColor.grey99} size={14}>
