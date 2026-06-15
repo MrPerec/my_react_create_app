@@ -165,5 +165,3 @@ ISC
 - [React Documentation](https://reactjs.org/)
 - [TypeScript Documentation](https://www.typescriptlang.org/)
 - [Redux Documentation](https://redux.js.org/)
-```
-
